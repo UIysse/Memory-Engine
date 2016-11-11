@@ -166,7 +166,7 @@ public:
         scrollArea->setWidget(scrollAreaWidgetContents);
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(180, 410, 93, 28));
+        pushButton->setGeometry(QRect(10, 310, 93, 22));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
         layoutWidget->setGeometry(QRect(720, 40, 295, 30));
@@ -284,7 +284,7 @@ public:
 		lblProcessName->setText(QApplication::translate("QtProClass", "Process Name", 0));
         grpBoxOpt->setTitle(QApplication::translate("QtProClass", "Memory Scan Options", 0));
         toolButton->setText(QApplication::translate("QtProClass", "...", 0));
-        pushButton->setText(QApplication::translate("QtProClass", "PushButton", 0));
+        pushButton->setText(QApplication::translate("QtProClass", "Memory View", 0));
         btnUndoScan->setText(QApplication::translate("QtProClass", "Undo Scan", 0));
         btnFirstScan->setText(QApplication::translate("QtProClass", "First Scan", 0));
         btnNextScan->setText(QApplication::translate("QtProClass", "Next Scan", 0));

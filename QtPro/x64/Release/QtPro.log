@@ -1,1 +1,7 @@
-﻿  QtPro.vcxproj -> C:\Users\Ulysse\Documents\Visual Studio 2015\Projects\QtPro\x64\Release\QtPro.exe
+﻿  moc_qtpro.cpp
+  MemRead.cpp
+  MemoryView.cpp
+  main.cpp
+  qtpro.cpp
+  Generating Code...
+  QtPro.vcxproj -> C:\Users\Ulysse\Documents\Visual Studio 2015\Projects\QtPro\x64\Release\QtPro.exe
