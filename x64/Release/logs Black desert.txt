@@ -1,0 +1,30 @@
+Opened process with ALL ACCESS.
+64 bit process.
+Enum Process failed
+GetModuleInformation failed.
+Entrypoint : 11
+test1
+Handle of process is still active
+Memory pages are not writable and/or not MEM comit
+No memory block
+Bytes left : 0
+Total bytes read : 0
+Disassembling didn't take place because there is no memory block.
+Opened process with ALL ACCESS.
+64 bit process.
+Entrypoint : 13fd2cd60
+test1
+Handle of process is still active
+Memory pages are writable and commited
+Memory block was created
+base add : 000000013FD2C000
+wanted add : 13fd2cd60
+regionsize : 4000
+mb.size : 4000
+could read memory
+Bytes left : 0
+Total bytes read : 4000
+Address of Interest : 13fd2cd60
+Start of memory page : 13fd2c000
+size : 4000
+finished disasembling.
