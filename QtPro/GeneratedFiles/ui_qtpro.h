@@ -154,7 +154,7 @@ public:
         grpBoxOpt->setGeometry(QRect(690, 200, 201, 161));
         toolButton = new QToolButton(centralWidget);
         toolButton->setObjectName(QStringLiteral("toolButton"));
-        toolButton->setGeometry(QRect(10, 20, 27, 22));
+        toolButton->setGeometry(QRect(10, 20, 30, 30));
 		toolButton->setIcon(QIcon("QtPro.ico"));
         scrollArea = new QScrollArea(centralWidget);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));

@@ -279,7 +279,8 @@ BOOL GetProcessList(QListWidget * listwidget)
 	HANDLE hProcess;
 	PROCESSENTRY32 pe32;
 	DWORD dwPriorityClass;
-
+	//Give maximum rights to our memory viewer
+	ProcessPriv();
 	// Take a snapshot of all processes in the system.
 	hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 	if (hProcessSnap == INVALID_HANDLE_VALUE)
@@ -362,8 +363,6 @@ HANDLE  ReturnProcessHandle(QString Qstr)
 			std::string str(ws.begin(), ws.end());
 			if (stricmp(str.c_str(), Qstr.toStdString().c_str()) == 0)
 			{
-				//Give maximum rights to our memory viewer
-				ProcessPriv(DebuggedProc.hwnd);
 				//Retrieve target process handle
 				DebuggedProc.hwnd = OpenProcess(PROCESS_ALL_ACCESS, FALSE, entry.th32ProcessID);
 				if (DebuggedProc.hwnd == 0)

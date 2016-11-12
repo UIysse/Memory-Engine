@@ -1,5 +1,5 @@
 #pragma once
-int ProcessPriv(HANDLE hProc);
+int ProcessPriv();
 typedef struct _MEMBLOCK
 {
 	HANDLE hProc;

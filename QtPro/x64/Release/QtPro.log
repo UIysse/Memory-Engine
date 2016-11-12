@@ -1,4 +1,5 @@
-﻿  moc_qtpro.cpp
+﻿  DebuggedProcess.cpp
+  moc_qtpro.cpp
   MemRead.cpp
   MemoryView.cpp
   main.cpp

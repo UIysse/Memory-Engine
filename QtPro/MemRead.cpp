@@ -195,7 +195,7 @@ unsigned int str2int(char *s)
 
 
 
-int ProcessPriv(HANDLE hFakeArg)
+int ProcessPriv()
 {
 	// get process handle
 	HANDLE hProc = GetCurrentProcess();
