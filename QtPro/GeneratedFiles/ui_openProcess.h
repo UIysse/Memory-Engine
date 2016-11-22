@@ -20,6 +20,7 @@
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
+#include <QtWidgets/QTreeWidget>
 #include "qtpro.h"
 
 QT_BEGIN_NAMESPACE
@@ -27,7 +28,7 @@ QT_BEGIN_NAMESPACE
 class Ui_OpenProcess
 {
 public:
-	QListWidget *listView;
+	QTreeWidget *listView;
 	QWidget *widget;
 	QHBoxLayout *horizontalLayout;
 	QPushButton *pushButton_2;
@@ -37,11 +38,17 @@ public:
 	{
 		if (Dialog->objectName().isEmpty())
 			Dialog->setObjectName(QStringLiteral("Dialog"));
-		Dialog->resize(261, 315);
-		Dialog->setFixedSize(261, 315);
-		listView = new QListWidget(Dialog);
+		Dialog->resize(561, 315);
+		Dialog->setFixedSize(561, 315);
+		listView = new QTreeWidget(Dialog);
 		listView->setObjectName(QStringLiteral("listView"));
-		listView->setGeometry(QRect(0, 0, 261, 250));
+		listView->setGeometry(QRect(0, 0, 561, 260));
+		listView->setHeaderLabels(QStringList() << "Ico" << "PID" << "Process" << "Parent Process" << "Cmd line argument");
+		listView->setColumnWidth(0, 30);
+		listView->setColumnWidth(1, 60);
+		listView->setColumnWidth(2, 250);
+		listView->setColumnWidth(3, 150);
+		listView->setColumnWidth(4, 150);
 		//listView->setStyleSheet("QListWidget::item { border-bottom: 1px solid gray; }");
 		widget = new QWidget(Dialog);
 		widget->setObjectName(QStringLiteral("widget"));

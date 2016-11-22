@@ -12,7 +12,6 @@
 //#include "ui_ShowDLLs.h
 class MemoryViewer; // allows declaration prototype for inserDisas
 int insertDisas(MemoryViewer * aDialog);
-BOOL GetProcessList(QListWidget * listwidget);
 HANDLE  ReturnProcessHandle(QString Qstr);
 class QtPro;
 class About : public QDialog

@@ -32,7 +32,8 @@
 using namespace std;
 //#include "../Blackbone/src/BlackBone/Process/Process.h" 
 
-
+//prototypes
+BOOL GetProcessList(QTreeWidget * listwidget);
 
 int insertDisas(MemoryViewer * aDialog)
 {
@@ -233,7 +234,7 @@ About::~About()
 }
 void OpenProcessClass::SelectProcess()
 {
-	QString strChosenProcess = this->ui.listView->currentItem()->text();
+	QString strChosenProcess = this->ui.listView->currentItem()->text(2);
 	DebuggedProc.hwnd = ReturnProcessHandle(strChosenProcess);
 	pQtPro->ui.lblProcessName->setText(strChosenProcess);
 	this->close();
@@ -272,16 +273,47 @@ void printError(TCHAR* msg)
 	// Display the message
 	_tprintf(TEXT("\n  WARNING: %s failed with error %d (%s)"), msg, eNum, sysMsg);
 }
-BOOL GetProcessList(QListWidget * listwidget)
+string GetProcNameFromPID(DWORD ParentProc, HANDLE& hProcessSnap)
+{
+	HANDLE hProcess;
+	PROCESSENTRY32 pe32;
+	DWORD dwPriorityClass;
+	if (hProcessSnap == INVALID_HANDLE_VALUE)
+	{
+		printError(TEXT("CreateToolhelp32Snapshot (of processes)"));
+		return(FALSE);
+	}
+	// Set the size of the structure before using it.
+	pe32.dwSize = sizeof(PROCESSENTRY32);
+	// Now walk the snapshot of processes, and
+	// display information about each process in turn
+	if (Process32First(hProcessSnap, &pe32))
+		do
+		{
+			if (pe32.th32ProcessID == ParentProc)
+			{
+				std::wstring ws(pe32.szExeFile);
+				std::string str(ws.begin(), ws.end());
+				if (str == "[System Process]")
+					str = "System's Parent";
+				return str;
+			}
+		} while (Process32Next(hProcessSnap, &pe32));
+		string str("Process Terminated");
+		return str;
+}
+BOOL GetProcessList(QTreeWidget * listwidget)
 {
 	HANDLE hProcessSnap;
 	HANDLE hProcess;
+	HANDLE hParentSnap;
 	PROCESSENTRY32 pe32;
 	DWORD dwPriorityClass;
 	// Give maximum rights to our memory viewer
 	ProcessPriv();
 	// Take a snapshot of all processes in the system.
 	hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+	hParentSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 	if (hProcessSnap == INVALID_HANDLE_VALUE)
 	{
 		printError(TEXT("CreateToolhelp32Snapshot (of processes)"));
@@ -303,15 +335,17 @@ BOOL GetProcessList(QListWidget * listwidget)
 		//Avoid begin and end meaningless displays
 		if (str == "[System Process]")
 			continue;
-		listwidget->addItem(QString::fromWCharArray(pe32.szExeFile));
+		QTreeWidgetItem * itm = new QTreeWidgetItem(listwidget);
+		itm->setIcon(0, QIcon(""));
+		itm->setText(1, std::to_string(pe32.th32ProcessID).c_str());
+		itm->setText(2, QString::fromWCharArray(pe32.szExeFile)); 
+		itm->setText(3, GetProcNameFromPID(pe32.th32ParentProcessID, hParentSnap).c_str());
 		// Retrieve the priority class.
 		dwPriorityClass = 0;
 		hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pe32.th32ProcessID);
 		if (hProcess == NULL)
 		{ //Handle access is denied, item will appear red in the list
-			printError(TEXT("OpenProcess"));
-			QListWidgetItem * ptr = listwidget->item(listwidget->count()-1);
-			ptr->setBackgroundColor(Qt::red);
+			itm->setBackgroundColor(2, Qt::red);
 		}
 		else
 		{

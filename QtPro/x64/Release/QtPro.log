@@ -1,10 +1,4 @@
-﻿  moc_qtpro.cpp
-  MemRead.cpp
-  MemoryView.cpp
-  main.cpp
-  qtpro.cpp
-  Generating Code...
-  BlackBone.lib(ProcessCore.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+﻿  BlackBone.lib(ProcessCore.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
      Creating library C:\Users\Ulysse\Documents\Visual Studio 2015\Projects\QtPro\x64\Release\QtPro.lib and object C:\Users\Ulysse\Documents\Visual Studio 2015\Projects\QtPro\x64\Release\QtPro.exp
   Generating code
   Finished generating code
