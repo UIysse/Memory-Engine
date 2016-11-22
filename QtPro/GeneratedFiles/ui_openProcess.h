@@ -41,7 +41,7 @@ public:
 		Dialog->setFixedSize(261, 315);
 		listView = new QListWidget(Dialog);
 		listView->setObjectName(QStringLiteral("listView"));
-		listView->setGeometry(QRect(0, 0, 261, 241));
+		listView->setGeometry(QRect(0, 0, 261, 250));
 		//listView->setStyleSheet("QListWidget::item { border-bottom: 1px solid gray; }");
 		widget = new QWidget(Dialog);
 		widget->setObjectName(QStringLiteral("widget"));
