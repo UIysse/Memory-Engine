@@ -1,6 +1,5 @@
 #ifndef QTPRO_H
 #define QTPRO_H
-
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QDialog>
 #include "ui_qtpro.h"

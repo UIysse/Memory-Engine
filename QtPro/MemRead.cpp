@@ -8,6 +8,7 @@
 #include <string>
 #include "MemRead.h"
 #include "DebuggedProcess.h"
+#include "Header.h"
 #define IS_IN_SEARCH(mb,offset) (mb->searchmask[(offset)/8] & (1<<((offset)%8)))
 #define REMOVE_FROM_SEARCH(mb,offset) mb->searchmask[(offset)/8] &= ~(1<<((offset)%8));
 std::ofstream fout("logsthen.txt");
@@ -97,7 +98,16 @@ MEMBLOCK* create_memblock(HANDLE hProc, MEMORY_BASIC_INFORMATION *meminfo, int d
 	return mb;
 }
 
-MEMBLOCK * trol(int64_t addr);
+MEMBLOCK * QueryMemoryAddrressDriver(int64_t addr)
+{
+	MEMBLOCK *mb = new MEMBLOCK;
+	mb->addr = (unsigned char*)addr;
+	mb->buffer = reinterpret_cast <unsigned char *>(malloc(0x1000));
+	mb->next = NULL;
+	fout << "Memory block was created" << endl;
+	 Read();
+	return mb;
+}
 MEMBLOCK * QueryMemoryAddrress(int64_t addr)
 {
 	MEMORY_BASIC_INFORMATION meminfo;

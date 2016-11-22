@@ -6,6 +6,7 @@
 #include "ui_openProcess.h"
 #include "DebuggedProcess.h"
 #include "MemRead.h"
+#include "Header.h"
 #include <windows.h>
 #include <tlhelp32.h>
 #include <tchar.h>
@@ -18,29 +19,23 @@
 #define BEA_ENGINE_STATIC  /* specify the usage of a static version of BeaEngine */
 #define BEA_USE_STDCALL    /* specify the usage of a stdcall version of BeaEngine */
 #include "BeaEngine/BeaEngine.h"
-#include <fstream>
+#include <fstream> 
 #include <stdio.h>
 #include <stdlib.h> 
 #include <iostream>
 #include <iomanip>
-#include <sstream> 
+#include <sstream>  
 #include <cstdio>
+#include "../BlackBone/src/BlackBone/DriverControl/DriverControl.h"
+#include "test\Header.h"
+//#include "../BlackBone/Process/Process.h"
 using namespace std;
-/*	int n;
-_asm
-{
-push eax
-call get_eip
-jmp out1
-get_eip: mov eax, [esp]
-ret
-out1:
-mov n, eax
-pop eax
-}*/
+//#include "../Blackbone/src/BlackBone/Process/Process.h" 
+
+
+
 int insertDisas(MemoryViewer * aDialog)
 {
-	fout << "test1" << endl;
 	if (WAIT_TIMEOUT == WaitForSingleObject(DebuggedProc.hwnd, 0))
 		fout << "Handle of process is still active" << endl;
 	else
@@ -48,7 +43,13 @@ int insertDisas(MemoryViewer * aDialog)
 	if (!DebuggedProc.addressOfInterest)
 		fout << "error, no EIP used" << endl;
 	else
-	DebuggedProc.mb = QueryMemoryAddrress(DebuggedProc.addressOfInterest);//create_scan(DebuggedProc.hwnd, 1);
+	{
+		if (!DebuggedProc.bDriver)
+		DebuggedProc.mb = QueryMemoryAddrress(DebuggedProc.addressOfInterest);//create_scan(DebuggedProc.hwnd, 1);
+		else
+		//DebuggedProc.mb = QueryMemoryAddrressDriver(DebuggedProc.addressOfInterest);
+		DebuggedProc.mb = QueryMemoryAddrress(DebuggedProc.addressOfInterest);
+	}
 	if (DebuggedProc.mb)
 	{
 		//DebuggedProc.mb = create_scan(DebuggedProc.hwnd, 1);
@@ -72,8 +73,6 @@ int insertDisas(MemoryViewer * aDialog)
 		fout << "size : " << hex << DebuggedProc.mb->size << endl;
 		n = n + DebuggedProc.addressOfInterest - DebuggedProc.basePageAddress;
 		int64_t nTargetedProcessAddress = DebuggedProc.addressOfInterest;
-		//fout << "address : " << hex << n << " and : "<< hex << nTargetedProcessAddress << std::endl;
-		//n = reinterpret_cast<int64_t>(hwnd);
 		cout << "n : " << hex << n << endl;
 		MyDisasm.Archi = DebuggedProc.architecture;
 		MyDisasm.EIP = n;// 0x401000;
@@ -361,6 +360,7 @@ HANDLE  ReturnProcessHandle(QString Qstr)
 			std::wstring ws(entry.szExeFile);
 			// your new String
 			std::string str(ws.begin(), ws.end());
+			DebuggedProc.wsChosenProc = ws;
 			if (stricmp(str.c_str(), Qstr.toStdString().c_str()) == 0)
 			{
 				//Retrieve target process handle
@@ -383,9 +383,7 @@ HANDLE  ReturnProcessHandle(QString Qstr)
 					DebuggedProc.architecture = 64;
 					fout << "64 bit process." << endl;
 				}
-				// Do stuff..
-				//TerminateProcess(*hProcess, 2);
-				//CloseHandle(hProcess);
+				Read();
 				HMODULE *modarray = new HMODULE[200];
 				DWORD o;
 				if (0 == EnumProcessModules(DebuggedProc.hwnd, modarray, sizeof(HMODULE) * 200, &o))

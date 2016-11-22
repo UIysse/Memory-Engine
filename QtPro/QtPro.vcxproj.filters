@@ -65,6 +65,9 @@
     <ClCompile Include="MemoryView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DriverImplementation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qtpro.h">
@@ -113,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="MemRead.h">
       <Filter>Source Files\MemoryScans</Filter>
+    </ClInclude>
+    <ClInclude Include="Header.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

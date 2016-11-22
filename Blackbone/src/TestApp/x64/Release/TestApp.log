@@ -1,0 +1,9 @@
+﻿  DriverTest.cpp
+     Creating library C:\Users\Ulysse\Documents\Driver BlackBone\Blackbone\build\x64\Release\TestApp64.lib and object C:\Users\Ulysse\Documents\Driver BlackBone\Blackbone\build\x64\Release\TestApp64.exp
+  Generating code
+  4 of 4821 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    5 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  TestApp.vcxproj -> C:\Users\Ulysse\Documents\Driver BlackBone\Blackbone\build\x64\Release\TestApp64.exe
+          1 fichier(s) copié(s).

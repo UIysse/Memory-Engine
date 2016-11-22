@@ -1,0 +1,10 @@
+﻿  Building 'BlackBoneDrv' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
+  Inject.c
+  BlackBoneDrv.vcxproj -> C:\Users\Ulysse\Documents\Driver BlackBone\Blackbone\src\BlackBoneDrv\bin\x64\Win7Debug\BlackBoneDrv7.sys
+  Done Adding Additional Store
+  Successfully signed: C:\Users\Ulysse\Documents\Driver BlackBone\Blackbone\src\BlackBoneDrv\bin\x64\Win7Debug\BlackBoneDrv7.sys
+  
+  Le chemin réseau n'a pas été trouvé.
+          0 fichier(s) copié(s).
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppCommon.targets(133,5): error MSB3073: The command "copy /y "C:\Users\Ulysse\Documents\Driver BlackBone\Blackbone\src\BlackBoneDrv\bin\x64\Win7Debug\BlackBoneDrv7.sys" \\Win7_x64\c$\BlackBoneDrv7.sys
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppCommon.targets(133,5): error MSB3073: :VCEnd" exited with code 1.

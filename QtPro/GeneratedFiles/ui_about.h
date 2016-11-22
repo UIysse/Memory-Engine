@@ -23,37 +23,37 @@ QT_BEGIN_NAMESPACE
 class Ui_Dialog2
 {
 public:
-    QLabel *label;
-    QPushButton *pushButton;
+	QLabel *label;
+	QPushButton *pushButton;
 
-    void setupUi(QDialog *Dialog)
-    {
-        if (Dialog->objectName().isEmpty())
-            Dialog->setObjectName(QStringLiteral("Dialog"));
-        Dialog->resize(400, 300);
-        label = new QLabel(Dialog);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(70, 70, 211, 101));
-        pushButton = new QPushButton(Dialog);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(170, 230, 93, 28));
+	void setupUi(QDialog *Dialog)
+	{
+		if (Dialog->objectName().isEmpty())
+			Dialog->setObjectName(QStringLiteral("Dialog"));
+		Dialog->resize(400, 300);
+		label = new QLabel(Dialog);
+		label->setObjectName(QStringLiteral("label"));
+		label->setGeometry(QRect(70, 70, 211, 101));
+		pushButton = new QPushButton(Dialog);
+		pushButton->setObjectName(QStringLiteral("pushButton"));
+		pushButton->setGeometry(QRect(170, 230, 93, 28));
 
-        retranslateUi(Dialog);
+		retranslateUi(Dialog);
 
-        QMetaObject::connectSlotsByName(Dialog);
-    } // setupUi
+		QMetaObject::connectSlotsByName(Dialog);
+	} // setupUi
 
-    void retranslateUi(QDialog *Dialog)
-    {
-        Dialog->setWindowTitle(QApplication::translate("Dialog", "Dialog", 0));
-        label->setText(QApplication::translate("Dialog", "All credits go to DarkByte", 0));
-        pushButton->setText(QApplication::translate("Dialog", "Ok", 0));
-    } // retranslateUi
+	void retranslateUi(QDialog *Dialog)
+	{
+		Dialog->setWindowTitle(QApplication::translate("Dialog", "Dialog", 0));
+		label->setText(QApplication::translate("Dialog", "All credits go to DarkByte", 0));
+		pushButton->setText(QApplication::translate("Dialog", "Ok", 0));
+	} // retranslateUi
 
 };
 
 namespace Ui {
-    class Dialog: public Ui_Dialog2 {};
+	class Dialog : public Ui_Dialog2 {};
 } // namespace Ui
 
 QT_END_NAMESPACE

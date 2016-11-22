@@ -1,0 +1,53 @@
+﻿  x86Subsystem.cpp
+  Wow64Subsystem.cpp
+  Wow64Local.cpp
+  NativeSubsystem.cpp
+  Threads.cpp
+  Thread.cpp
+  RemoteMemory.cpp
+  RemoteLocalHook.cpp
+  RemoteHook.cpp
+  RemoteExec.cpp
+  ProcessModules.cpp
+  ProcessMemory.cpp
+  ProcessCore.cpp
+  Process.cpp
+  MemBlock.cpp
+  PEImage.cpp
+  ImageNET.cpp
+  PatternSearch.cpp
+  Utils.cpp
+  NameResolve.cpp
+  Generating Code...
+  Compiling...
+  DynImport.cpp
+  NtLoader.cpp
+  MMap.cpp
+  MExcept.cpp
+  TraceHook.cpp
+  LocalHookBase.cpp
+  DriverControl.cpp
+  AsmHelper32.cpp
+  x86operand_regs.cpp
+  x86operand.cpp
+  x86inst.cpp
+  x86cpuinfo.cpp
+  x86assembler.cpp
+  zone.cpp
+  vmem.cpp
+  string.cpp
+  runtime.cpp
+  operand.cpp
+  globals.cpp
+  error.cpp
+  Generating Code...
+  Compiling...
+  cputicks.cpp
+  cpuinfo.cpp
+  containers.cpp
+  constpool.cpp
+  codegen.cpp
+  assembler.cpp
+  Generating Code...
+  LDasm.c
+  BlackBone.vcxproj -> C:\Users\Ulysse\Documents\Driver BlackBone\Blackbone\build\Win32\Debug\BlackBone.lib

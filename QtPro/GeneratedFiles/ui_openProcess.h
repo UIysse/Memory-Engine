@@ -27,54 +27,55 @@ QT_BEGIN_NAMESPACE
 class Ui_OpenProcess
 {
 public:
-    QListWidget *listView;
-    QWidget *widget;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton;
+	QListWidget *listView;
+	QWidget *widget;
+	QHBoxLayout *horizontalLayout;
+	QPushButton *pushButton_2;
+	QPushButton *pushButton;
 
-    void setupUi(QDialog *Dialog)
-    {
-        if (Dialog->objectName().isEmpty())
-            Dialog->setObjectName(QStringLiteral("Dialog"));
-        Dialog->resize(261, 358);
-		Dialog->setFixedSize(261, 358);
-        listView = new QListWidget(Dialog);
-        listView->setObjectName(QStringLiteral("listView"));
-        listView->setGeometry(QRect(0, 0, 261, 241));
-        widget = new QWidget(Dialog);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(30, 270, 195, 30));
-        horizontalLayout = new QHBoxLayout(widget);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton_2 = new QPushButton(widget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+	void setupUi(QDialog *Dialog)
+	{
+		if (Dialog->objectName().isEmpty())
+			Dialog->setObjectName(QStringLiteral("Dialog"));
+		Dialog->resize(261, 315);
+		Dialog->setFixedSize(261, 315);
+		listView = new QListWidget(Dialog);
+		listView->setObjectName(QStringLiteral("listView"));
+		listView->setGeometry(QRect(0, 0, 261, 241));
+		//listView->setStyleSheet("QListWidget::item { border-bottom: 1px solid gray; }");
+		widget = new QWidget(Dialog);
+		widget->setObjectName(QStringLiteral("widget"));
+		widget->setGeometry(QRect(30, 270, 195, 30));
+		horizontalLayout = new QHBoxLayout(widget);
+		horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+		horizontalLayout->setContentsMargins(0, 0, 0, 0);
+		pushButton_2 = new QPushButton(widget);
+		pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
 
-        horizontalLayout->addWidget(pushButton_2);
+		horizontalLayout->addWidget(pushButton_2);
 
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+		pushButton = new QPushButton(widget);
+		pushButton->setObjectName(QStringLiteral("pushButton"));
 
-        horizontalLayout->addWidget(pushButton);
+		horizontalLayout->addWidget(pushButton);
 
 
-        retranslateUi(Dialog);
+		retranslateUi(Dialog);
 		QObject::connect(pushButton, &QPushButton::clicked, Dialog, &QDialog::close);
-        QMetaObject::connectSlotsByName(Dialog);
-    } // setupUi
+		QMetaObject::connectSlotsByName(Dialog);
+	} // setupUi
 
-    void retranslateUi(QDialog *Dialog)
-    {
-        Dialog->setWindowTitle(QApplication::translate("Dialog", "Process list", 0));
-        pushButton_2->setText(QApplication::translate("Dialog", "Open", 0));
-        pushButton->setText(QApplication::translate("Dialog", "Cancel", 0));
-    } // retranslateUi
+	void retranslateUi(QDialog *Dialog)
+	{
+		Dialog->setWindowTitle(QApplication::translate("Dialog", "Process list", 0));
+		pushButton_2->setText(QApplication::translate("Dialog", "Open", 0));
+		pushButton->setText(QApplication::translate("Dialog", "Cancel", 0));
+	} // retranslateUi
 
 };
 
 namespace Ui {
-    class OpenProcess: public Ui_OpenProcess {};
+	class OpenProcess : public Ui_OpenProcess {};
 } // namespace Ui
 
 QT_END_NAMESPACE

@@ -29,38 +29,38 @@ QT_BEGIN_NAMESPACE
 class Ui_Dialog
 {
 public:
-    QTreeWidget *treeWidget;
+	QTreeWidget *treeWidget;
 	QAction * viewDlls;
 	QShortcut * shortcut;
-    void setupUi(QMainWindow *Dialog)
-    {
-        if (Dialog->objectName().isEmpty())
-            Dialog->setObjectName(QStringLiteral("Dialog"));
-        Dialog->resize(1050, 672);
-        treeWidget = new QTreeWidget(Dialog);
-        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
-        __qtreewidgetitem->setText(0, QStringLiteral("1"));
-        treeWidget->setHeaderItem(__qtreewidgetitem);
-        treeWidget->setObjectName(QStringLiteral("treeWidget"));
-        treeWidget->setGeometry(QRect(0, 20, 1051, 671));
+	void setupUi(QMainWindow *Dialog)
+	{
+		if (Dialog->objectName().isEmpty())
+			Dialog->setObjectName(QStringLiteral("Dialog"));
+		Dialog->resize(1050, 672);
+		treeWidget = new QTreeWidget(Dialog);
+		QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
+		__qtreewidgetitem->setText(0, QStringLiteral("1"));
+		treeWidget->setHeaderItem(__qtreewidgetitem);
+		treeWidget->setObjectName(QStringLiteral("treeWidget"));
+		treeWidget->setGeometry(QRect(0, 20, 1051, 671));
 		QMenu * fileMenu = Dialog->menuBar()->addMenu(("&File"));
 		QMenu * searchMenu = Dialog->menuBar()->addMenu("&Search");
 		QMenu * viewMenu = Dialog->menuBar()->addMenu("&View");
 		viewDlls = viewMenu->addAction("&View DLLs");
-        retranslateUi(Dialog);
+		retranslateUi(Dialog);
 		shortcut = new QShortcut(QKeySequence("g"), Dialog);
-        QMetaObject::connectSlotsByName(Dialog);
-    } // setupUi
+		QMetaObject::connectSlotsByName(Dialog);
+	} // setupUi
 
-    void retranslateUi(QMainWindow *Dialog)
-    {
-        Dialog->setWindowTitle(QApplication::translate("Dialog", "Memory Viewer", 0));
-    } // retranslateUi
+	void retranslateUi(QMainWindow *Dialog)
+	{
+		Dialog->setWindowTitle(QApplication::translate("Dialog", "Memory Viewer", 0));
+	} // retranslateUi
 
 };
 
 
-class Ui_DialogGotoBox 
+class Ui_DialogGotoBox
 {
 public:
 	QDialogButtonBox *buttonBox;
@@ -100,7 +100,7 @@ public:
 
 };
 namespace Ui {
-    class MemoryView: public Ui_Dialog {};
+	class MemoryView : public Ui_Dialog {};
 	class GotoBox : public Ui_DialogGotoBox {};
 } // namespace Ui
 

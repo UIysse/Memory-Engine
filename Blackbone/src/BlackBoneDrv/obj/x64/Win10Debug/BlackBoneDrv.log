@@ -1,0 +1,6 @@
+﻿  Building 'BlackBoneDrv' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
+  Inject.c
+  BlackBoneDrv.vcxproj -> C:\Users\Ulysse\Documents\Driver BlackBone\Blackbone\src\BlackBoneDrv\bin\x64\Win10Debug\BlackBoneDrv10.sys
+  Done Adding Additional Store
+  Successfully signed: C:\Users\Ulysse\Documents\Driver BlackBone\Blackbone\src\BlackBoneDrv\bin\x64\Win10Debug\BlackBoneDrv10.sys
+  
