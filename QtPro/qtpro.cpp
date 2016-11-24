@@ -4,6 +4,7 @@
 #include "ui_aboutce.h"
 #include "qt_windows.h"
 #include "ui_openProcess.h"
+#include "Modules.h"
 #include "Search.h"
 #include "DebuggedProcess.h"
 #include "Logs.h"
@@ -213,7 +214,13 @@ void QtPro::ShowSearch()
 }
 void QtPro::ShowModules()
 {
-	Logs * w = new Logs(this);
+	ModulesWindow * w = new ModulesWindow(this);
+	w->setAttribute(Qt::WA_DeleteOnClose);
+	w->show();
+}
+void QtPro::ShowThreadList()
+{
+	ThreadListWindow * w = new ThreadListWindow(this);
 	w->setAttribute(Qt::WA_DeleteOnClose);
 	w->show();
 }
@@ -229,6 +236,7 @@ QtPro::QtPro(QWidget *parent)
 	QObject::connect(ui.toolButMod, &QPushButton::clicked, this, &QtPro::ShowModules);
 	QObject::connect(ui.toolButSearch, &QPushButton::clicked, this, &QtPro::ShowSearch);
 	QObject::connect(ui.toolButMemoryView, &QPushButton::clicked, this, &QtPro::ShowMemoryView);
+	QObject::connect(ui.toolButThreads, &QToolButton::clicked, this, &QtPro::ShowThreadList);
 }
 void QtPro::ShowMemoryView()
 {

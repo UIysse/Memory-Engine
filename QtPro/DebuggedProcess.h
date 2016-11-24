@@ -20,6 +20,20 @@ public :
 	int64_t addressOfInterest;
 	int64_t basePageAddress;
 	std::wstring wsChosenProc;
+
+	//functions
+	bool IsHandleValid() {
+		if (WAIT_TIMEOUT == WaitForSingleObject(this->hwnd, 0))
+		{
+			fout << "Handle of process is still active" << std::endl;
+			return true;
+		}
+		else
+		{
+			fout << "Handle is dead." << std::endl;
+			return false;
+		}
+	}
 };
 extern DebuggedProcess DebuggedProc;
 extern std::ofstream driveroutput;

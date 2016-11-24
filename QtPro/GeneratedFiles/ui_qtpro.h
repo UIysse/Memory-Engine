@@ -282,7 +282,7 @@ public:
 
 	void retranslateUi(QMainWindow *QtProClass)
 	{
-		QtProClass->setWindowTitle(QApplication::translate("QtProClass", "Nulysse Engine", 0));
+		QtProClass->setWindowTitle(QApplication::translate("QtProClass", "Cpp Engine", 0));
 		action_Exit->setText(QApplication::translate("QtProClass", "&Exit", 0));
 		actionE_xit->setText(QApplication::translate("QtProClass", "E&xit", 0));
 		actionCheat_Engine_Help_F1->setText(QApplication::translate("QtProClass", "Cheat Engine Help F1", 0));

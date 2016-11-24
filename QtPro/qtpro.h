@@ -8,6 +8,7 @@
 #include "Logs.h"
 #include "ui_openProcess.h"
 #include "ui_MemoryView.h"
+#include "ThreadList.h"
 #include "MemRead.h"
 #include <atomic>
 #include <fstream>
@@ -43,6 +44,7 @@ public:
 	void ShowLogs();
 	void ShowSearch();
 	void ShowModules();
+	void ShowThreadList();
 	void UpdateProcessName();
 		//QApplication::closeAllWindows();
 	void closeEvent(QCloseEvent *event)

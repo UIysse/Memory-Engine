@@ -48,6 +48,9 @@
     <Filter Include="Modules">
       <UniqueIdentifier>{2bcc2aef-ebd4-4369-a2fb-24e691c6fa5d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ThreadList">
+      <UniqueIdentifier>{0e359b85-bef0-4d64-b8a7-61d80ccef85a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -98,6 +101,9 @@
     <ClCompile Include="Modules.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ThreadList.cpp">
+      <Filter>ThreadList</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qtpro.h">
@@ -105,12 +111,6 @@
     </CustomBuild>
     <CustomBuild Include="qtpro.qrc">
       <Filter>Source Files\Resource Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="MemoryView.ui">
-      <Filter>Generated Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="GeneratedFiles\ui_MemoryView.h">
-      <Filter>Generated Files</Filter>
     </CustomBuild>
     <CustomBuild Include="Search.h">
       <Filter>Search</Filter>
@@ -155,6 +155,15 @@
     </ClInclude>
     <ClInclude Include="Modules.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MemoryView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadList.h">
+      <Filter>ThreadList</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_ThreadList.h">
+      <Filter>ThreadList</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

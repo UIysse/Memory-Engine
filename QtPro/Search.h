@@ -6,7 +6,7 @@ class SearchWindow : public QDialog
 {
 	Q_OBJECT
 public :
-	SearchWindow(QMainWindow* parent = 0) : QDialog(parent)
+	SearchWindow(QMainWindow* parent = 0) //: QDialog(parent)
 	{
 		this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 		ui.setupUi(this);
