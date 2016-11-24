@@ -17,4 +17,4 @@ MEMBLOCK* create_scan(HANDLE procHandle, int data_size);
 MEMBLOCK * QueryMemoryAddrress(int64_t addr);
 MEMBLOCK * QueryMemoryAddrressDriver(int64_t addr);
 void fillEachMemblock(MEMBLOCK * mb);
-extern 	std::ofstream fout;
+extern 	std::fstream fout;

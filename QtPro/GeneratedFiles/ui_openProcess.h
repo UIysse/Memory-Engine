@@ -52,7 +52,7 @@ public:
 		//listView->setStyleSheet("QListWidget::item { border-bottom: 1px solid gray; }");
 		widget = new QWidget(Dialog);
 		widget->setObjectName(QStringLiteral("widget"));
-		widget->setGeometry(QRect(30, 270, 195, 30));
+		widget->setGeometry(QRect(190, 270, 195, 30));
 		horizontalLayout = new QHBoxLayout(widget);
 		horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
 		horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -68,7 +68,6 @@ public:
 
 
 		retranslateUi(Dialog);
-		QObject::connect(pushButton, &QPushButton::clicked, Dialog, &QDialog::close);
 		QMetaObject::connectSlotsByName(Dialog);
 	} // setupUi
 

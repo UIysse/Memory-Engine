@@ -2,8 +2,10 @@
 #define QTPRO_H
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QDialog>
+#include <QCloseEvent>
 #include "ui_qtpro.h"
 #include "ui_aboutce.h"
+#include "Logs.h"
 #include "ui_openProcess.h"
 #include "ui_MemoryView.h"
 #include "MemRead.h"
@@ -37,20 +39,30 @@ public:
 	private slots:
 	void ShowAboutDialog();
 	void ShowPickProcess();
-	void ShowMemoryView();
+	void ShowMemoryView(); 
+	void ShowLogs();
+	void ShowSearch();
+	void ShowModules();
 	void UpdateProcessName();
+		//QApplication::closeAllWindows();
+	void closeEvent(QCloseEvent *event)
+	{
+			QApplication::closeAllWindows();
+	}
 public:
 	Ui::QtProClass ui;
 };
-
 class OpenProcessClass : public QDialog
 {
 public:
 	QtPro * pQtPro;
 	OpenProcessClass(QWidget *parent, QtPro *MainWind);
-	~OpenProcessClass();
+	~OpenProcessClass() {
+		pQtPro->ui.toolButton->setEnabled(true);
+	}
 	//friend void QtPro::ShowPickProcess();
 	void SelectProcess();
+	void CancelProcessSelection();
 private slots:
 
 

@@ -4,7 +4,9 @@
 #include "ui_aboutce.h"
 #include "qt_windows.h"
 #include "ui_openProcess.h"
+#include "Search.h"
 #include "DebuggedProcess.h"
+#include "Logs.h"
 #include "MemRead.h"
 #include "Header.h"
 #include <windows.h>
@@ -158,11 +160,14 @@ void MemoryViewer::ShowGotoDialogBox()
 {
 	InputGotoBox * inputgotobox = new InputGotoBox(this, this);
 	inputgotobox->setWindowFlags(inputgotobox->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+	inputgotobox->setAttribute(Qt::WA_DeleteOnClose);
 	inputgotobox->show();
 	inputgotobox->ui.textEdit->setFocus();
 }
 void QtPro::ShowPickProcess()
 {
+	//ui.toolButton->setEnabled(false);
+	ui.toolButton->setDisabled(true);
 	OpenProcessClass* w = new OpenProcessClass(this, this);
 	w->show();
 	w->setAttribute(Qt::WA_DeleteOnClose);//takes care of releasing memory when the object is closed
@@ -180,7 +185,7 @@ void foo(MemoryViewer * aDialog)
 	itm->setText(2, "troisieme text");
 	//ui.treeWidget->addScrollBarWidget(ui.treeWidget, Qt::AlignmentFlag::AlignAbsolute);
 }
-MemoryViewer::MemoryViewer(QWidget *parent) : QMainWindow(parent)
+MemoryViewer::MemoryViewer(QWidget *parent) //: QMainWindow(parent)
 {
 	ui.setupUi(this);
 
@@ -194,7 +199,24 @@ MemoryViewer::MemoryViewer(QWidget *parent) : QMainWindow(parent)
 	QObject::connect(ui.shortcut, &QShortcut::activated, this, &MemoryViewer::ShowGotoDialogBox);
 }
 
-
+void QtPro::ShowLogs()
+{
+	Logs * w = new Logs(this);
+	w->setAttribute(Qt::WA_DeleteOnClose);
+	w->show();
+}
+void QtPro::ShowSearch()
+{
+	SearchWindow * w = new SearchWindow(this);
+	w->setAttribute(Qt::WA_DeleteOnClose);
+	w->show();
+}
+void QtPro::ShowModules()
+{
+	Logs * w = new Logs(this);
+	w->setAttribute(Qt::WA_DeleteOnClose);
+	w->show();
+}
 QtPro::QtPro(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -203,6 +225,10 @@ QtPro::QtPro(QWidget *parent)
 	QObject::connect(ui.actionAbout, &QAction::triggered, this, &QtPro::ShowAboutDialog);
 	QObject::connect(ui.toolButton, &QToolButton::clicked, this, &QtPro::ShowPickProcess);// &QtPro::ShowPickProcess);
 	QObject::connect(ui.pushButton, &QPushButton::clicked, this, &QtPro::ShowMemoryView);
+	QObject::connect(ui.toolButLogs, &QPushButton::clicked, this, &QtPro::ShowLogs);
+	QObject::connect(ui.toolButMod, &QPushButton::clicked, this, &QtPro::ShowModules);
+	QObject::connect(ui.toolButSearch, &QPushButton::clicked, this, &QtPro::ShowSearch);
+	QObject::connect(ui.toolButMemoryView, &QPushButton::clicked, this, &QtPro::ShowMemoryView);
 }
 void QtPro::ShowMemoryView()
 {
@@ -216,7 +242,7 @@ MemoryViewer::~MemoryViewer()
 }
 QtPro::~QtPro()
 {
-
+	QApplication::closeAllWindows();
 }
 void QtPro::closeDialog()
 {
@@ -239,16 +265,17 @@ void OpenProcessClass::SelectProcess()
 	pQtPro->ui.lblProcessName->setText(strChosenProcess);
 	this->close();
 }
+void OpenProcessClass::CancelProcessSelection()
+{
+	this->close();
+}
 OpenProcessClass::OpenProcessClass(QWidget *parent, QtPro* MainWind) : QDialog(parent)
 {
 	pQtPro = MainWind;
 	this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 	ui.setupUi(this);
 	QObject::connect(ui.pushButton_2, &QPushButton::clicked, this, &OpenProcessClass::SelectProcess);
-}
-OpenProcessClass::~OpenProcessClass()
-{
-
+	QObject::connect(ui.pushButton, &QPushButton::clicked, this, &OpenProcessClass::CancelProcessSelection);
 }
 
 void printError(TCHAR* msg)
@@ -304,7 +331,7 @@ string GetProcNameFromPID(DWORD ParentProc, HANDLE& hProcessSnap)
 }
 BOOL GetProcessList(QTreeWidget * listwidget)
 {
-	HANDLE hProcessSnap;
+	HANDLE hProcessSnap; 
 	HANDLE hProcess;
 	HANDLE hParentSnap;
 	PROCESSENTRY32 pe32;

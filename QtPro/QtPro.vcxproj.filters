@@ -13,11 +13,6 @@
       <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
       <Extensions>ui</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
-      <Extensions>qrc;*</Extensions>
-      <ParseFiles>false</ParseFiles>
-    </Filter>
     <Filter Include="Generated Files">
       <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
       <Extensions>moc;h;cpp</Extensions>
@@ -38,6 +33,20 @@
     </Filter>
     <Filter Include="Source Files\MemoryScans">
       <UniqueIdentifier>{f1f8ee39-0d1d-4137-8955-a36f6be641c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Search">
+      <UniqueIdentifier>{ba7a172c-6fa8-4ab9-88d9-1b5b06a903e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logs">
+      <UniqueIdentifier>{6c908c51-c758-4246-bd09-2bf7779f1292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{2bcc2aef-ebd4-4369-a2fb-24e691c6fa5d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -68,22 +77,34 @@
     <ClCompile Include="DriverImplementation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Logs.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Logs.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Search.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Search.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Search.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Logs.cpp">
+      <Filter>Logs</Filter>
+    </ClCompile>
+    <ClCompile Include="Modules.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qtpro.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="qtpro.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="qtpro.qrc">
-      <Filter>Resource Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="about.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="untitled.ui">
-      <Filter>Form Files</Filter>
+      <Filter>Source Files\Resource Files</Filter>
     </CustomBuild>
     <CustomBuild Include="MemoryView.ui">
       <Filter>Generated Files</Filter>
@@ -91,14 +112,14 @@
     <CustomBuild Include="GeneratedFiles\ui_MemoryView.h">
       <Filter>Generated Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="Search.h">
+      <Filter>Search</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Logs.h">
+      <Filter>Logs</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_qtpro.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_about.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_aboutce.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -119,6 +140,21 @@
     </ClInclude>
     <ClInclude Include="Header.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_qtpro.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_Search.h">
+      <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_Logs.h">
+      <Filter>Logs</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_Modules.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Modules.h">
+      <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

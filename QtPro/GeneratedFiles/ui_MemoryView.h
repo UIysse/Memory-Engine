@@ -36,6 +36,7 @@ public:
 	{
 		if (Dialog->objectName().isEmpty())
 			Dialog->setObjectName(QStringLiteral("Dialog"));
+		Dialog->setWindowIcon(QIcon("icons/CppEngine.ico"));
 		Dialog->resize(1050, 672);
 		treeWidget = new QTreeWidget(Dialog);
 		QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();

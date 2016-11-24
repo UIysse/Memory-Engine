@@ -11,7 +11,7 @@
 #include "Header.h"
 #define IS_IN_SEARCH(mb,offset) (mb->searchmask[(offset)/8] & (1<<((offset)%8)))
 #define REMOVE_FROM_SEARCH(mb,offset) mb->searchmask[(offset)/8] &= ~(1<<((offset)%8));
-std::ofstream fout("logsthen.txt");
+std::fstream fout("Cpp Engine Logs.txt", std::fstream::in | std::fstream::out | std::fstream::trunc);
 //prototype:
 using namespace std;
 void fillMemBlocks(MEMBLOCK * mb);
