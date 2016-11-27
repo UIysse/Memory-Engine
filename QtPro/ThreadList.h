@@ -10,8 +10,11 @@ public:
 	{
 		this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 		ui.setupUi(this);
+		UpdateThreadList();
 	}
 	~ThreadListWindow() {}
+	//functionalities
+	void UpdateThreadList();
 private:
 	Ui::Ui_ThreadList ui;
 };

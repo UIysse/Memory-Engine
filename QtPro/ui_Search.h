@@ -8,7 +8,7 @@
 
 #ifndef SEARCH107952_H
 #define SEARCH107952_H
-
+#include <QtWidgets/QDialogButtonBox>
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
@@ -25,69 +25,77 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTreeWidget>
+#include <QtWidgets/QSplitter>
+#include <QHeaderView>
 QT_BEGIN_NAMESPACE
 
 class Ui_DialogSearch
 {
 public:
 	
-	QCheckBox *checkBox_2;
+	QDialogButtonBox *OkCancelBox;
 	QWidget *widget;
 	QHBoxLayout *horizontalLayout;
 	QLabel *label;
 	QCheckBox *checkBox;
-	QLineEdit *lineEdit;
+	QLineEdit *LineScanValue;
 	QWidget *widget1;
-	QHBoxLayout *horizontalLayout_2;
-	QLabel *label_3;
-	QComboBox *comboBox_2;
-	QWidget *widget2;
+	QVBoxLayout *verticalLayout;
 	QHBoxLayout *horizontalLayout_3;
 	QLabel *label_2;
-	QComboBox *comboBox;
-	QWidget *widget3;
+	QComboBox *comboBScanType;
+	QHBoxLayout *horizontalLayout_2;
+	QLabel *label_3;
+	QComboBox *comboBValueType;
+	QWidget *widget2;
 	QHBoxLayout *horizontalLayout_4;
-	QPushButton *pushButton;
-	QPushButton *pushButton_2;
+	QCheckBox *cbExecutable;
+	QCheckBox *cbWritable;
+	QCheckBox *cbCopyOnWrite;
+	QWidget *widget3;
+	QVBoxLayout *verticalLayout_2;
+	QCheckBox *cbFastScan;
+	QCheckBox *cbAlwaysOnTop;
 	QWidget *widget4;
 	QVBoxLayout *verticalLayout_3;
 	QHBoxLayout *horizontalLayout_5;
-	QLabel *label_4;
-	QLineEdit *lineEdit_2;
+	QLabel *lblRangeStart;
+	QLineEdit *lineRangeStart;
 	QHBoxLayout *horizontalLayout_6;
-	QSpacerItem *horizontalSpacer_3;
-	QLabel *label_5;
-	QLineEdit *lineEdit_3;
+	QSpacerItem *horizontalSpacer;
+	QLabel *lblRangeEnd;
+	QLineEdit *lineRangeEnd;
 	QWidget *widget5;
-	QWidget *widget6;
-	QWidget *widget7;
 	QHBoxLayout *horizontalLayout_7;
-	QVBoxLayout *verticalLayout_2;
-	QRadioButton *radioButton_4;
-	QRadioButton *radioButton_5;
-	QRadioButton *radioButton_6;
-	QVBoxLayout *verticalLayout;
-	QRadioButton *radioButton_3;
-	QRadioButton *radioButton;
-	QRadioButton *radioButton_2;
-	QVBoxLayout *verticalLayout_4;
-	QRadioButton *radioButton_7;
-	QRadioButton *radioButton_8;
-	QRadioButton *radioButton_9;
-
+	QPushButton *pbFirstNewScan;
+	QPushButton *pbNextScan;
+	void Presets()
+	{
+		cbExecutable->setCheckState(Qt::PartiallyChecked);
+		cbWritable->setChecked(true);
+		cbCopyOnWrite->setChecked(false);
+		cbAlwaysOnTop->setChecked(true);
+		cbFastScan->setVisible(false);
+		lineRangeStart->setText("0000000000000000");
+		lineRangeEnd->setText("7FFFFFFFFFFFFFFF");
+		comboBScanType->setCurrentIndex(0);
+		comboBValueType->setCurrentIndex(3);
+	}
 	void setupUi(QDialog *Dialog)
 	{
 		if (Dialog->objectName().isEmpty())
-			Dialog->setObjectName(QStringLiteral("Scan Box"));
+			Dialog->setObjectName(QStringLiteral("Dialog"));
 		Dialog->setWindowIcon(QIcon("icons/CppEngine.ico"));
-		Dialog->setFixedSize(373, 313);
-		checkBox_2 = new QCheckBox(Dialog);
-		checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
-		checkBox_2->setGeometry(QRect(20, 290, 81, 20));
+		Dialog->setFixedSize(390, 249);
+		OkCancelBox = new QDialogButtonBox(Dialog);
+		OkCancelBox->setObjectName(QStringLiteral("buttonBox"));
+		OkCancelBox->setGeometry(QRect(190, 220, 193, 28));
+		OkCancelBox->setStandardButtons(QDialogButtonBox::Cancel | QDialogButtonBox::Ok);
 		widget = new QWidget(Dialog);
 		widget->setObjectName(QStringLiteral("widget"));
-		widget->setGeometry(QRect(40, 10, 271, 41));
+		widget->setGeometry(QRect(130, 10, 238, 24));
 		horizontalLayout = new QHBoxLayout(widget);
 		horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
 		horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -101,197 +109,253 @@ public:
 
 		horizontalLayout->addWidget(checkBox);
 
-		lineEdit = new QLineEdit(widget);
-		lineEdit->setObjectName(QStringLiteral("lineEdit"));
+		LineScanValue = new QLineEdit(widget);
+		LineScanValue->setObjectName(QStringLiteral("lineEdit"));
 
-		horizontalLayout->addWidget(lineEdit);
+		horizontalLayout->addWidget(LineScanValue);
 
 		widget1 = new QWidget(Dialog);
 		widget1->setObjectName(QStringLiteral("widget1"));
-		widget1->setGeometry(QRect(50, 100, 251, 31));
-		horizontalLayout_2 = new QHBoxLayout(widget1);
+		widget1->setGeometry(QRect(164, 40, 215, 57));
+		verticalLayout = new QVBoxLayout(widget1);
+		verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+		verticalLayout->setContentsMargins(0, 0, 0, 0);
+		horizontalLayout_3 = new QHBoxLayout();
+		horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+		label_2 = new QLabel(widget1);
+		label_2->setObjectName(QStringLiteral("label_2"));
+
+		horizontalLayout_3->addWidget(label_2);
+
+		comboBScanType = new QComboBox(widget1);
+		comboBScanType->setObjectName(QStringLiteral("comboBox_2"));
+		comboBScanType->addItems(QStringList() << "Exact Value" << "Bigger than.." << "Smaller than.." << "Unknown initial value");
+
+		horizontalLayout_3->addWidget(comboBScanType);
+
+		verticalLayout->addLayout(horizontalLayout_3);
+
+		horizontalLayout_2 = new QHBoxLayout();
 		horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-		horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
 		label_3 = new QLabel(widget1);
 		label_3->setObjectName(QStringLiteral("label_3"));
 
 		horizontalLayout_2->addWidget(label_3);
 
-		comboBox_2 = new QComboBox(widget1);
-		comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
+		comboBValueType = new QComboBox(widget1);
+		comboBValueType->setObjectName(QStringLiteral("comboBox"));
+		comboBValueType->addItems(QStringList() << "Bynary" << "Byte" << "2 Bytes" << "4 Bytes" << "8 Bytes" << "Float" << "Double" << "String" << "Array of bytes"); 
 
-		horizontalLayout_2->addWidget(comboBox_2);
+		horizontalLayout_2->addWidget(comboBValueType);
+
+
+		verticalLayout->addLayout(horizontalLayout_2);
 
 		widget2 = new QWidget(Dialog);
 		widget2->setObjectName(QStringLiteral("widget2"));
-		widget2->setGeometry(QRect(50, 60, 251, 31));
-		horizontalLayout_3 = new QHBoxLayout(widget2);
-		horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-		horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-		label_2 = new QLabel(widget2);
-		label_2->setObjectName(QStringLiteral("label_2"));
+		widget2->setGeometry(QRect(90, 110, 281, 22));
+		horizontalLayout_4 = new QHBoxLayout(widget2);
+		horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+		horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
+		cbExecutable = new QCheckBox(widget2);
+		cbExecutable->setObjectName(QStringLiteral("checkBox_2"));
+		cbExecutable->setTristate(true);
+		horizontalLayout_4->addWidget(cbExecutable);
 
-		horizontalLayout_3->addWidget(label_2);
+		cbWritable = new QCheckBox(widget2);
+		cbWritable->setObjectName(QStringLiteral("checkBox_3"));
+		cbWritable->setTristate(true);
+		cbWritable->setToolTip("Only scans writable memory regions when checked");
+		horizontalLayout_4->addWidget(cbWritable);
 
-		comboBox = new QComboBox(widget2);
-		comboBox->setObjectName(QStringLiteral("comboBox"));
-
-		horizontalLayout_3->addWidget(comboBox);
+		cbCopyOnWrite = new QCheckBox(widget2);
+		cbCopyOnWrite->setObjectName(QStringLiteral("checkBox_4"));
+		cbCopyOnWrite->setTristate(true);
+		horizontalLayout_4->addWidget(cbCopyOnWrite);
 
 		widget3 = new QWidget(Dialog);
 		widget3->setObjectName(QStringLiteral("widget3"));
-		widget3->setGeometry(QRect(170, 280, 195, 30));
-		horizontalLayout_4 = new QHBoxLayout(widget3);
-		horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-		horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
-		pushButton = new QPushButton(widget3);
-		pushButton->setObjectName(QStringLiteral("pushButton"));
+		widget3->setGeometry(QRect(0, 200, 109, 49));
+		verticalLayout_2 = new QVBoxLayout(widget3);
+		verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+		verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+		cbFastScan = new QCheckBox(widget3);
+		cbFastScan->setObjectName(QStringLiteral("checkBox_5"));
 
-		horizontalLayout_4->addWidget(pushButton);
+		verticalLayout_2->addWidget(cbFastScan);
 
-		pushButton_2 = new QPushButton(widget3);
-		pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+		cbAlwaysOnTop = new QCheckBox(widget3);
+		cbAlwaysOnTop->setObjectName(QStringLiteral("checkBox_6"));
 
-		horizontalLayout_4->addWidget(pushButton_2);
+		verticalLayout_2->addWidget(cbAlwaysOnTop);
 
 		widget4 = new QWidget(Dialog);
 		widget4->setObjectName(QStringLiteral("widget4"));
-		widget4->setGeometry(QRect(10, 220, 351, 57));
+		widget4->setGeometry(QRect(80, 140, 311, 57));
 		verticalLayout_3 = new QVBoxLayout(widget4);
 		verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
 		verticalLayout_3->setContentsMargins(0, 0, 0, 0);
 		horizontalLayout_5 = new QHBoxLayout();
 		horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-		label_4 = new QLabel(widget4);
-		label_4->setObjectName(QStringLiteral("label_4"));
+		lblRangeStart = new QLabel(widget4);
+		lblRangeStart->setObjectName(QStringLiteral("label_4"));
 
-		horizontalLayout_5->addWidget(label_4);
+		horizontalLayout_5->addWidget(lblRangeStart);
 
-		lineEdit_2 = new QLineEdit(widget4);
-		lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+		lineRangeStart = new QLineEdit(widget4);
+		lineRangeStart->setObjectName(QStringLiteral("lineEdit_2"));
 
-		horizontalLayout_5->addWidget(lineEdit_2);
+		horizontalLayout_5->addWidget(lineRangeStart);
 
 
 		verticalLayout_3->addLayout(horizontalLayout_5);
 
 		horizontalLayout_6 = new QHBoxLayout();
 		horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-		horizontalSpacer_3 = new QSpacerItem(130, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+		horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-		horizontalLayout_6->addItem(horizontalSpacer_3);
+		horizontalLayout_6->addItem(horizontalSpacer);
 
-		label_5 = new QLabel(widget4);
-		label_5->setObjectName(QStringLiteral("label_5"));
+		lblRangeEnd = new QLabel(widget4);
+		lblRangeEnd->setObjectName(QStringLiteral("label_5"));
 
-		horizontalLayout_6->addWidget(label_5);
+		horizontalLayout_6->addWidget(lblRangeEnd);
 
-		lineEdit_3 = new QLineEdit(widget4);
-		lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+		lineRangeEnd = new QLineEdit(widget4);
+		lineRangeEnd->setObjectName(QStringLiteral("lineEdit_3"));
 
-		horizontalLayout_6->addWidget(lineEdit_3);
+		horizontalLayout_6->addWidget(lineRangeEnd);
 
 
 		verticalLayout_3->addLayout(horizontalLayout_6);
 
 		widget5 = new QWidget(Dialog);
 		widget5->setObjectName(QStringLiteral("widget5"));
-		widget5->setGeometry(QRect(10, 140, 356, 78));
+		widget5->setGeometry(QRect(5, 50, 155, 25));
 		horizontalLayout_7 = new QHBoxLayout(widget5);
 		horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
 		horizontalLayout_7->setContentsMargins(0, 0, 0, 0);
-		verticalLayout_2 = new QVBoxLayout();
-		verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-		radioButton_4 = new QRadioButton(widget5);
-		radioButton_4->setObjectName(QStringLiteral("radioButton_4"));
+		pbFirstNewScan = new QPushButton(widget5);
+		pbFirstNewScan->setObjectName(QStringLiteral("pushButton"));
 
-		verticalLayout_2->addWidget(radioButton_4);
+		horizontalLayout_7->addWidget(pbFirstNewScan);
 
-		radioButton_5 = new QRadioButton(widget5);
-		radioButton_5->setObjectName(QStringLiteral("radioButton_5"));
+		pbNextScan = new QPushButton(widget5);
+		pbNextScan->setObjectName(QStringLiteral("pushButton_2"));
 
-		verticalLayout_2->addWidget(radioButton_5);
-
-		radioButton_6 = new QRadioButton(widget5);
-		radioButton_6->setObjectName(QStringLiteral("radioButton_6"));
-
-		verticalLayout_2->addWidget(radioButton_6);
-
-
-		horizontalLayout_7->addLayout(verticalLayout_2);
-
-		verticalLayout = new QVBoxLayout();
-		verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-		radioButton_3 = new QRadioButton(widget5);
-		radioButton_3->setObjectName(QStringLiteral("radioButton_3"));
-
-		verticalLayout->addWidget(radioButton_3);
-
-		radioButton = new QRadioButton(widget5);
-		radioButton->setObjectName(QStringLiteral("radioButton"));
-
-		verticalLayout->addWidget(radioButton);
-
-		radioButton_2 = new QRadioButton(widget5);
-		radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
-
-		verticalLayout->addWidget(radioButton_2);
-
-
-		horizontalLayout_7->addLayout(verticalLayout);
-
-		verticalLayout_4 = new QVBoxLayout();
-		verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-		radioButton_7 = new QRadioButton(widget4);
-		radioButton_7->setObjectName(QStringLiteral("radioButton_7"));
-
-		verticalLayout_4->addWidget(radioButton_7);
-
-		radioButton_8 = new QRadioButton(widget4);
-		radioButton_8->setObjectName(QStringLiteral("radioButton_8"));
-
-		verticalLayout_4->addWidget(radioButton_8);
-
-		radioButton_9 = new QRadioButton(widget4);
-		radioButton_9->setObjectName(QStringLiteral("radioButton_9"));
-
-		verticalLayout_4->addWidget(radioButton_9);
-
-
-		horizontalLayout_7->addLayout(verticalLayout_4);
-
+		horizontalLayout_7->addWidget(pbNextScan);
 
 		retranslateUi(Dialog);
+
+		QMetaObject::connectSlotsByName(Dialog);
+		Presets();
+	} // setupUi
+
+	void retranslateUi(QDialog *Dialog)
+	{
+		Dialog->setWindowTitle(QApplication::translate("Dialog", "Scan Box", 0));
+		label->setText(QApplication::translate("Dialog", "Value:", 0));
+		checkBox->setText(QApplication::translate("Dialog", "Hex", 0));
+		label_2->setText(QApplication::translate("Dialog", "Scan Type:", 0));
+		label_3->setText(QApplication::translate("Dialog", "Value Type:", 0));
+		cbExecutable->setText(QApplication::translate("Dialog", "Executable", 0));
+		cbWritable->setText(QApplication::translate("Dialog", "Writable", 0));
+		cbCopyOnWrite->setText(QApplication::translate("Dialog", "CopyOnWrite", 0));
+		cbFastScan->setText(QApplication::translate("Dialog", "Fast scan", 0));
+		cbAlwaysOnTop->setText(QApplication::translate("Dialog", "Always on top", 0));
+		lblRangeStart->setText(QApplication::translate("Dialog", "Memory range scan : Start :", 0));
+		lblRangeEnd->setText(QApplication::translate("Dialog", "End :", 0));
+		pbFirstNewScan->setText(QApplication::translate("Dialog", "First Scan", 0));
+		pbNextScan->setText(QApplication::translate("Dialog", "Next Scan", 0));
+	} // retranslateUi
+
+};
+
+
+
+class Ui_DialogResults
+{
+public:
+	QWidget *widget;
+	QVBoxLayout *verticalLayout;
+	QHBoxLayout *horizontalLayout;
+	QHBoxLayout* horizontalLayout_2;
+	QLabel *label;
+	QLabel *label_2;
+	QSplitter *splitter;
+	QTreeWidget *treeWidget;
+	QTreeWidget *treeWidget_2;
+
+	void setupUi(QDialog *Dialog)
+	{
+		if (Dialog->objectName().isEmpty())
+			Dialog->setObjectName(QStringLiteral("Dialog"));
+		Dialog->resize(800, 450);
+		Dialog->setWindowIcon(QIcon("icons/CppEngine.ico"));
+		splitter = new QSplitter(Dialog);
+		splitter->setObjectName(QStringLiteral("splitter"));
+		splitter->setGeometry(QRect(0, 0, 620, 219));
+		splitter->setOrientation(Qt::Horizontal);
+		widget = new QWidget(splitter);
+		widget->setObjectName(QStringLiteral("widget"));
+		//widget->setGeometry(QRect(0, 0, 523, 289));
+		verticalLayout = new QVBoxLayout(widget);
+		verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+		verticalLayout->setContentsMargins(0, 0, 0, 0);
+		horizontalLayout = new QHBoxLayout();
+		horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+		horizontalLayout_2 = new QHBoxLayout();
+		label = new QLabel(widget);
+		label->setObjectName(QStringLiteral("label"));
+
+		horizontalLayout->addWidget(label);
+
+		label_2 = new QLabel(widget);
+		label_2->setObjectName(QStringLiteral("label_2"));
+
+		horizontalLayout->addWidget(label_2);
+
+
+		verticalLayout->addLayout(horizontalLayout);
+
+		treeWidget = new QTreeWidget(widget);
+		treeWidget->setObjectName(QStringLiteral("tableWidget"));
+		treeWidget->setHeaderLabels(QStringList() << "Address" << "Value");
+		treeWidget->setColumnWidth(0, 160);
+		treeWidget->setColumnWidth(1, 160);
+		verticalLayout->addWidget(treeWidget);
+		treeWidget_2 = new QTreeWidget(splitter);
+		treeWidget_2->setObjectName(QStringLiteral("tableWidget_2"));
+		treeWidget_2->setHeaderLabels(QStringList() << "Description" << "Address" << "Value" << "Type");
+		treeWidget_2->setColumnWidth(0, 120);
+		treeWidget_2->setColumnWidth(1, 120);
+		treeWidget_2->setColumnWidth(2, 120);
+		treeWidget_2->setColumnWidth(3, 120);
+		QList<int> sizes;
+		sizes << 300 << 500;
+		splitter->setSizes(sizes);
+		splitter->addWidget(widget);
+		splitter->addWidget(treeWidget_2);
+		horizontalLayout_2->addWidget(splitter);
+		horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+		Dialog->setLayout(horizontalLayout_2);
+		retranslateUi(Dialog);
+
 		QMetaObject::connectSlotsByName(Dialog);
 	} // setupUi
 
 	void retranslateUi(QDialog *Dialog)
 	{
-		Dialog->setWindowTitle(QApplication::translate("Scan Box", "Scan Box", 0));
-		checkBox_2->setText(QApplication::translate("Dialog", "Fast Scan", 0));
-		label->setText(QApplication::translate("Dialog", "Value: ", 0));
-		checkBox->setText(QApplication::translate("Dialog", "Hex", 0));
-		label_3->setText(QApplication::translate("Dialog", "Type:", 0));
-		label_2->setText(QApplication::translate("Dialog", "Size:", 0));
-		pushButton->setText(QApplication::translate("Dialog", "Ok", 0));
-		pushButton_2->setText(QApplication::translate("Dialog", "Cancel", 0));
-		label_4->setText(QApplication::translate("Dialog", "Memory range scan : Start :", 0));
-		label_5->setText(QApplication::translate("Dialog", "End:", 0));
-		radioButton_4->setText(QApplication::translate("Dialog", "Executable or Not", 0));
-		radioButton_5->setText(QApplication::translate("Dialog", "Executable Only", 0));
-		radioButton_6->setText(QApplication::translate("Dialog", "Not Executable", 0));
-		radioButton_3->setText(QApplication::translate("Dialog", "Writable or Not", 0));
-		radioButton->setText(QApplication::translate("Dialog", "Writable Only", 0));
-		radioButton_2->setText(QApplication::translate("Dialog", "Not Writable", 0));
-		radioButton_7->setText(QApplication::translate("Dialog", "CoW or Not", 0));
-		radioButton_8->setText(QApplication::translate("Dialog", "CoW Only", 0));
-		radioButton_9->setText(QApplication::translate("Dialog", "Not CoW", 0));
+		Dialog->setWindowTitle(QApplication::translate("Dialog", "Results", 0));
+		label->setText(QApplication::translate("Dialog", "Search Results : ", 0));
+		label_2->setText(QApplication::translate("Dialog", "0", 0));
 	} // retranslateUi
 
 };
 
 namespace Ui {
 	class Ui_Search : public Ui_DialogSearch {};
+	class Ui_Results : public Ui_DialogResults {};
 } // namespace Ui
 
 QT_END_NAMESPACE

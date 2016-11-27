@@ -61,8 +61,6 @@ public:
 	QAction *actionLock_mouse_in_game_window;
 	QAction *actionSnapshot_Handler;
 	QWidget *centralWidget;
-	QLabel *lblValue;
-	QGroupBox *grpBoxOpt;
 	QToolButton * toolButton;
 	QToolButton * toolButMod;
 	QToolButton * toolButLogs;
@@ -70,14 +68,6 @@ public:
 	QToolButton * toolButMemoryView;
 	QToolButton* toolButMemoryMap;
 	QToolButton* toolButThreads;
-	QScrollArea *scrollArea;
-	QWidget *scrollAreaWidgetContents;
-	QPushButton *pushButton;
-	QWidget *layoutWidget;
-	QHBoxLayout *horizontalLayout;
-	QPushButton *btnUndoScan;
-	QPushButton *btnFirstScan;
-	QPushButton *btnNextScan;
 	QMenuBar *menuBar;
 	QMenu *menu_File;
 	QMenu *menuEdit;
@@ -143,12 +133,6 @@ public:
 		actionSnapshot_Handler->setObjectName(QStringLiteral("actionSnapshot_Handler"));
 		centralWidget = new QWidget(QtProClass);
 		centralWidget->setObjectName(QStringLiteral("centralWidget"));
-		lblValue = new QLabel(centralWidget);
-		lblValue->setObjectName(QStringLiteral("lblValue"));
-		lblValue->setGeometry(QRect(730, 80, 55, 16));
-		grpBoxOpt = new QGroupBox(centralWidget);
-		grpBoxOpt->setObjectName(QStringLiteral("grpBoxOpt"));
-		grpBoxOpt->setGeometry(QRect(690, 200, 201, 161));
 		toolButton = new QToolButton(centralWidget);
 		toolButton->setObjectName(QStringLiteral("toolButton"));
 		toolButton->setGeometry(QRect(10, 20, 30, 30));
@@ -184,39 +168,6 @@ public:
 		toolButLogs->setGeometry(QRect(130, 20, 30, 30));
 		toolButLogs->setIcon(QIcon("icons/Logs.ico"));
 		toolButLogs->setToolTip("Process Logs");
-		scrollArea = new QScrollArea(centralWidget);
-		scrollArea->setObjectName(QStringLiteral("scrollArea"));
-		scrollArea->setGeometry(QRect(40, 80, 301, 211));
-		scrollArea->setWidgetResizable(true);
-		scrollAreaWidgetContents = new QWidget();
-		scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-		scrollAreaWidgetContents->setGeometry(QRect(0, 0, 299, 209));
-		scrollArea->setWidget(scrollAreaWidgetContents);
-		pushButton = new QPushButton(centralWidget);
-		pushButton->setObjectName(QStringLiteral("pushButton"));
-		pushButton->setGeometry(QRect(10, 310, 93, 22));
-		layoutWidget = new QWidget(centralWidget);
-		layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-		layoutWidget->setGeometry(QRect(720, 40, 295, 30));
-		horizontalLayout = new QHBoxLayout(layoutWidget);
-		horizontalLayout->setSpacing(6);
-		horizontalLayout->setContentsMargins(11, 11, 11, 11);
-		horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-		horizontalLayout->setContentsMargins(0, 0, 0, 0);
-		btnUndoScan = new QPushButton(layoutWidget);
-		btnUndoScan->setObjectName(QStringLiteral("btnUndoScan"));
-
-		horizontalLayout->addWidget(btnUndoScan);
-
-		btnFirstScan = new QPushButton(layoutWidget);
-		btnFirstScan->setObjectName(QStringLiteral("btnFirstScan"));
-
-		horizontalLayout->addWidget(btnFirstScan);
-
-		btnNextScan = new QPushButton(layoutWidget);
-		btnNextScan->setObjectName(QStringLiteral("btnNextScan"));
-
-		horizontalLayout->addWidget(btnNextScan);
 		QtProClass->setCentralWidget(centralWidget);
 		menuBar = new QMenuBar(QtProClass);
 		menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -307,14 +258,7 @@ public:
 		actionSet_custom_CrossHair->setText(QApplication::translate("QtProClass", "Set custom CrossHair", 0));
 		actionLock_mouse_in_game_window->setText(QApplication::translate("QtProClass", "Lock mouse in game window", 0));
 		actionSnapshot_Handler->setText(QApplication::translate("QtProClass", "Snapshot Handler", 0));
-		lblValue->setText(QApplication::translate("QtProClass", "Value:", 0));
 		lblProcessName->setText(QApplication::translate("QtProClass", "Process Name", 0));
-		grpBoxOpt->setTitle(QApplication::translate("QtProClass", "Memory Scan Options", 0));
-		toolButton->setText(QApplication::translate("QtProClass", "...", 0));
-		pushButton->setText(QApplication::translate("QtProClass", "Memory View", 0));
-		btnUndoScan->setText(QApplication::translate("QtProClass", "Undo Scan", 0));
-		btnFirstScan->setText(QApplication::translate("QtProClass", "First Scan", 0));
-		btnNextScan->setText(QApplication::translate("QtProClass", "Next Scan", 0));
 		menu_File->setTitle(QApplication::translate("QtProClass", "&File", 0));
 		menuEdit->setTitle(QApplication::translate("QtProClass", "&Edit", 0));
 		menuTable->setTitle(QApplication::translate("QtProClass", "&Table", 0));

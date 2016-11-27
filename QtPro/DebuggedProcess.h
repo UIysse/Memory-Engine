@@ -14,6 +14,7 @@ class DebuggedProcess
 public :
 	PROCESSENTRY32 entry;
 	HANDLE hwnd;
+	DWORD targetPid;
 	MEMBLOCK* mb;
 	int architecture = 0;
 	bool bDriver = 1;

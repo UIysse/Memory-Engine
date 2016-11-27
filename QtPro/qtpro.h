@@ -45,6 +45,7 @@ public:
 	void ShowSearch();
 	void ShowModules();
 	void ShowThreadList();
+	void ShowMemoryMap();
 	void UpdateProcessName();
 		//QApplication::closeAllWindows();
 	void closeEvent(QCloseEvent *event)

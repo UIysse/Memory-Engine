@@ -4,6 +4,7 @@
 #include "ui_aboutce.h"
 #include "qt_windows.h"
 #include "ui_openProcess.h"
+#include "MemoryMap.h"
 #include "Modules.h"
 #include "Search.h"
 #include "DebuggedProcess.h"
@@ -208,9 +209,13 @@ void QtPro::ShowLogs()
 }
 void QtPro::ShowSearch()
 {
+	ResultsWindow * t = new ResultsWindow(this);
+	t->setAttribute(Qt::WA_DeleteOnClose);
+	t->show();
 	SearchWindow * w = new SearchWindow(this);
 	w->setAttribute(Qt::WA_DeleteOnClose);
 	w->show();
+	w->_hResult = t;
 }
 void QtPro::ShowModules()
 {
@@ -224,6 +229,12 @@ void QtPro::ShowThreadList()
 	w->setAttribute(Qt::WA_DeleteOnClose);
 	w->show();
 }
+void QtPro::ShowMemoryMap()
+{
+	MemoryMapWindow* w = new MemoryMapWindow(this);
+	w->setAttribute(Qt::WA_DeleteOnClose);
+	w->show();
+}
 QtPro::QtPro(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -231,12 +242,12 @@ QtPro::QtPro(QWidget *parent)
 	//setCentralWidget(ui.plainTextEdit);
 	QObject::connect(ui.actionAbout, &QAction::triggered, this, &QtPro::ShowAboutDialog);
 	QObject::connect(ui.toolButton, &QToolButton::clicked, this, &QtPro::ShowPickProcess);// &QtPro::ShowPickProcess);
-	QObject::connect(ui.pushButton, &QPushButton::clicked, this, &QtPro::ShowMemoryView);
 	QObject::connect(ui.toolButLogs, &QPushButton::clicked, this, &QtPro::ShowLogs);
 	QObject::connect(ui.toolButMod, &QPushButton::clicked, this, &QtPro::ShowModules);
 	QObject::connect(ui.toolButSearch, &QPushButton::clicked, this, &QtPro::ShowSearch);
 	QObject::connect(ui.toolButMemoryView, &QPushButton::clicked, this, &QtPro::ShowMemoryView);
 	QObject::connect(ui.toolButThreads, &QToolButton::clicked, this, &QtPro::ShowThreadList);
+	QObject::connect(ui.toolButMemoryMap, &QToolButton::clicked, this, &QtPro::ShowMemoryMap);
 }
 void QtPro::ShowMemoryView()
 {
@@ -372,7 +383,7 @@ BOOL GetProcessList(QTreeWidget * listwidget)
 			continue;
 		QTreeWidgetItem * itm = new QTreeWidgetItem(listwidget);
 		itm->setIcon(0, QIcon(""));
-		itm->setText(1, std::to_string(pe32.th32ProcessID).c_str());
+		itm->setText(1, ReturnStrFromHexaInt(pe32.th32ProcessID).c_str());
 		itm->setText(2, QString::fromWCharArray(pe32.szExeFile)); 
 		itm->setText(3, GetProcNameFromPID(pe32.th32ParentProcessID, hParentSnap).c_str());
 		// Retrieve the priority class.
@@ -425,10 +436,12 @@ HANDLE  ReturnProcessHandle(QString Qstr)
 			{
 				//Retrieve target process handle
 				DebuggedProc.hwnd = OpenProcess(PROCESS_ALL_ACCESS, FALSE, entry.th32ProcessID);
+				//Stores the Process Id of the targeted process
+				DebuggedProc.targetPid = entry.th32ProcessID;
 				if (DebuggedProc.hwnd == 0)
 					fout << "Could not open process and get the rights." << endl;
 				else
-					fout << "Opened process with ALL ACCESS." << endl;
+					fout << "Process open with all access." << endl;
 				PBOOL pbool = 0;
 				BOOL av;
 				pbool = &av;

@@ -29,17 +29,17 @@ public:
 		if (Dialog->objectName().isEmpty())
 			Dialog->setObjectName(QStringLiteral("ThreadListView"));
 		Dialog->setWindowIcon(QIcon("icons/CppEngine.ico"));
-		Dialog->setFixedSize(261, 362);
+		Dialog->setFixedSize(350, 362);
 		treeWidget = new QTreeWidget(Dialog);
 		QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
 		__qtreewidgetitem->setText(0, QStringLiteral("1"));
 		treeWidget->setHeaderItem(__qtreewidgetitem);
 		treeWidget->setHeaderLabels(QStringList() << "ThreadId" << "Priority" << "Start address");
 		treeWidget->setObjectName(QStringLiteral("treeWidget"));
-		treeWidget->setGeometry(QRect(0, 0, 261, 362));
+		treeWidget->setGeometry(QRect(0, 0, 350, 362));
 		treeWidget->setColumnWidth(0, 70);
 		treeWidget->setColumnWidth(1, 100);
-		treeWidget->setColumnWidth(2, 130);
+		treeWidget->setColumnWidth(2, 180);
 
 		retranslateUi(Dialog);
 

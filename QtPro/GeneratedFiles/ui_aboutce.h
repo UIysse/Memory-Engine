@@ -52,10 +52,10 @@ public:
 
 	void retranslateUi(QDialog *aboutCEClass)
 	{
-		aboutCEClass->setWindowTitle(QApplication::translate("aboutCEClass", "About Ulysse Engine", 0));
+		aboutCEClass->setWindowTitle(QApplication::translate("aboutCEClass", "About CppEngine", 0));
 		pushButton->setText(QApplication::translate("aboutCEClass", "Ok", 0));
-		label->setText(QApplication::translate("aboutCEClass", "This program aims to be a c++ version like of CE", 0));
-		label_2->setText(QApplication::translate("aboutCEClass", "All credits go to DarkByte", 0));
+		label->setText(QApplication::translate("aboutCEClass", "Credits to the CE community without which I wouldn't know program code. Special thanks to Geri, Darkbyte and Atomos.", 0));
+		label_2->setText(QApplication::translate("aboutCEClass", "Credits to Cheat Engine, DarthTon, Stack overflow (search algorythm), AsmJit", 0));
 	} // retranslateUi
 
 };

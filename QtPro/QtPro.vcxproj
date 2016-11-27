@@ -181,6 +181,7 @@
     </ClCompile>
     <ClCompile Include="Logs.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MemoryMap.cpp" />
     <ClCompile Include="MemoryView.cpp" />
     <ClCompile Include="MemRead.cpp" />
     <ClCompile Include="Modules.cpp" />
@@ -218,6 +219,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Header.h" />
+    <ClInclude Include="MemoryMap.h" />
+    <ClInclude Include="ui_MemoryMap.h" />
     <ClInclude Include="ui_ThreadList.h" />
     <CustomBuild Include="Logs.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

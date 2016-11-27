@@ -37,7 +37,7 @@ public:
 		treeWidget->setObjectName(QStringLiteral("treeWidget"));
 		treeWidget->setGeometry(QRect(0, 0, 689, 321));
 		treeWidget->setHeaderLabels(QStringList() << "Name" << "Base Address" << "Size" << "Entrypoint");
-		treeWidget->setColumnWidth(0, 300);
+		treeWidget->setColumnWidth(0, 150);
 		treeWidget->setColumnWidth(1, 150);
 		treeWidget->setColumnWidth(2, 80);
 		treeWidget->setColumnWidth(3, 110);

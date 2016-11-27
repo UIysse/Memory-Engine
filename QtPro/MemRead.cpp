@@ -9,21 +9,10 @@
 #include "MemRead.h"
 #include "DebuggedProcess.h"
 #include "Header.h"
-#define IS_IN_SEARCH(mb,offset) (mb->searchmask[(offset)/8] & (1<<((offset)%8)))
-#define REMOVE_FROM_SEARCH(mb,offset) mb->searchmask[(offset)/8] &= ~(1<<((offset)%8));
 std::fstream fout("Cpp Engine Logs.txt", std::fstream::in | std::fstream::out | std::fstream::trunc);
 //prototype:
 using namespace std;
 void fillMemBlocks(MEMBLOCK * mb);
-typedef enum
-{
-	COND_UNCONDITIONAL,
-	COND_EQUALS,
-
-	COND_INCREASED,
-	COND_DECREASED,
-} SEARCH_CONDITION;
-
 
 // Enable or disable a privilege in an access token
 // source: http://msdn.microsoft.com/en-us/library/aa446619(VS.85).aspx
@@ -76,7 +65,7 @@ BOOL SetPrivilege(
 	return TRUE;
 }
 
-MEMBLOCK* create_memblock(HANDLE hProc, MEMORY_BASIC_INFORMATION *meminfo, int data_size)
+MEMBLOCK* create_memblockInsertDisas(HANDLE hProc, MEMORY_BASIC_INFORMATION *meminfo, int data_size)
 {
 	MEMBLOCK *mb = new MEMBLOCK; //reinterpret_cast <MEMBLOCK *>(malloc(sizeof(MEMBLOCK)));
 	if (mb)
@@ -123,7 +112,7 @@ MEMBLOCK * QueryMemoryAddrress(int64_t addr)
 			if ((meminfo.State & MEM_COMMIT))// && (meminfo.Protect & WRITABLE))
 			{
 				fout << "Memory pages are writable and commited" << endl;
-				mb = create_memblock(DebuggedProc.hwnd, &meminfo, 1);
+				mb = create_memblockInsertDisas(DebuggedProc.hwnd, &meminfo, 1);
 				fout << "base add : " << hex << meminfo.BaseAddress << endl;
 				fout << "wanted add : " << hex << addr << endl;
 				fout << "regionsize : " << meminfo.RegionSize << endl;
@@ -183,27 +172,6 @@ void fillMemBlocks(MEMBLOCK * mb)
 		mb = mb->next;
 	}
 }
-
-
-
-
-
-unsigned int str2int(char *s)
-{
-	int base = 10;
-
-	if (s[0] == '0' && s[1] == 'x')
-	{
-		base = 16;
-		s += 2;
-	}
-
-	return strtoul(s, NULL, base);
-}
-
-
-
-
 
 int ProcessPriv()
 {
