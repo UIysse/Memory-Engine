@@ -39,7 +39,7 @@ public:
 	QWidget *widget;
 	QHBoxLayout *horizontalLayout;
 	QLabel *label;
-	QCheckBox *checkBox;
+	QCheckBox *cbHex;
 	QLineEdit *LineScanValue;
 	QWidget *widget1;
 	QVBoxLayout *verticalLayout;
@@ -77,7 +77,7 @@ public:
 		cbWritable->setChecked(true);
 		cbCopyOnWrite->setChecked(false);
 		cbAlwaysOnTop->setChecked(true);
-		cbFastScan->setVisible(false);
+		cbFastScan->setDisabled(true);
 		lineRangeStart->setText("0000000000000000");
 		lineRangeEnd->setText("7FFFFFFFFFFFFFFF");
 		comboBScanType->setCurrentIndex(0);
@@ -104,10 +104,10 @@ public:
 
 		horizontalLayout->addWidget(label);
 
-		checkBox = new QCheckBox(widget);
-		checkBox->setObjectName(QStringLiteral("checkBox"));
+		cbHex = new QCheckBox(widget);
+		cbHex->setObjectName(QStringLiteral("checkBox"));
 
-		horizontalLayout->addWidget(checkBox);
+		horizontalLayout->addWidget(cbHex);
 
 		LineScanValue = new QLineEdit(widget);
 		LineScanValue->setObjectName(QStringLiteral("lineEdit"));
@@ -255,7 +255,7 @@ public:
 	{
 		Dialog->setWindowTitle(QApplication::translate("Dialog", "Scan Box", 0));
 		label->setText(QApplication::translate("Dialog", "Value:", 0));
-		checkBox->setText(QApplication::translate("Dialog", "Hex", 0));
+		cbHex->setText(QApplication::translate("Dialog", "Hex", 0));
 		label_2->setText(QApplication::translate("Dialog", "Scan Type:", 0));
 		label_3->setText(QApplication::translate("Dialog", "Value Type:", 0));
 		cbExecutable->setText(QApplication::translate("Dialog", "Executable", 0));

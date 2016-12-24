@@ -48,7 +48,108 @@ void free_memblock(MEMBLOCK *mb)
 	}
 }
 
-void update_memblock(MEMBLOCK *mb, SEARCH_CONDITION condition, unsigned int val)
+void update_memblock(MEMBLOCK *mb, SEARCH_CONDITION condition, unsigned int val1)
+{
+	unsigned int val = val1;
+	CPPOUT << "val : " << val1 << " size : " << mb->data_size << std::endl;
+	if (mb->data_size == 1)
+	{
+		val = val1 | 0xFFFFFF00;
+		CPPOUT << "valmidle : " << val << std::endl;
+		val = (val ^ 0xFFFFFF00);
+	}
+	CPPOUT << "val : " << val << std::endl;
+	static unsigned char tempbuf[128 * 1024];
+	unsigned int bytes_left;
+	unsigned int total_read;
+	unsigned int bytes_to_read;
+	uint64_t bytes_read;
+
+	if (mb->matches > 0)
+	{
+
+		bytes_left = mb->size;
+		total_read = 0;
+		mb->matches = 0;
+
+		while (bytes_left)
+		{
+			bytes_to_read = (bytes_left > sizeof(tempbuf)) ? sizeof(tempbuf) : bytes_left;
+			ReadProcessMemory(mb->hProc, mb->addr + total_read, tempbuf, bytes_to_read, &bytes_read);
+			if (bytes_read != bytes_to_read) break;
+
+			if (condition == COND_UNCONDITIONAL)
+			{
+				memset(mb->searchmask + (total_read / 8), 0xff, bytes_read / 8);
+				mb->matches += bytes_read;
+			}
+			else
+			{
+				unsigned int offset;
+
+				for (offset = 0; offset < bytes_read; offset += mb->data_size)
+				{
+					if (IS_IN_SEARCH(mb, (total_read + offset)))
+					{
+						BOOL is_match = FALSE;
+						 unsigned int temp_val;
+						 unsigned int prev_val = 0;
+
+						switch (mb->data_size)
+						{
+						case 1:
+							temp_val = tempbuf[offset];
+							prev_val = *((unsigned char*)&mb->buffer[total_read + offset]);
+							break;
+						case 2:
+							temp_val = *((unsigned short*)&tempbuf[offset]);
+							prev_val = *((unsigned short*)&mb->buffer[total_read + offset]);
+							break;
+						case 4:
+						default:
+							temp_val = *((unsigned int*)&tempbuf[offset]);
+							prev_val = *((unsigned int*)&mb->buffer[total_read + offset]);
+							break;
+						}
+
+						switch (condition)
+						{
+						case COND_EQUALS:
+							is_match = (temp_val == val);
+							break;
+						case COND_INCREASED:
+							is_match = (temp_val > prev_val);
+							break;
+						case COND_DECREASED:
+							is_match = (temp_val < prev_val);
+							break;
+						default:
+							break;
+						}
+
+						if (is_match)
+						{
+							mb->matches++;
+						}
+						else
+						{
+							REMOVE_FROM_SEARCH(mb, (total_read + offset));
+						}
+
+					}
+				}
+			}
+
+			memcpy(mb->buffer + total_read, tempbuf, bytes_read);
+
+			bytes_left -= bytes_read;
+			total_read += bytes_read;
+		}
+
+		mb->size = total_read;
+	}
+}
+void update_memblock(MEMBLOCK *mb, SEARCH_CONDITION condition, float val)
 {
 	static unsigned char tempbuf[128 * 1024];
 	unsigned int bytes_left;
@@ -83,8 +184,8 @@ void update_memblock(MEMBLOCK *mb, SEARCH_CONDITION condition, unsigned int val)
 					if (IS_IN_SEARCH(mb, (total_read + offset)))
 					{
 						BOOL is_match = FALSE;
-						unsigned int temp_val;
-						unsigned int prev_val = 0;
+						float temp_val;
+						float prev_val = 0;
 
 						switch (mb->data_size)
 						{
@@ -141,7 +242,7 @@ void update_memblock(MEMBLOCK *mb, SEARCH_CONDITION condition, unsigned int val)
 	}
 }
 
-MEMBLOCK* create_scan(int data_size)
+MEMBLOCK* create_scan(SearchWindow* cSearchWindint,int data_size)
 {
 	MEMBLOCK *mb_list = NULL;
 	MEMORY_BASIC_INFORMATION meminfo;
@@ -158,9 +259,10 @@ MEMBLOCK* create_scan(int data_size)
 				break;
 			}
 
-#define WRITABLE (PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY)
+//#define WRITABLE (PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY)
 
-			if ((meminfo.State & MEM_COMMIT) && (meminfo.Protect & WRITABLE))
+			//if ((meminfo.State & MEM_COMMIT) && (meminfo.Protect & WRITABLE)) original code
+			if (cSearchWindint->FilterRegions(meminfo))
 			{
 
 				MEMBLOCK *mb = create_memblock(hProc, &meminfo, data_size);
@@ -289,14 +391,14 @@ unsigned int str2int(char *s)
 	return strtoul(s, NULL, base);
 }
 
-MEMBLOCK* ui_new_scan(uint32_t data_size, int64_t start_val, SEARCH_CONDITION start_cond)
+MEMBLOCK* ui_new_scan(SearchWindow* cSearchWindint, uint32_t data_size, int64_t start_val, SEARCH_CONDITION start_cond)
 {
 	MEMBLOCK *scan = NULL;
 	DWORD pid = 0;//we use hwnd
 
 	while (1)
 	{
-		scan = create_scan(data_size);
+		scan = create_scan(cSearchWindint, data_size);
 		if (scan) break;
 		CPPOUT << "nInvalid scan" << std::endl;
 	}
@@ -325,8 +427,8 @@ void ui_poke(HANDLE hProc, int data_size)
 	poke(hProc, data_size, addr, val);
 }
 
-MEMBLOCK *scan;
-int ui_run_scan(MEMBLOCK *scan1, uint32_t data_size, int64_t start_val, SEARCH_CONDITION start_cond, SCAN_CONDITION scan_condition)
+
+int SearchWindow::ui_run_scan(MEMBLOCK *scan1, uint32_t data_size, int64_t start_val, SEARCH_CONDITION start_cond, SCAN_CONDITION scan_condition)
 {
 	DebuggedProc.mb = scan;
 	unsigned int val;
@@ -336,7 +438,7 @@ int ui_run_scan(MEMBLOCK *scan1, uint32_t data_size, int64_t start_val, SEARCH_C
 	case NEW_SCAN:
 		//if (scan);
 		//free_scan(scan);
-		scan = ui_new_scan(data_size, start_val, start_cond);
+		scan = ui_new_scan(this, data_size, start_val, start_cond);
 		CPPOUT << "NEW_SCAN, matches found " << get_match_count(scan) << " start condition : " << scan_condition << " start val : " << std::dec << start_val << " data size : " << data_size << std::endl;
 		break;
 	case NEXT_SCAN:
@@ -389,7 +491,7 @@ int ui_run_scan(MEMBLOCK *scan1, uint32_t data_size, int64_t start_val, SEARCH_C
 			break;
 		case 'n':
 			free_scan(scan);
-			scan = ui_new_scan(data_size, start_val, start_cond);
+			scan = ui_new_scan(this, data_size, start_val, start_cond);
 			break;
 		case 'q':
 			free_scan(scan);
@@ -420,5 +522,19 @@ uint32_t SearchWindow::ReturnDataSize()
 		return sizeof(double);
 	case DATA_SIZE::STRING_:
 		return 0;
+	}
+}
+template <typename T>
+void CompareFn(T& lhs, T& rhs, int compare)
+{
+	bool result = false;
+	switch (compare)
+	{
+	case 1:
+		result = lhs > rhs;
+		break;
+	case 2 :
+		result = lhs < rhs;
+		break;
 	}
 }
