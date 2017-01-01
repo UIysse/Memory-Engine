@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h</Extensions>
-    </Filter>
     <Filter Include="Form Files">
       <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
       <Extensions>ui</Extensions>
@@ -54,12 +50,25 @@
     <Filter Include="MemoryMap">
       <UniqueIdentifier>{37313346-8004-42b7-b0e3-e33fd7963825}</UniqueIdentifier>
     </Filter>
+    <Filter Include="InputGoToBox">
+      <UniqueIdentifier>{ffccf1e2-7757-4491-b639-d6e470ca92e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MemoryViewer">
+      <UniqueIdentifier>{0f89e204-104d-4960-93f7-f26307ef914a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenProcess">
+      <UniqueIdentifier>{32186ab5-78bb-404f-8389-a86c838887e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AboutCppEngine">
+      <UniqueIdentifier>{505c33ad-65f8-476d-b37a-4696797cbecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QtPro">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>xSource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="qtpro.cpp">
       <Filter>xSource Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_qtpro.cpp">
@@ -76,9 +85,6 @@
     </ClCompile>
     <ClCompile Include="MemRead.cpp">
       <Filter>xSource Files\MemoryScans</Filter>
-    </ClCompile>
-    <ClCompile Include="MemoryView.cpp">
-      <Filter>xSource Files</Filter>
     </ClCompile>
     <ClCompile Include="DriverImplementation.cpp">
       <Filter>xSource Files</Filter>
@@ -110,10 +116,46 @@
     <ClCompile Include="MemoryMap.cpp">
       <Filter>MemoryMap</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Results.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Results.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="InputGotoBox.cpp">
+      <Filter>InputGoToBox</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_InputGotoBox.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="AboutCpp.cpp">
+      <Filter>AboutCppEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryViewer.cpp">
+      <Filter>MemoryViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenProcess.cpp">
+      <Filter>OpenProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_AboutCpp.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MemoryViewer.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="qtpro.cpp">
+      <Filter>QtPro</Filter>
+    </ClCompile>
+    <ClCompile Include="InputComment.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_InputComment.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qtpro.h">
-      <Filter>Header Files</Filter>
+      <Filter>QtPro</Filter>
     </CustomBuild>
     <CustomBuild Include="qtpro.qrc">
       <Filter>xSource Files\Resource Files</Filter>
@@ -124,19 +166,25 @@
     <CustomBuild Include="Logs.h">
       <Filter>Logs</Filter>
     </CustomBuild>
+    <CustomBuild Include="Results.h">
+      <Filter>Search</Filter>
+    </CustomBuild>
+    <CustomBuild Include="InputGotoBox.h">
+      <Filter>InputGoToBox</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MemoryViewer.h">
+      <Filter>MemoryViewer</Filter>
+    </CustomBuild>
+    <CustomBuild Include="AboutCpp.h">
+      <Filter>AboutCppEngine</Filter>
+    </CustomBuild>
+    <CustomBuild Include="InputComment.h">
+      <Filter>Search</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_aboutce.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_openProcess.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_ShowDLLs.h">
-      <Filter>Generated Files</Filter>
+      <Filter>QtPro</Filter>
     </ClInclude>
     <ClInclude Include="DebuggedProcess.h">
       <Filter>xSource Files\Debugged Process</Filter>
@@ -146,9 +194,6 @@
     </ClInclude>
     <ClInclude Include="Header.h">
       <Filter>xSource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_qtpro.h">
-      <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ui_Search.h">
       <Filter>Search</Filter>
@@ -162,9 +207,6 @@
     <ClInclude Include="Modules.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_MemoryView.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="ThreadList.h">
       <Filter>ThreadList</Filter>
     </ClInclude>
@@ -176,6 +218,27 @@
     </ClInclude>
     <ClInclude Include="ui_MemoryMap.h">
       <Filter>MemoryMap</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenProcess.h">
+      <Filter>OpenProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_aboutce.h">
+      <Filter>AboutCppEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MemoryView.h">
+      <Filter>MemoryViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_openProcess.h">
+      <Filter>OpenProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_qtpro.h">
+      <Filter>QtPro</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_ShowDLLs.h">
+      <Filter>MemoryViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_ResultInputBoxes.h">
+      <Filter>Search</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

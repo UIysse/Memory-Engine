@@ -100,10 +100,8 @@ public:
 	}
 
 };
-namespace Ui {
 	class MemoryView : public Ui_Dialog {};
 	class GotoBox : public Ui_DialogGotoBox {};
-} // namespace Ui
 
 QT_END_NAMESPACE
 

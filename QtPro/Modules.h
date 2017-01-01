@@ -20,7 +20,7 @@ public:
 			if ((nAddress < it->first.second) && (nAddress >= it->first.first))
 				return it->second;
 		}
-		return "unkown";
+		return "unknown";
 	}
 	void BuildMap(std::string& szModName,uint64_t nModBaseAddress, uint64_t nModSize)
 	{

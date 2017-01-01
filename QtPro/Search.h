@@ -5,19 +5,29 @@
 #include "ui_Search.h"
 #include "MemoryMap.h"
 #include "MemRead.h"
+#include "Modules.h"
+#include "Results.h"
 #include "DebuggedProcess.h"
 #include <Windows.h>
 #include <winnt.h>
 #include <string>
 #include <sstream>
+#include <MemRead.h>
+#define CPPOUT fout
 #define WRITABLE_EXECUTE (PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY)
 #define WRITABLE_NO_EXECUTE (PAGE_READWRITE | PAGE_WRITECOPY)
 #define EXECUTE_NO_WRITE (PAGE_EXECUTE_READ | PAGE_EXECUTE)
 #define READONLY (PAGE_READONLY)
-class ResultsWindow;
 class MemoryScanner;
+class SearchWindow;
 typedef enum
 {
+	NEXT_SCAN,
+	NEW_SCAN,
+} SCAN_CONDITION;
+typedef enum
+{
+	VALUETYPE_UNKNOWN = 0,
 	BYTE_ = 1,
 	TWOBYTES_ = 2,
 	INT32_ = 3,
@@ -27,42 +37,100 @@ typedef enum
 	STRING_ = 7,
 	ArrayBytes_ = 8,
 } DATA_SIZE;
-typedef enum SEARCH_CONDITION
+enum MemoryScanValueType
+{
+	VALUETYPE_UNKNOWN2,
+	VALUETYPE_BYTE,
+	VALUETYPE_2BYTE,
+	VALUETYPE_4BYTE,
+	VALUETYPE_8BYTE,
+	VALUETYPE_FLOAT,
+	VALUETYPE_DOUBLE,
+	VALUETYPE_STRING,
+	VALUETYPE_WSTRING,
+	VALUETYPE_AOB
+};
+
+// Memory scanner comparison types.
+enum MemoryScanType
+{
+	SCANTYPE_EXACTVALUE,
+	SCANTYPE_GREATERTHAN,
+	SCANTYPE_SMALLERTHAN,
+	SCANTYPE_UNKNOWN_INITIAL_VALUE,
+	SCANTYPE_VALUE_IN_BETWEEN,
+	SCANTYPE_CHANGED,
+
+	// The same comparetor function applies for the scan types below. Do not add a scan type that requires a different comparetor.
+	SCANTYPE_UNCHANGED,
+	SCANTYPE_INCREASED,
+	SCANTYPE_DECREASED
+};
+enum SEARCH_CONDITION
 {
 	COND_EQUALS,
 	COND_INCREASED,
 	COND_DECREASED,
 	COND_UNCONDITIONAL,//unkowninitiavalue
 };
-typedef enum
+// Generalisation struct that can be used to save class instances with template parameter lists.
+struct ScanParameterBase
 {
-	NEXT_SCAN,
-	NEW_SCAN,
-} SCAN_CONDITION;
-void print_matches(MEMBLOCK *mb_list, ResultsWindow* pResultWindow);
-int ui_run_scan(MEMBLOCK *scan, uint32_t data_size, int64_t start_val, SEARCH_CONDITION start_cond, SCAN_CONDITION scan_condition);
-class ResultsWindow : public QDialog
-{
-	Q_OBJECT
-public:
-	ResultsWindow(QMainWindow* parent = 0) //: QDialog(parent)
+	// Indicates whether a fast (aligned) scan should be executed.
+	bool CurrentScanFastScan;
+
+	// The type of scan that should be executed.
+	//MemoryScanType GlobalScanType;
+	SEARCH_CONDITION GlobalScanType;
+
+	// The value type (sizeof) of the value that should be scanned for.
+	DATA_SIZE GlobalScanValueType;
+
+	// Are we returning search results in hexadecimal?
+	bool CurrentScanHexValues;
+
+	// This parameter contains the size of an array of bytes or the length of a string in case of such a scan.
+	// If the scan value type is not one of these, this parameter is ignored.
+	unsigned int ValueSize;
+
+	// When searching for strings, it is possible to match strings until null chars are hit. The threshold to
+	// avoid CrySearch from reading excessive amounts of memory into a string is 0x100.
+	bool ScanUntilNullChar;
+
+	//memory regions parameter
+	DWORD AcceptedMemoryState;
+
+	int8_t nValue8;
+	int16_t nValue16;
+	int32_t nValue32;
+	int64_t nValue64;
+
+
+	//template function inline (class member) which returns the value used to perform the scan as an integer
+	//must return either an int64_t either an int32_t
+	void GetValue(SearchWindow * pSearchWindow, SCAN_CONDITION NewOrNext);
+	// Default constructor should help preventing bogus values.
+	uint32_t ScanOffset;
+	ScanParameterBase()
 	{
-		this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
-		this->move(0, 0);
-		ui.setupUi(this);
-	}
-	~ResultsWindow() {}
-public:
-	Ui::Ui_Results ui;
-	friend void print_matches(MEMBLOCK *mb_list, ResultsWindow* pResultWindow);
+		this->CurrentScanFastScan = true;
+		this->GlobalScanType = COND_EQUALS;
+		this->GlobalScanValueType = VALUETYPE_UNKNOWN;
+		this->CurrentScanHexValues = false;
+		this->ValueSize = 0;
+		this->ScanUntilNullChar = false;
+		this->AcceptedMemoryState = 0;
+		this->ScanOffset = 1;
+	};
+	void UpdateSelectedScanOptions(SearchWindow * pSearchWindow);
 };
-
-
+void print_matches(MEMBLOCK *mb_list, Ui_DialogResults* pResultWindow, SearchWindow *pSearchWindow);
+int ui_run_scan(MEMBLOCK *scan, uint32_t data_size, int64_t start_val, SEARCH_CONDITION start_cond, SCAN_CONDITION scan_condition);
 
 class SearchWindow : public QDialog
 {
 	Q_OBJECT
-public :
+public:
 	void someSlot() {
 		QMessageBox::StandardButton reply;
 		reply = QMessageBox::question(this, "Test", "Quit?",
@@ -74,13 +142,14 @@ public :
 
 		}
 	}
-	int ui_run_scan(MEMBLOCK *scan1, uint32_t data_size, int64_t start_val, SEARCH_CONDITION start_cond, SCAN_CONDITION scan_condition);
+	template <typename T>
+	int ui_run_scan(MEMBLOCK *scan1, uint32_t data_size, T start_val, SEARCH_CONDITION start_cond, SCAN_CONDITION scan_condition);
 	uint32_t ReturnDataSize();
-	void ShowResults (uint64_t nResults)
+	void ShowResults(uint64_t nResults)
 	{
-		_hResult->ui.label_2->setText(ReturnStrFromDecInt(nResults).c_str());
+		_hResult->label_2->setText(ReturnStrFromDecInt(nResults).c_str());
 	}
-	bool FilterRegions (MEMORY_BASIC_INFORMATION meminfo)
+	bool FilterRegions(MEMORY_BASIC_INFORMATION &meminfo)
 	{
 		if (ui.cbWritable->checkState() == Qt::PartiallyChecked)
 			fout << "writable partially checked" << std::endl;
@@ -90,10 +159,10 @@ public :
 			fout << "writable unchecked" << std::endl;
 
 
-			if ((meminfo.State & MEM_COMMIT) && (meminfo.Protect & WRITABLE_EXECUTE))
-				return true;
-			else
-				return false;
+		if ((meminfo.State & MEM_COMMIT) && (meminfo.Protect & WRITABLE_EXECUTE))
+			return true;
+		else
+			return false;
 	}
 	void IsSetOnTop() {
 		if (ui.cbAlwaysOnTop->checkState())
@@ -109,7 +178,6 @@ public :
 	}
 	void FirstScan()
 	{
-		uint64_t a;
 		if (bInScan == 0)
 		{
 			bInScan = 1;
@@ -120,22 +188,37 @@ public :
 			ui.lineRangeEnd->setDisabled(true);
 			ui.lineRangeStart->setDisabled(true);
 			ui.pbFirstNewScan->setText("New Scan");
-			if (ui.LineScanValue->text() == "")
-				return;
-			QString text = ui.LineScanValue->text();
-			if (ui.cbHex->isChecked())
+			pScanOptions->UpdateSelectedScanOptions(this);
+			if (pScanOptions->GlobalScanType != COND_UNCONDITIONAL)
 			{
-				a = ui_run_scan(DebuggedProc.mb, ReturnDataSize(), text.toInt(0, 16), (SEARCH_CONDITION)ui.comboBScanType->currentIndex(), NEW_SCAN);
+				QString text = ui.LineScanValue->text();
+				if (text == "")//This check should only happen when we try to scan
+				{
+					QMessageBox::warning(this, "Error", "Enter a value", QMessageBox::Ok); //a value must be filled in for the scan to go through
+					return;
+				}
+				std::string strString = text.toStdString();
+				if (!std::all_of(strString.begin(), strString.end(), ::isdigit))
+					if (!ui.cbHex->isChecked())//asserts we have no hex number when scanning with hex unchecked
+					{
+						QMessageBox::warning(this, "Invalid number", "This isn't a decimal number.", QMessageBox::Ok);
+					}
 			}
-			else
-			{
-				a = ui_run_scan(DebuggedProc.mb, ReturnDataSize(), text.toInt(0, 10), (SEARCH_CONDITION)ui.comboBScanType->currentIndex(), NEW_SCAN);
-			}
-			ShowResults(a);
+			this->ModMap = new Mods;
+			*ModMap = UpdateModulesList();
+			pScanOptions->GetValue(this, NEW_SCAN);
+			//different calls according to value size
+			if (nResults < 150)
+				print_matches(DebuggedProc.mb, _hResult, this);
+			ShowResults(nResults);
+			if (ui.comboBScanType->currentIndex() == 3)
+				ui.comboBScanType->setCurrentIndex(0);
+			ui.pbNextScan->setDisabled(false);
 		}
 		else
 		{
 			bInScan = 0;
+			nResults = 0;
 			ui.comboBValueType->setDisabled(false);
 			ui.cbExecutable->setDisabled(false);
 			ui.cbWritable->setDisabled(false);
@@ -143,36 +226,46 @@ public :
 			ui.lineRangeEnd->setDisabled(false);
 			ui.lineRangeStart->setDisabled(false);
 			ui.pbFirstNewScan->setText("First Scan");
+			ui.pbNextScan->setDisabled(true);
+			_hResult->treeWidget->clear();
+			ShowResults(nResults);
+			delete ModMap;
+			this->ModMap = nullptr;
 		}
 	}
 	void NextScan()
 	{
-		if (ui.LineScanValue->text() == "")
-			return;
-		QString text = ui.LineScanValue->text();
-		uint64_t a = 0;
-		if (ui.cbHex->isChecked())
+		pScanOptions->UpdateSelectedScanOptions(this);
+		if (pScanOptions->GlobalScanType == COND_EQUALS)
 		{
-			a = ui_run_scan(DebuggedProc.mb, ReturnDataSize(), text.toInt(0, 16), (SEARCH_CONDITION)ui.comboBScanType->currentIndex(), NEXT_SCAN);
+			QString text = ui.LineScanValue->text();
+			if (text == "")//This check should only happen when we try to scan
+			{
+				QMessageBox::warning(this, "Error", "Enter a value", QMessageBox::Ok); //a value must be filled in for the scan to go through
+				return;
+			}
+			std::string strString = text.toStdString();
+			if (!std::all_of(strString.begin(), strString.end(), ::isdigit))
+				if (!ui.cbHex->isChecked())//asserts we have no hex number when scanning with hex unchecked
+				{
+					QMessageBox::warning(this, "Invalid number", "This isn't a decimal number.", QMessageBox::Ok);
+				}
 		}
-		else
-		{
-			a = ui_run_scan(DebuggedProc.mb, ReturnDataSize(), text.toInt(0, 10), (SEARCH_CONDITION)ui.comboBScanType->currentIndex(), NEXT_SCAN);
-		}
-		_hResult->ui.treeWidget->clear();
-		if (a < 150)
-		print_matches(DebuggedProc.mb, _hResult);
-		QTreeWidgetItem * itm = new QTreeWidgetItem(_hResult->ui.treeWidget);
-		ShowResults(a);
+		pScanOptions->GetValue(this, NEXT_SCAN);
+		_hResult->treeWidget->clear();
+		if (nResults < 150)
+			print_matches(DebuggedProc.mb, _hResult, this);
+		ShowResults(nResults);
 	}
 	SearchWindow(QMainWindow* parent = 0) //: QDialog(parent)
 	{
 		this->setWindowFlags(this->windowFlags() ^ Qt::WindowContextHelpButtonHint);
-		this->setWindowFlags(this->windowFlags() | Qt::WindowStaysOnTopHint | Qt::CustomizeWindowHint | Qt::WindowMinimizeButtonHint);
+		this->setWindowFlags(this->windowFlags() | Qt::CustomizeWindowHint | Qt::WindowMinimizeButtonHint);
 		ui.setupUi(this);
 		QObject::connect(ui.cbAlwaysOnTop, &QCheckBox::clicked, this, &SearchWindow::IsSetOnTop);
 		QObject::connect(ui.pbFirstNewScan, &QPushButton::clicked, this, &SearchWindow::FirstScan);
 		QObject::connect(ui.pbNextScan, &QPushButton::clicked, this, &SearchWindow::NextScan);
+		pScanOptions = new ScanParameterBase();
 	}
 	~SearchWindow() {}
 	void closeEvent(QCloseEvent *event)
@@ -181,206 +274,11 @@ public :
 	}
 public:
 	Ui::Ui_Search ui;
-	ResultsWindow* _hResult;
+	//ResultsWindow *_hResult;
+	Ui_DialogResults *_hResult;
+	ScanParameterBase * pScanOptions;
 	MEMBLOCK *scan;
+	Mods *ModMap;
 	bool bInScan = 0;
-};
-
-
-enum MemoryScanValueType
-{
-	VALUETYPE_UNKNOWN,
-	VALUETYPE_BYTE,
-	VALUETYPE_2BYTE,
-	VALUETYPE_4BYTE,
-	VALUETYPE_8BYTE,
-	VALUETYPE_FLOAT,
-	VALUETYPE_DOUBLE,
-	VALUETYPE_STRING,
-	VALUETYPE_WSTRING,
-	VALUETYPE_AOB
-};
-
-// Memory scanner comparison types.
-enum MemoryScanType
-{
-	SCANTYPE_UNKNOWN_INITIAL_VALUE,
-	SCANTYPE_EXACTVALUE,
-	SCANTYPE_SMALLERTHAN,
-	SCANTYPE_GREATERTHAN,
-	SCANTYPE_VALUE_IN_BETWEEN,
-	SCANTYPE_CHANGED,
-
-	// The same comparetor function applies for the scan types below. Do not add a scan type that requires a different comparetor.
-	SCANTYPE_UNCHANGED,
-	SCANTYPE_INCREASED,
-	SCANTYPE_DECREASED
-};
-
-// Generalisation struct that can be used to save class instances with template parameter lists.
-struct ScanParameterBase
-{
-	// Indicates whether a fast (aligned) scan should be executed.
-	bool CurrentScanFastScan;
-
-	// The type of scan that should be executed.
-	MemoryScanType GlobalScanType;
-
-	// The value type (sizeof) of the value that should be scanned for.
-	MemoryScanValueType GlobalScanValueType;
-
-	// Are we returning search results in hexadecimal?
-	bool CurrentScanHexValues;
-
-	// This parameter contains the size of an array of bytes or the length of a string in case of such a scan.
-	// If the scan value type is not one of these, this parameter is ignored.
-	unsigned int ValueSize;
-
-	// When searching for strings, it is possible to match strings until null chars are hit. The threshold to
-	// avoid CrySearch from reading excessive amounts of memory into a string is 0x100.
-	bool ScanUntilNullChar;
-
-	// Default constructor should help preventing bogus values.
-	ScanParameterBase()
-	{
-		this->CurrentScanFastScan = true;
-		this->GlobalScanType = SCANTYPE_UNKNOWN_INITIAL_VALUE;
-		this->GlobalScanValueType = VALUETYPE_UNKNOWN;
-		this->CurrentScanHexValues = false;
-		this->ValueSize = 0;
-		this->ScanUntilNullChar = false;
-	};
-};
-
-// Scan parameters given to a new scan.
-template <typename T>
-struct ScanParameters : public ScanParameterBase
-{
-	// The value to scan a process' memory for. If the user wants to scan for a value that is
-	// in between of two values, this variable is the first value of the two.
-	T ScanValue;
-
-	// If the user wants tot scan for a value that is in between of two values, this variable is
-	// the second of the two. Otherwise, this variable is not used.
-	T OuterScanValue;
-};
-
-// Global variable to store scan parameters because of the performance issues a function parameter brings in.
-extern ScanParameterBase* GlobalScanParameter;
-
-// Compare functions are listed below.
-
-template <typename T>
-const bool CompareEqual(const T& input, const T& expected);
-
-template <typename T>
-const bool CompareSmaller(const T& input, const T& expected);
-
-template <typename T>
-const bool CompareGreater(const T& input, const T& expected);
-
-template <typename T>
-const bool CompareInBetween(const T& input, const T& expected);
-
-template <typename T>
-const bool CompareUnknownInitialValue(const T& input, const T& expected);
-
-// Compare function type definition.
-template <typename T>
-using CompareFunctionType = const bool(*)(const T& input, const T& expected);
-
-
-// Function that assigns the correct compare function using the user selected scan type, and fires of the workers accordingly.
-template <typename T>
-void MemoryScanner::AssignAndFire(const bool first)
-{
-	// Assign the workers the correct compare function.
-	CompareFunctionType<T> cmpFunc;
-	switch (GlobalScanParameter->GlobalScanType)
-	{
-	case SCANTYPE_UNKNOWN_INITIAL_VALUE:
-		cmpFunc = CompareUnknownInitialValue;
-		break;
-	case SCANTYPE_EXACTVALUE:
-		cmpFunc = CompareEqual;
-		break;
-	case SCANTYPE_SMALLERTHAN:
-		cmpFunc = CompareSmaller;
-		break;
-	case SCANTYPE_GREATERTHAN:
-		cmpFunc = CompareGreater;
-		break;
-	case SCANTYPE_VALUE_IN_BETWEEN:
-		cmpFunc = CompareInBetween;
-		break;
-	case SCANTYPE_CHANGED:
-		cmpFunc = CompareEqual;
-		break;
-	case SCANTYPE_UNCHANGED:
-		cmpFunc = CompareEqual;
-		break;
-	case SCANTYPE_INCREASED:
-		cmpFunc = CompareGreater;
-		break;
-	case SCANTYPE_DECREASED:
-		cmpFunc = CompareSmaller;
-		break;
-	default:
-		cmpFunc = NULL;
-		break;
-	}
-}
-// The memory scanning class. Used for main memory scanning and reading.
-class MemoryScanner
-{
-private:
-	// Information about the opened process.
-	HANDLE mOpenedProcessHandle;
-	int mLoadedProcessId;
-	bool isX86Process;
-	bool mProcessSuspended;
-
-	// Memory scanner control variables.
-	bool ScanRunning;
-
-	typedef MemoryScanner CLASSNAME;
-
-	// Function that assigns the correct compare function using the user selected scan type, and fires of the workers accordingly.
-	template <typename T>
-	void AssignAndFire(const bool first);
-	/*
-	// Templated worker function for the first scans.
-	template <typename T>
-	void FirstScanWorker(WorkerRegionParameterData* const regionData, const T& value, CompareFunctionType<T> cmp);
-
-	// Templated worker function for the refresh scans.
-	template <typename T>
-	void NextScanWorker(WorkerRegionParameterData* const regionData, const T& value, CompareFunctionType<T> cmp);
-	*/
-	// Singleton code: private constructor, destructor and copy constructors.
-	MemoryScanner();
-	~MemoryScanner();
-
-	//MemoryScanner(MemoryScanner const&);
-	//void operator=(MemoryScanner const&);
-public:
-	static MemoryScanner* GetInstance()
-	{
-		static MemoryScanner instance;
-		return &instance;
-	}
-
-
-	template <typename T>
-	void FirstScan();
-
-	template <typename T>
-	void NextScan();
-
-	template <typename T>
-	void Poke(const SIZE_T address, const T& value);
-
-	// Size parameter is optional. If AOB or String types are used, parameter is used, otherwise ignored.
-	template <typename T>
-	bool Peek(const SIZE_T address, const unsigned int size, T* outBuffer) const;
+	uint64_t nResults;
 };

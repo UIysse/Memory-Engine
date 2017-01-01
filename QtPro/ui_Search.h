@@ -34,7 +34,7 @@ QT_BEGIN_NAMESPACE
 class Ui_DialogSearch
 {
 public:
-	
+
 	QDialogButtonBox *OkCancelBox;
 	QWidget *widget;
 	QHBoxLayout *horizontalLayout;
@@ -76,12 +76,14 @@ public:
 		cbExecutable->setCheckState(Qt::PartiallyChecked);
 		cbWritable->setChecked(true);
 		cbCopyOnWrite->setChecked(false);
-		cbAlwaysOnTop->setChecked(true);
-		cbFastScan->setDisabled(true);
+		cbAlwaysOnTop->setChecked(false);
+		cbFastScan->setDisabled(false);
+		pbNextScan->setDisabled(true);
 		lineRangeStart->setText("0000000000000000");
 		lineRangeEnd->setText("7FFFFFFFFFFFFFFF");
 		comboBScanType->setCurrentIndex(0);
 		comboBValueType->setCurrentIndex(3);
+		LineScanValue->setFocus();
 	}
 	void setupUi(QDialog *Dialog)
 	{
@@ -144,7 +146,7 @@ public:
 
 		comboBValueType = new QComboBox(widget1);
 		comboBValueType->setObjectName(QStringLiteral("comboBox"));
-		comboBValueType->addItems(QStringList() << "Bynary" << "Byte" << "2 Bytes" << "4 Bytes" << "8 Bytes" << "Float" << "Double" << "String" << "Array of bytes"); 
+		comboBValueType->addItems(QStringList() << "Bynary" << "Byte" << "2 Bytes" << "4 Bytes" << "8 Bytes" << "Float" << "Double" << "String" << "Array of bytes");
 
 		horizontalLayout_2->addWidget(comboBValueType);
 
@@ -272,7 +274,6 @@ public:
 };
 
 
-
 class Ui_DialogResults
 {
 public:
@@ -285,7 +286,7 @@ public:
 	QSplitter *splitter;
 	QTreeWidget *treeWidget;
 	QTreeWidget *treeWidget_2;
-
+	QTreeWidgetItem * itm;
 	void setupUi(QDialog *Dialog)
 	{
 		if (Dialog->objectName().isEmpty())
@@ -340,7 +341,6 @@ public:
 		horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
 		Dialog->setLayout(horizontalLayout_2);
 		retranslateUi(Dialog);
-
 		QMetaObject::connectSlotsByName(Dialog);
 	} // setupUi
 

@@ -1,4 +1,7 @@
 #include "qtpro.h"
+#include "AboutCpp.h"
+#include "MemoryViewer.h"
+#include "OpenProcess.h"
 #include "ui_qtpro.h"
 #include "ui_about.h"
 #include "ui_aboutce.h"
@@ -11,6 +14,7 @@
 #include "Logs.h"
 #include "MemRead.h"
 #include "Header.h"
+#include "InputGotoBox.h"
 #include <windows.h>
 #include <tlhelp32.h>
 #include <tchar.h>
@@ -144,7 +148,7 @@ int insertDisas(MemoryViewer * aDialog)
 void printError(TCHAR* msg);
 void QtPro::ShowAboutDialog()
 {
-	this->w = new About(this);
+	About *w = new About(this);
 	w->setModal(true);
 	w->setAttribute(Qt::WA_DeleteOnClose);
 	w->show();
@@ -153,18 +157,6 @@ void QtPro::ShowAboutDialog()
 void QtPro::UpdateProcessName()
 {
 
-}
-void MemoryViewer::showDlls()
-{
-	ShowDll * showDll = new ShowDll(this);
-}
-void MemoryViewer::ShowGotoDialogBox()
-{
-	InputGotoBox * inputgotobox = new InputGotoBox(this, this);
-	inputgotobox->setWindowFlags(inputgotobox->windowFlags() & ~Qt::WindowContextHelpButtonHint);
-	inputgotobox->setAttribute(Qt::WA_DeleteOnClose);
-	inputgotobox->show();
-	inputgotobox->ui.textEdit->setFocus();
 }
 void QtPro::ShowPickProcess()
 {
@@ -187,19 +179,6 @@ void foo(MemoryViewer * aDialog)
 	itm->setText(2, "troisieme text");
 	//ui.treeWidget->addScrollBarWidget(ui.treeWidget, Qt::AlignmentFlag::AlignAbsolute);
 }
-MemoryViewer::MemoryViewer(QWidget *parent) //: QMainWindow(parent)
-{
-	ui.setupUi(this);
-
-	ui.treeWidget->setHeaderLabels(QStringList() << "Address" << "Bytes" << "Opcode" << "Comment");
-	ui.treeWidget->setColumnWidth(0, 110);
-	ui.treeWidget->setColumnWidth(1, 150);
-	ui.treeWidget->setColumnWidth(2, 250);
-	if (DebuggedProc.hwnd)
-	insertDisas(this);
-	QObject::connect(ui.viewDlls, &QAction::triggered, this, &MemoryViewer::showDlls);
-	QObject::connect(ui.shortcut, &QShortcut::activated, this, &MemoryViewer::ShowGotoDialogBox);
-}
 
 void QtPro::ShowLogs()
 {
@@ -215,7 +194,8 @@ void QtPro::ShowSearch()
 	SearchWindow * w = new SearchWindow(this);
 	w->setAttribute(Qt::WA_DeleteOnClose);
 	w->show();
-	w->_hResult = t;
+	w->_hResult = &t->ui;
+	t->pSearchWindow = &w->ui;
 }
 void QtPro::ShowModules()
 {
@@ -255,46 +235,13 @@ void QtPro::ShowMemoryView()
 	w->setAttribute(Qt::WA_DeleteOnClose);
 	w->show();
 }
-MemoryViewer::~MemoryViewer()
-{
-
-}
 QtPro::~QtPro()
 {
 	QApplication::closeAllWindows();
 }
-void QtPro::closeDialog()
+void QtPro::closeDialog() // was meant back when QTPro had a member pointer towards About class and called delete ptr here
 {
-	delete w;
-}
-About::About(QWidget *parent) : QDialog(parent)
-{
-	this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
-	QWptr = parent;
-	ui.setupUi(this);
-}
-About::~About()
-{
-	//QWptr->closeDialog();
-}
-void OpenProcessClass::SelectProcess()
-{
-	QString strChosenProcess = this->ui.listView->currentItem()->text(2);
-	DebuggedProc.hwnd = ReturnProcessHandle(strChosenProcess);
-	pQtPro->ui.lblProcessName->setText(strChosenProcess);
-	this->close();
-}
-void OpenProcessClass::CancelProcessSelection()
-{
-	this->close();
-}
-OpenProcessClass::OpenProcessClass(QWidget *parent, QtPro* MainWind) : QDialog(parent)
-{
-	pQtPro = MainWind;
-	this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
-	ui.setupUi(this);
-	QObject::connect(ui.pushButton_2, &QPushButton::clicked, this, &OpenProcessClass::SelectProcess);
-	QObject::connect(ui.pushButton, &QPushButton::clicked, this, &OpenProcessClass::CancelProcessSelection);
+
 }
 
 void printError(TCHAR* msg)

@@ -1,1 +1,4 @@
-﻿  BlackBone.vcxproj -> C:\Users\Ulysse\Documents\Visual Studio 2015\Projects\QtPro\build\x64\Release\BlackBone.lib
+﻿  ProcessModules.cpp
+  NativeSubsystem.cpp
+  Wow64Subsystem.cpp
+  BlackBone.vcxproj -> C:\Users\Ulysse\Documents\Visual Studio 2015\Projects\QtPro\build\x64\Release\BlackBone.lib

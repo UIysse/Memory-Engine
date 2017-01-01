@@ -1,0 +1,471 @@
+Process open with all access.
+32 bit process.
+Entrypoint : 560f40
+0
+Handle of process is still active
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+writable checked
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+val : 37 size : 4
+NEW_SCAN, matches found 22 start condition : 1 start val : 55 data size : 4

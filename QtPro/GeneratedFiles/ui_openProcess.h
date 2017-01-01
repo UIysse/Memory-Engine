@@ -80,7 +80,7 @@ public:
 
 };
 
-namespace Ui {
+namespace Ui2 {
 	class OpenProcess : public Ui_OpenProcess {};
 } // namespace Ui
 

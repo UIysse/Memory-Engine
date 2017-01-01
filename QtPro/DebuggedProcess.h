@@ -9,12 +9,13 @@
 #include "MemRead.h"
 #include "windows.h"
 #define DRIVOUT driveroutput
+bool WriteTarget(int value, int address, int size);
 class DebuggedProcess
 {
 public :
 	PROCESSENTRY32 entry;
 	HANDLE hwnd;
-	DWORD targetPid;
+	DWORD targetPid; 
 	MEMBLOCK* mb;
 	int architecture = 0;
 	bool bDriver = 1;
