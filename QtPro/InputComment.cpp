@@ -1,6 +1,7 @@
 #include "InputComment.h"
 #include "DebuggedProcess.h"
 #include <string>
+#include "Debugger.h"
 InputComment::InputComment(QDialog * parent, ResultsWindow * pResultsWindow, QTreeWidgetItem * itm, int column) : QDialog(parent), _pResultsWindow(pResultsWindow)
 {
 	ui.setupUi(this, itm, column);
@@ -15,6 +16,17 @@ InputComment::InputComment(QDialog * parent, ResultsWindow * pResultsWindow, QTr
 }
 void InputComment::confirm()
 {
+	/*
+	//goo();
+	try
+	{
+		throw(20);
+	}
+	catch (int e)
+	{
+		DRIVOUT << "exception handled" << std::endl;
+	}
+	*/
 	switch (_column)
 	{
 	case 0:
@@ -23,14 +35,26 @@ void InputComment::confirm()
 		break;
 	case 2:
 		size_t p = 4;
-		//size_t *i = &p;
 		QString text = ui.textEdit->text();
-		uint64_t value = text.toULongLong(0, 16);
+		std::string str = text.toStdString();
+		for (auto &e : str)
+			e = toupper(e);
+		uint64_t value;
+		 if (str.find('OX') != string::npos)
+			value = text.toULongLong(0, 16);
+		 else
+		 {
+			 if (std::all_of(str.begin(), str.end(), ::isdigit))
+			 value = text.toULongLong(0, 10);
+			 else
+			 {
+				 QMessageBox::warning(this, "Invalid number", "This isn't a decimal number.", QMessageBox::Ok);
+				 break;
+			 }
+		 }
 		uint64_t addr = std::stoull((_itm->text(1)).toStdString(), &p, 16);
-		//call write value
-		bool o = WriteTarget(value, addr, 4);
-		DRIVOUT << "value " << value << "addr " << addr << "bool " << o << std::endl;
-		_itm->setText(_column, ui.textEdit->text());
+		WriteTarget(value, addr, 4);
+		_itm->setText(_column, str.c_str());
 		this->close();
 		break;
 	}

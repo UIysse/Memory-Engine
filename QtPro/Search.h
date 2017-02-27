@@ -8,15 +8,20 @@
 #include "Modules.h"
 #include "Results.h"
 #include "DebuggedProcess.h"
+#include "CheckPerformance.h"
 #include <Windows.h>
 #include <winnt.h>
 #include <string>
 #include <sstream>
 #include <MemRead.h>
+#include "MyMutexes.h"
 #define CPPOUT fout
+#define ALL_MEM_PROTECTS (PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY | PAGE_EXECUTE_READ | PAGE_EXECUTE | PAGE_READONLY)
 #define WRITABLE_EXECUTE (PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY)
 #define WRITABLE_NO_EXECUTE (PAGE_READWRITE | PAGE_WRITECOPY)
 #define EXECUTE_NO_WRITE (PAGE_EXECUTE_READ | PAGE_EXECUTE)
+#define EXECUTE_WRITABLE (PAGE_EXECUTE_READ | PAGE_EXECUTE | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY)
+#define COPY_WRITE (PAGE_EXECUTE_WRITECOPY | PAGE_WRITECOPY)
 #define READONLY (PAGE_READONLY)
 class MemoryScanner;
 class SearchWindow;
@@ -69,9 +74,13 @@ enum MemoryScanType
 enum SEARCH_CONDITION
 {
 	COND_EQUALS,
-	COND_INCREASED,
-	COND_DECREASED,
+	COND_BIGGERTHAN,
+	COND_LOWERTHAN,
 	COND_UNCONDITIONAL,//unkowninitiavalue
+	COND_INCREASED = 3,
+	COND_DECREASED,
+	COND_CHANGED,
+	COND_UNCHANGED,
 };
 // Generalisation struct that can be used to save class instances with template parameter lists.
 struct ScanParameterBase
@@ -89,6 +98,8 @@ struct ScanParameterBase
 	// Are we returning search results in hexadecimal?
 	bool CurrentScanHexValues;
 
+	// Are we doing the first scan
+	bool FirstScan;
 	// This parameter contains the size of an array of bytes or the length of a string in case of such a scan.
 	// If the scan value type is not one of these, this parameter is ignored.
 	unsigned int ValueSize;
@@ -105,7 +116,8 @@ struct ScanParameterBase
 	int32_t nValue32;
 	int64_t nValue64;
 
-
+	//Total bytes to be read
+	uint64_t TotalBytesRead;
 	//template function inline (class member) which returns the value used to perform the scan as an integer
 	//must return either an int64_t either an int32_t
 	void GetValue(SearchWindow * pSearchWindow, SCAN_CONDITION NewOrNext);
@@ -114,6 +126,7 @@ struct ScanParameterBase
 	ScanParameterBase()
 	{
 		this->CurrentScanFastScan = true;
+		this->FirstScan = true;
 		this->GlobalScanType = COND_EQUALS;
 		this->GlobalScanValueType = VALUETYPE_UNKNOWN;
 		this->CurrentScanHexValues = false;
@@ -121,8 +134,9 @@ struct ScanParameterBase
 		this->ScanUntilNullChar = false;
 		this->AcceptedMemoryState = 0;
 		this->ScanOffset = 1;
+		this->TotalBytesRead = 0;
 	};
-	void UpdateSelectedScanOptions(SearchWindow * pSearchWindow);
+	void UpdateSelectedScanOptions(SearchWindow * pSearchWindow, bool firstScan);
 };
 void print_matches(MEMBLOCK *mb_list, Ui_DialogResults* pResultWindow, SearchWindow *pSearchWindow);
 int ui_run_scan(MEMBLOCK *scan, uint32_t data_size, int64_t start_val, SEARCH_CONDITION start_cond, SCAN_CONDITION scan_condition);
@@ -151,17 +165,55 @@ public:
 	}
 	bool FilterRegions(MEMORY_BASIC_INFORMATION &meminfo)
 	{
-		if (ui.cbWritable->checkState() == Qt::PartiallyChecked)
-			fout << "writable partially checked" << std::endl;
-		else if (ui.cbWritable->checkState() == Qt::Checked)
-			fout << "writable checked" << std::endl;
-		else if (ui.cbWritable->checkState() == Qt::Unchecked)
-			fout << "writable unchecked" << std::endl;
+		int32_t nAcceptedProtects= ALL_MEM_PROTECTS;
+		int32_t nRequiredProtectsWrite = ALL_MEM_PROTECTS;
+		int32_t nRequiredProtectsExecute = ALL_MEM_PROTECTS;
+		int32_t nRequiredProtectsCoW = ALL_MEM_PROTECTS; // implement this later
+		switch (ui.cbWritable->checkState())
+		{
+		case Qt::PartiallyChecked:
+			break;
+		case Qt::Checked:
+			nRequiredProtectsWrite = 0;
+			nRequiredProtectsWrite = (WRITABLE_EXECUTE); // we add required flags accordingly and non matching zones will then be excluded
+			break;
+		case Qt::Unchecked:
+			nAcceptedProtects |= (WRITABLE_EXECUTE); //useless but better be safe than sorry
+			nAcceptedProtects ^= (WRITABLE_EXECUTE); // all mem protect flags are up at the start, we remove them accordingly with unchecked boxes
+			break;
+		}
 
+		if (ui.cbExecutable->checkState() == Qt::PartiallyChecked)
+			;
+		else if (ui.cbExecutable->checkState() == Qt::Checked)
+		{
+			nRequiredProtectsExecute = 0;
+			nRequiredProtectsExecute = (EXECUTE_WRITABLE);
+		}
+		else if (ui.cbExecutable->checkState() == Qt::Unchecked)
+		{
+			nAcceptedProtects |= EXECUTE_WRITABLE; // we don't know what we kicked off so we make sure they are all present before xoring
+			nAcceptedProtects ^= EXECUTE_WRITABLE;
+		}
 
-		if ((meminfo.State & MEM_COMMIT) && (meminfo.Protect & WRITABLE_EXECUTE))
-			return true;
-		else
+		switch (ui.cbCopyOnWrite->checkState())
+		{
+		case Qt::PartiallyChecked:
+			break;
+		case Qt::Checked:
+			nRequiredProtectsCoW = 0;
+			nRequiredProtectsCoW = (COPY_WRITE); // we add required flags accordingly and non matching zones will then be excluded
+			break;
+		case Qt::Unchecked:
+			nAcceptedProtects |= (COPY_WRITE); //useless but better be safe than sorry
+			nAcceptedProtects ^= (COPY_WRITE); // all mem protect flags are up at the start, we remove them accordingly with unchecked boxes
+			break;
+		}
+
+		if ((meminfo.State & MEM_COMMIT) && (meminfo.Protect & nAcceptedProtects))
+			if ((meminfo.Protect & nRequiredProtectsExecute) && (meminfo.Protect & nRequiredProtectsWrite) && (meminfo.Protect & nRequiredProtectsCoW))
+				return true;
+
 			return false;
 	}
 	void IsSetOnTop() {
@@ -178,6 +230,9 @@ public:
 	}
 	void FirstScan()
 	{
+		double PCFreq1 = 0.0;
+		__int64 CounterStart2 = 0;
+		StartCounter(CounterStart2, PCFreq1);
 		if (bInScan == 0)
 		{
 			bInScan = 1;
@@ -188,9 +243,10 @@ public:
 			ui.lineRangeEnd->setDisabled(true);
 			ui.lineRangeStart->setDisabled(true);
 			ui.pbFirstNewScan->setText("New Scan");
-			pScanOptions->UpdateSelectedScanOptions(this);
+			pScanOptions->UpdateSelectedScanOptions(this, 1); //1 = new scan
 			if (pScanOptions->GlobalScanType != COND_UNCONDITIONAL)
 			{
+				CPPOUT << "asd " << pScanOptions->GlobalScanType << std::endl;
 				QString text = ui.LineScanValue->text();
 				if (text == "")//This check should only happen when we try to scan
 				{
@@ -200,7 +256,7 @@ public:
 				std::string strString = text.toStdString();
 				if (!std::all_of(strString.begin(), strString.end(), ::isdigit))
 					if (!ui.cbHex->isChecked())//asserts we have no hex number when scanning with hex unchecked
-					{
+					{//better convert base 16 first and if the function fails then call the input incorrect
 						QMessageBox::warning(this, "Invalid number", "This isn't a decimal number.", QMessageBox::Ok);
 					}
 			}
@@ -208,12 +264,16 @@ public:
 			*ModMap = UpdateModulesList();
 			pScanOptions->GetValue(this, NEW_SCAN);
 			//different calls according to value size
+			mResultsVec.lock();
 			if (nResults < 150)
 				print_matches(DebuggedProc.mb, _hResult, this);
+			mResultsVec.unlock();
 			ShowResults(nResults);
 			if (ui.comboBScanType->currentIndex() == 3)
 				ui.comboBScanType->setCurrentIndex(0);
 			ui.pbNextScan->setDisabled(false);
+			ui.comboBScanType->clear();
+			ui.comboBScanType->addItems(QStringList() << "Exact Value" << "Bigger than.." << "Smaller than.." << "Increased value" << "Decreased value" << "Changed value" << "Unchanged Value");
 		}
 		else
 		{
@@ -227,15 +287,22 @@ public:
 			ui.lineRangeStart->setDisabled(false);
 			ui.pbFirstNewScan->setText("First Scan");
 			ui.pbNextScan->setDisabled(true);
+			mResultsVec.lock();
 			_hResult->treeWidget->clear();
+			_hResult->_vecResultsAddr.clear(); // so that the other thread will notice and continue;
+			mResultsVec.unlock();
 			ShowResults(nResults);
 			delete ModMap;
 			this->ModMap = nullptr;
+			pScanOptions->TotalBytesRead = 0;
+			ui.comboBScanType->clear();
+			ui.comboBScanType->addItems(QStringList() << "Exact Value" << "Bigger than.." << "Smaller than.." << "Unknown initial value");
 		}
+		CPPOUT << "Whole first scan process took : " << GetCounter(CounterStart2, PCFreq1) << std::endl;
 	}
 	void NextScan()
 	{
-		pScanOptions->UpdateSelectedScanOptions(this);
+		pScanOptions->UpdateSelectedScanOptions(this, 0); //0 = next scan
 		if (pScanOptions->GlobalScanType == COND_EQUALS)
 		{
 			QString text = ui.LineScanValue->text();
@@ -252,9 +319,11 @@ public:
 				}
 		}
 		pScanOptions->GetValue(this, NEXT_SCAN);
+		mResultsVec.lock();
 		_hResult->treeWidget->clear();
 		if (nResults < 150)
 			print_matches(DebuggedProc.mb, _hResult, this);
+		mResultsVec.unlock();
 		ShowResults(nResults);
 	}
 	SearchWindow(QMainWindow* parent = 0) //: QDialog(parent)

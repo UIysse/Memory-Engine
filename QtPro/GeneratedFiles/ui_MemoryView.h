@@ -44,6 +44,7 @@ public:
 		treeWidget->setHeaderItem(__qtreewidgetitem);
 		treeWidget->setObjectName(QStringLiteral("treeWidget"));
 		treeWidget->setGeometry(QRect(0, 20, 1051, 671));
+		treeWidget->setRootIsDecorated(false);
 		QMenu * fileMenu = Dialog->menuBar()->addMenu(("&File"));
 		QMenu * searchMenu = Dialog->menuBar()->addMenu("&Search");
 		QMenu * viewMenu = Dialog->menuBar()->addMenu("&View");

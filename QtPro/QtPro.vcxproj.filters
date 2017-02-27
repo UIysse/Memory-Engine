@@ -66,6 +66,12 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h</Extensions>
     </Filter>
+    <Filter Include="Debugger">
+      <UniqueIdentifier>{067a6b32-1701-4048-8c6b-3f5d834a4f67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CheckPerformance">
+      <UniqueIdentifier>{fe3b5eb9-550a-49e8-9561-d649c3560441}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -152,6 +158,21 @@
     <ClCompile Include="GeneratedFiles\Release\moc_InputComment.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Debugger.cpp">
+      <Filter>Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeBox.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_TypeBox.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="MyMutexes.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckPerformance.cpp">
+      <Filter>CheckPerformance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qtpro.h">
@@ -179,6 +200,9 @@
       <Filter>AboutCppEngine</Filter>
     </CustomBuild>
     <CustomBuild Include="InputComment.h">
+      <Filter>Search</Filter>
+    </CustomBuild>
+    <CustomBuild Include="TypeBox.h">
       <Filter>Search</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -239,6 +263,15 @@
     </ClInclude>
     <ClInclude Include="ui_ResultInputBoxes.h">
       <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="Debugger.h">
+      <Filter>Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMutexes.h">
+      <Filter>Search</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckPerformance.h">
+      <Filter>CheckPerformance</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

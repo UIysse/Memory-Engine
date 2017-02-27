@@ -49,6 +49,7 @@ public:
 		listView->setColumnWidth(2, 250);
 		listView->setColumnWidth(3, 150);
 		listView->setColumnWidth(4, 150);
+		listView->setRootIsDecorated(false);
 		//listView->setStyleSheet("QListWidget::item { border-bottom: 1px solid gray; }");
 		widget = new QWidget(Dialog);
 		widget->setObjectName(QStringLiteral("widget"));

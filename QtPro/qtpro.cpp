@@ -416,7 +416,7 @@ HANDLE  ReturnProcessHandle(QString Qstr)
 				))
 					fout << "GetModuleInformation failed." << endl;
 				DebuggedProc.addressOfInterest = reinterpret_cast<int64_t>(lpmod.EntryPoint);
-				fout << "Entrypoint : " << hex << DebuggedProc.addressOfInterest << endl;
+				fout << "Entrypoint : " << hex << DebuggedProc.addressOfInterest << " Base address : " << lpmod.lpBaseOfDll << endl;
 				return DebuggedProc.hwnd;
 			}
 		}

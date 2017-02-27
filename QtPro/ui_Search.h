@@ -29,6 +29,8 @@
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QSplitter>
 #include <QHeaderView>
+#include <vector>
+#include <cstdlib>
 QT_BEGIN_NAMESPACE
 
 class Ui_DialogSearch
@@ -84,6 +86,10 @@ public:
 		comboBScanType->setCurrentIndex(0);
 		comboBValueType->setCurrentIndex(3);
 		LineScanValue->setFocus();
+		QWidget::setTabOrder(pbFirstNewScan, pbNextScan);
+		QWidget::setTabOrder(pbNextScan, OkCancelBox);
+		QWidget::setTabOrder(OkCancelBox, comboBScanType);
+		QWidget::setTabOrder(comboBScanType, cbHex);
 	}
 	void setupUi(QDialog *Dialog)
 	{
@@ -248,7 +254,8 @@ public:
 		horizontalLayout_7->addWidget(pbNextScan);
 
 		retranslateUi(Dialog);
-
+		QObject::connect(OkCancelBox, SIGNAL(rejected()), Dialog, SLOT(reject()));
+		QObject::connect(OkCancelBox, SIGNAL(accepted()), Dialog, SLOT(accept()));
 		QMetaObject::connectSlotsByName(Dialog);
 		Presets();
 	} // setupUi
@@ -287,6 +294,8 @@ public:
 	QTreeWidget *treeWidget;
 	QTreeWidget *treeWidget_2;
 	QTreeWidgetItem * itm;
+	std::vector <uint64_t> _vecResultsAddr;
+	std::vector <uint64_t> _vecSavedAddr;
 	void setupUi(QDialog *Dialog)
 	{
 		if (Dialog->objectName().isEmpty())
@@ -324,6 +333,7 @@ public:
 		treeWidget->setHeaderLabels(QStringList() << "Address" << "Value");
 		treeWidget->setColumnWidth(0, 160);
 		treeWidget->setColumnWidth(1, 160);
+		treeWidget->setRootIsDecorated(false);
 		verticalLayout->addWidget(treeWidget);
 		treeWidget_2 = new QTreeWidget(splitter);
 		treeWidget_2->setObjectName(QStringLiteral("tableWidget_2"));
@@ -332,6 +342,7 @@ public:
 		treeWidget_2->setColumnWidth(1, 120);
 		treeWidget_2->setColumnWidth(2, 120);
 		treeWidget_2->setColumnWidth(3, 120);
+		treeWidget_2->setRootIsDecorated(false);
 		QList<int> sizes;
 		sizes << 300 << 500;
 		splitter->setSizes(sizes);

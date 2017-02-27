@@ -9,7 +9,7 @@
 #include "MemRead.h"
 #include "windows.h"
 #define DRIVOUT driveroutput
-bool WriteTarget(int value, int address, int size);
+void WriteTarget(int value, int address, int size);
 class DebuggedProcess
 {
 public :

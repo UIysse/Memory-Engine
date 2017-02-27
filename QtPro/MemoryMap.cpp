@@ -50,7 +50,10 @@ std::string ReturnStrFromHexaInt(int64_t arg) {
 	std::stringstream ss;
 	std::string str;
 	ss << std::hex << arg;
-	return str = ss.str();
+	str = ss.str();
+	for (auto &e : str)
+		e = toupper(e);
+	return str;
 }
 std::string ReturnStrFromDecInt(int64_t arg) {
 	std::stringstream ss;

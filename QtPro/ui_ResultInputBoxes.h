@@ -61,6 +61,65 @@ public:
 	}
 
 };
+class Ui_DialogTypeBox
+{
+public:
+	QWidget *widget;
+	QVBoxLayout *verticalLayout;
+	QLabel *label;
+	QComboBox *comboBValueType;
+	QDialogButtonBox *buttonBox;
+	void presets ()
+	{
+		comboBValueType->setCurrentIndex(3);
+	}
+	void setupUi(QDialog *Dialog, QTreeWidgetItem * itm, int column)
+	{
+		if (Dialog->objectName().isEmpty())
+			Dialog->setObjectName(QStringLiteral("Dialog"));
+		Dialog->resize(209, 97);
+		Dialog->setFixedSize(209, 97);
+		widget = new QWidget(Dialog);
+		widget->setObjectName(QStringLiteral("widget"));
+		widget->setGeometry(QRect(10, 10, 195, 82));
+		verticalLayout = new QVBoxLayout(widget);
+		verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+		verticalLayout->setContentsMargins(0, 0, 0, 0);
+		label = new QLabel(widget);
+		label->setObjectName(QStringLiteral("label"));
+
+		verticalLayout->addWidget(label);
+
+		comboBValueType = new QComboBox(widget);
+		comboBValueType->setObjectName(QStringLiteral("comboBox"));
+		comboBValueType->addItems(QStringList() << "Bynary" << "Byte" << "2 Bytes" << "4 Bytes" << "8 Bytes" << "Float" << "Double" << "String" << "Array of bytes");
+		verticalLayout->addWidget(comboBValueType);
+
+		buttonBox = new QDialogButtonBox(widget);
+		buttonBox->setObjectName(QStringLiteral("buttonBox"));
+		buttonBox->setOrientation(Qt::Horizontal);
+		buttonBox->setStandardButtons(QDialogButtonBox::Cancel | QDialogButtonBox::Ok);
+
+		verticalLayout->addWidget(buttonBox);
+
+		presets();
+		retranslateUi(Dialog);
+		QObject::connect(buttonBox, SIGNAL(accepted()), Dialog, SLOT(accept()));
+		QObject::connect(buttonBox, SIGNAL(rejected()), Dialog, SLOT(reject()));
+
+		QMetaObject::connectSlotsByName(Dialog);
+	} // setupUi
+
+	void retranslateUi(QDialog *Dialog)
+	{
+		Dialog->setWindowTitle(QApplication::translate("Dialog", "Change Type", 0));
+		label->setText(QApplication::translate("Dialog", "Select the new type", 0));
+	} // retranslateUi
+
+};
+
+
 namespace Ui{
 class CommentBox : public Ui_DialogCommentBox {};
+class TypeBox : public Ui_DialogTypeBox {};
 }
