@@ -1,22 +1,22 @@
 non wow64 peb ft call
 ntQueryInformationProcess succeded.
 WinAPI readProcMEM succeded to retrieve PEB info
- pbi.PebBaseAddress : 0x00000000FFFDF000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x400000
+ pbi.PebBaseAddress : 0x000000007EFDF000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x400000
  pbi.PebBaseAddress : 0x5a4d
-Entrypoint : 2fd0000
+Entrypoint : 560f40
 non wow64 peb ft call
 ntQueryInformationProcess succeded.
 WinAPI readProcMEM succeded to retrieve PEB info
- pbi.PebBaseAddress : 0x000007FFFFFDA000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x13f760000
+ pbi.PebBaseAddress : 0x000007FFFFFD6000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x13f310000
  pbi.PebBaseAddress : 0x5a4d
-Entrypoint : 13f79f4c0
+Entrypoint : 13f34fbc0
 						#######################   DRIVER LOADED   ##############
 non wow64 peb ft call
 ntQueryInformationProcess succeded.
 WinAPI readProcMEM succeded to retrieve PEB info
- pbi.PebBaseAddress : 0x00000000FFFDF000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x400000
+ pbi.PebBaseAddress : 0x000000007EFDF000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x400000
  pbi.PebBaseAddress : 0x5a4d
-Entrypoint : 2fd0000
+Entrypoint : 560f40
 peb.ImageBaseAddress : 0x400000
-cbneeded : 378
+cbneeded : f0
 Handle of process is still active

@@ -273,6 +273,9 @@
     <ClInclude Include="CheckPerformance.h">
       <Filter>CheckPerformance</Filter>
     </ClInclude>
+    <ClInclude Include="LogsOutput.h">
+      <Filter>Logs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="QtPro.rc" />

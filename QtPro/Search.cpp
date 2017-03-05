@@ -12,10 +12,9 @@
 #include "MyMutexes.h"
 #include <thread>
 #include <vector>
-#define CPPOUT fout
+#define CPPOUT fout //(*(DebuggedProc.pLogsOutput))
 #define IS_IN_SEARCH(mb, offset) (mb->searchmask[(offset)/8] & (1<<((offset)%8)))
 #define REMOVE_FROM_SEARCH(mb, offset)  mb->searchmask[(offset)/8] &= ~(1<<((offset)%8));
-
 
 inline MEMBLOCK* create_memblock(HANDLE hProc, MEMORY_BASIC_INFORMATION *meminfo, int data_size)
 {
@@ -70,6 +69,7 @@ inline void update_memblockEqual(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEA
 		bytes_left = mb->size;
 		total_read = 0;
 		int nMatches = 0;
+		//CPPOUT << "Start address scan this block : "<< hex << mb->addr << std::endl;
 		while ((bytes_left > sizeof(T)))
 		{
 			bytes_to_read = (bytes_left > sizeof(tempbuf)) ? sizeof(tempbuf) : bytes_left;
@@ -77,8 +77,8 @@ inline void update_memblockEqual(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEA
 			
 			if (bytes_read != bytes_to_read) //This block is only entered if page is guarded (or gets unallocated) in which case mb->size = sizeof(T) which yields a false positive on first address of block
 			{
-				CPPOUT << "test01 " << std::endl;
-				CPPOUT << "address read " <<  std::hex << reinterpret_cast<int>( mb->addr + total_read) << std::endl;
+				//CPPOUT << "test02 " << std::endl;
+				//CPPOUT << "address read " <<  std::hex << reinterpret_cast<int>( mb->addr + total_read) << std::endl;
 				break; 
 			}
 				unsigned int offset;
@@ -98,21 +98,79 @@ inline void update_memblockEqual(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEA
 
 					}
 				}
-				if (bytes_to_read == bytes_left) //this is true when the remaining memory to scan is smaller than the tempbuff array
-				{//if this is true we should remove the last few bytes of the block from search
-					//for (int uoffset = 1; uoffset < sizeof(T); ++uoffset)
-						//REMOVE_FROM_SEARCH(mb, (total_read + bytes_read - sizeof(T) + uoffset));
-				}
-				else
-				{//this is true if there is a larger amount of memory remaining to scan than tempbuff size, in which case we must scan the
-				 //tempbuff junctions
-				 //if (0)
-					//bytes_read -= (sizeof(T)); //could be sizeof(T) -1
-				}
 				memmove(mb->buffer + total_read, tempbuf, bytes_read); //try memmove for optimisation // was memcpy
 				bytes_read -= (sizeof(T));//will move sizeof(T) more bytes every read than necessary, but must be here to avoid having bogus value for the last bytes of the mem block
 				bytes_left -= bytes_read;
 				total_read += bytes_read;
+		}
+			for (int uoffset = 1; uoffset < sizeof(T); ++uoffset)
+				REMOVE_FROM_SEARCH(mb, (total_read + uoffset));
+		mb->matches = nMatches;
+		cSearchWindint->pScanOptions->TotalBytesRead += (total_read + sizeof(T));
+	}
+}
+template <typename T>
+inline void update_memblockEqualNextScan(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEARCH_CONDITION condition, T val)
+{
+	//CPPOUT << "update memblockEqual" << std::endl;
+	uint32_t nOffsetUnit = cSearchWindint->pScanOptions->ScanOffset;
+	//CPPOUT << "val : " << val1 << " size : " << mb->data_size << std::endl;
+	unsigned char tempbuf[128 * 1024 + sizeof(T)];//was static ! but then not stack allocated / not in cache ?? 128*1024
+	int bytes_left; //leave these as signed ints
+	int total_read;
+	int bytes_to_read;
+	int64_t bytes_read;
+	fout << "Start address scan this block : " << hex << (uint32_t)mb->addr << std::endl;
+	if (mb->matches > 0)
+	{
+		T temp_val;
+		T prev_val;
+		bytes_left = mb->size;
+		total_read = 0;
+		int nMatches = 0;
+		while ((bytes_left > sizeof(T)))
+		{
+			bytes_to_read = (bytes_left > sizeof(tempbuf)) ? sizeof(tempbuf) : bytes_left;
+			ReadProcessMemory(mb->hProc, mb->addr + total_read, tempbuf, bytes_to_read, (uint64_t*)&bytes_read);
+
+			if (bytes_read != bytes_to_read) //This block is only entered if page is guarded (or gets unallocated) in which case mb->size = sizeof(T) which yields a false positive on first address of block
+			{
+				CPPOUT << "test03 " << std::endl;
+				fout << "address read " << std::hex << reinterpret_cast<int>(mb->addr + total_read) << std::endl;
+				break;
+			}
+			unsigned int offset;
+			for (offset = 0; offset + sizeof(T) - 1 < bytes_read; offset += nOffsetUnit)//; offset < (bytes_read - sizeof(T) + 1);
+			{
+				if (IS_IN_SEARCH(mb, (total_read + offset)))
+				{
+					temp_val = *((T*)&tempbuf[offset]);//significant performance hit if comparing the pointed value to val (instead of assigning it before compare)
+					if (temp_val == val)
+					{
+						++nMatches;
+					}
+					else
+					{
+						REMOVE_FROM_SEARCH(mb, (total_read + offset));
+					}
+
+				}
+			}
+			if (bytes_to_read == bytes_left) //this is true when the remaining memory to scan is smaller than the tempbuff array
+			{//if this is true we should remove the last few bytes of the block from search
+			 //for (int uoffset = 1; uoffset < sizeof(T); ++uoffset)
+			 //REMOVE_FROM_SEARCH(mb, (total_read + bytes_read - sizeof(T) + uoffset));
+			}
+			else
+			{//this is true if there is a larger amount of memory remaining to scan than tempbuff size, in which case we must scan the
+			 //tempbuff junctions
+			 //if (0)
+			 //bytes_read -= (sizeof(T)); //could be sizeof(T) -1
+			}
+			memmove(mb->buffer + total_read, tempbuf, bytes_read); //try memmove for optimisation // was memcpy
+			bytes_read -= (sizeof(T));//will move sizeof(T) more bytes every read than necessary, but must be here to avoid having bogus value for the last bytes of the mem block
+			bytes_left -= bytes_read;
+			total_read += bytes_read;
 		}
 		if (bytes_read == 0)
 		{//in this block of code, the page is guarded or got unallocated
@@ -121,8 +179,8 @@ inline void update_memblockEqual(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEA
 			mb->matches = nMatches;
 			return;
 		}
-			for (int uoffset = 1; uoffset < sizeof(T); ++uoffset)
-				REMOVE_FROM_SEARCH(mb, (total_read + uoffset));
+		for (int uoffset = 1; uoffset < sizeof(T); ++uoffset)
+			REMOVE_FROM_SEARCH(mb, (total_read + uoffset));
 		mb->size = total_read + sizeof(T);
 		mb->matches = nMatches;
 		cSearchWindint->pScanOptions->TotalBytesRead += (total_read + sizeof(T));
@@ -184,7 +242,7 @@ template <typename T>
 inline void update_memblockDecreased(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEARCH_CONDITION condition, T val)
 {
 	uint32_t nOffsetUnit = cSearchWindint->pScanOptions->ScanOffset;
-	CPPOUT << "update memblockDecreased. val : "<< std::hex << val << " size of val : " << std::dec << sizeof(val) << std::endl;
+	fout << "update memblockDecreased. val : "<< std::hex << val << " size of val : " << std::dec << sizeof(val) << std::endl;
 	unsigned char tempbuf[128 * 1024 + sizeof(T)];//was static ! but then not stack allocated / not in cache ?? 128*1024
 	unsigned int bytes_left;
 	unsigned int total_read;
@@ -431,10 +489,21 @@ void update_scan(SearchWindow* cSearchWindint, MEMBLOCK *mb_list, SEARCH_CONDITI
 	switch (condition)
 	{
 	case COND_EQUALS :
-		while (mb)
+		if (cSearchWindint->pScanOptions->FirstScan)
 		{
-			update_memblockEqual(cSearchWindint, mb, condition, val);
-			mb = mb->next;
+			while (mb)
+			{
+				update_memblockEqual(cSearchWindint, mb, condition, val);
+				mb = mb->next;
+			}
+		}
+		else
+		{
+			while (mb)
+			{
+				update_memblockEqualNextScan(cSearchWindint, mb, condition, val);
+				mb = mb->next;
+			}
 		}
 		break;
 	case COND_BIGGERTHAN:
@@ -554,6 +623,47 @@ void print_matches(MEMBLOCK *mb_list, Ui_DialogResults* pResultWindow, SearchWin
 	}
 	CPPOUT << "result vector size " << pResultWindow->_vecResultsAddr.size() << std::endl;
 }
+void OutputResultHardDisk(MEMBLOCK *mb_list, Ui_DialogResults* pResultWindow, SearchWindow* pSearchWindow, std::vector <uint64_t> &addressVec)
+{
+	unsigned int offset;
+	MEMBLOCK *mb = mb_list;
+	std::string str;
+	addressVec.clear(); // clears the results c
+	CPPOUT << "result vector size " << addressVec.size() << std::endl;
+	while (mb)
+	{
+		for (offset = 0; offset < mb->size; offset += pSearchWindow->pScanOptions->ScanOffset)//mb->data_size)
+		{
+			if (IS_IN_SEARCH(mb, offset))
+			{
+				uint64_t val = peek(mb->hProc, mb->data_size, (unsigned int)mb->addr + offset);
+				addressVec.push_back((int64_t)mb->addr + offset);
+			}
+		}
+
+		mb = mb->next;
+	}
+	string CEfilename = "CPPADDRESSES.FIRST";
+	ofstream file;
+	file.open(CEfilename, ios::binary);
+	if (!file.is_open())
+		CPPOUT << "error opening file." << endl;
+	else
+		CPPOUT << "file open." << endl;
+	//
+	int uuu = 0;
+	int o = 0x11111111;
+	file.write((char*)&o, sizeof(uint32_t));
+	file.write((char*)&o, 3);
+	cout << "int " << hex << o << " end" << endl;
+	o = addressVec[0];
+	for (int jjj = 0; jjj < addressVec.size() ; ++jjj)
+	{
+		o = addressVec[jjj];
+		file.write((char*)&o, sizeof(uint64_t));
+	}
+	CPPOUT << "result vector size " << addressVec.size() << std::endl;
+}
 
 int get_match_count(MEMBLOCK *mb_list)
 {
@@ -624,17 +734,18 @@ MEMBLOCK* ui_new_scan(SearchWindow* cSearchWindint, uint32_t data_size, T start_
 	while (1)
 	{
 		scan = create_scan(cSearchWindint, data_size);
-		if (scan) break;
+		if (scan) 
+			break;
 		QMessageBox::warning(cSearchWindint, "Error", "Invalid Scan", QMessageBox::Ok);
+		break; //else a dead process handle will keeps iterating over this error
 	}
 	CPPOUT << "creating scan took : " << GetCounter(CounterStart, PCFreq) << std::endl;
 	bool usethreads = 1;
 	if (usethreads)
 	{
 		int nNumberOfCores = std::thread::hardware_concurrency();
-		nNumberOfCores = 8;
 		uint64_t bytesPerThread = (cSearchWindint->pScanOptions->TotalBytesRead) / nNumberOfCores;
-		CPPOUT << nNumberOfCores << " cores. each thread will scan for " << std::hex << bytesPerThread << " bytes." << std::endl;
+		fout << "You have : " << dec << nNumberOfCores << " cores.each thread will scan for " << std::hex << bytesPerThread << " bytes." << std::endl;
 		std::vector <MEMBLOCK *> mbVec(nNumberOfCores);
 		std::vector <MEMBLOCK *> mbSaveVec(nNumberOfCores);
 		std::vector <std::thread *> ThreadsVec(nNumberOfCores);
@@ -644,7 +755,8 @@ MEMBLOCK* ui_new_scan(SearchWindow* cSearchWindint, uint32_t data_size, T start_
 		uint32_t nNumberOfThreads = 0;
 		for (int iii = 0 ; iii < nNumberOfCores; ++iii)
 		{
-			if (iii < 7)
+			if (iii < nNumberOfCores -1) // iii < 7 on most modern computers
+			{
 				if (CreateThreadScans(mbVec[iii], mbVec[iii + 1], mbSaveVec[iii + 1], bytesPerThread))
 				{
 					ThreadsVec[iii] = new std::thread(memfunc<T>, cSearchWindint, mbSaveVec[iii], start_cond, start_val);//fire thread
@@ -656,6 +768,14 @@ MEMBLOCK* ui_new_scan(SearchWindow* cSearchWindint, uint32_t data_size, T start_
 					++nNumberOfThreads;
 					break;
 				}
+			}
+			else
+			{
+				// Last thread (supposedly) being launched, CreateThreadScans should always return 0.
+					ThreadsVec[iii] = new std::thread(memfunc<T>, cSearchWindint, mbSaveVec[iii], start_cond, start_val);//fire thread
+					++nNumberOfThreads;
+					break;
+			}
 		}
 		for (int iii = 0; iii < nNumberOfThreads; ++iii)
 		{
@@ -706,7 +826,7 @@ int SearchWindow::ui_run_scan(MEMBLOCK *scan1, uint32_t data_size, T start_val, 
 		free_scan(scan);
 		DebuggedProc.mb = ui_new_scan(this, data_size, start_val, start_cond);
 		CPPOUT << "Creating scan and updating it took : " << GetCounter(CounterStart, PCFreq) << "total bytes scanned " << pScanOptions->TotalBytesRead << " /8 : " << ((pScanOptions->TotalBytesRead) + 1) / 8 << std::endl;
-		CPPOUT << "NEW_SCAN, matches found " << get_match_count(DebuggedProc.mb) << " start condition : " << scan_condition << " start val : " << std::dec << start_val << " data size : " << data_size << std::endl;
+		fout << "NEW_SCAN, matches found " << get_match_count(DebuggedProc.mb) << " start condition : " << scan_condition << " start val : " << std::dec << start_val << " data size : " << data_size << std::endl;
 		break;
 	case NEXT_SCAN:
 		update_scan(this, scan, start_cond, start_val);
@@ -723,7 +843,7 @@ uint32_t SearchWindow::ReturnDataSize()
 	case DATA_SIZE::TWOBYTES_:
 		return 2;
 	case DATA_SIZE::INT32_:
-		return 4;
+		return sizeof(int);
 	case DATA_SIZE::INT64_:
 		return 8;
 	case DATA_SIZE::FLOAT_:

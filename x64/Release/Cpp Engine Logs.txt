@@ -1,18 +1,57 @@
 Process open with all access.
+Process open with all access.
 32 bit process.
-Entrypoint : 2fd0000 Base address : 0000000000400000
+32 bit process.
+Entrypoint : 560f40 Base address : 0000000000400000
 scan type 0
 asd 0
 Handle of process is still active
-creating scan took : 75.5464
-8 cores. each thread will scan for ace8c00 bytes.
-this thread will read that many bytes : acef000
-this thread will read that many bytes : ad20000
-this thread will read that many bytes : adbc000
-this thread will read that many bytes : ad29000
-this thread will read that many bytes : ae0e000
-this thread will read that many bytes : ad22000
-this thread will read that many bytes : af48000
+creating scan took : 3.04405
+You have : 8 cores.each thread will scan for 73be00 bytes.
+this thread will read that many bytes : dc1000
+this thread will read that many bytes : 73d000
+this thread will read that many bytes : 994000
+this thread will read that many bytes : 930000
+this thread will read that many bytes : ad6000
+end of update scan
+this thread will read that many bytes : 747000
+end of update scan
+this thread will not be launched
 end of update scan
 end of update scan
 end of update scan
+end of update scan
+end of update scan
+total threads : 7
+Creating scan and updating it took : 38.3072total bytes scanned 73b6010 /8 : e76c02
+NEW_SCAN, matches found 35db start condition : 1 start val : 5 data size : 4
+Scan performed. 13787 results.
+Whole first scan process took : 39.7091
+Whole first scan process took : 0.0745387
+scan type 0
+asd 0
+Handle of process is still active
+creating scan took : 4.66418
+You have : 8 cores.each thread will scan for 73be00 bytes.
+this thread will read that many bytes : dc1000
+this thread will read that many bytes : 73d000
+this thread will read that many bytes : 994000
+this thread will read that many bytes : 930000
+this thread will read that many bytes : ad6000
+this thread will read that many bytes : 747000
+end of update scan
+this thread will not be launched
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+total threads : 7
+Creating scan and updating it took : 42.4202total bytes scanned 73b6010 /8 : e76c02
+NEW_SCAN, matches found 3e6 start condition : 1 start val : 85 data size : 4
+result vector size 0
+result vector size 33754
+Scan performed. 998 results.
+Whole first scan process took : 374.193
+Whole first scan process took : 17.9

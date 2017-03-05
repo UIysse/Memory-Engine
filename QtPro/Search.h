@@ -15,6 +15,7 @@
 #include <sstream>
 #include <MemRead.h>
 #include "MyMutexes.h"
+#include "Logs.h"
 #define CPPOUT fout
 #define ALL_MEM_PROTECTS (PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY | PAGE_EXECUTE_READ | PAGE_EXECUTE | PAGE_READONLY)
 #define WRITABLE_EXECUTE (PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY)
@@ -25,6 +26,7 @@
 #define READONLY (PAGE_READONLY)
 class MemoryScanner;
 class SearchWindow;
+void OutputResultHardDisk(MEMBLOCK *mb_list, Ui_DialogResults* pResultWindow, SearchWindow* pSearchWindow, std::vector <uint64_t> &_vecResultsAddr2);
 typedef enum
 {
 	NEXT_SCAN,
@@ -265,8 +267,13 @@ public:
 			pScanOptions->GetValue(this, NEW_SCAN);
 			//different calls according to value size
 			mResultsVec.lock();
-			if (nResults < 150)
+			if (nResults < 1500)
 				print_matches(DebuggedProc.mb, _hResult, this);
+			LOUT << "Scan performed. " << nResults << " results." << std::endl;
+#ifdef DEBUG
+			std::vector <uint64_t> _vec;
+			OutputResultHardDisk (DebuggedProc.mb, _hResult, this, _vec);
+#endif
 			mResultsVec.unlock();
 			ShowResults(nResults);
 			if (ui.comboBScanType->currentIndex() == 3)

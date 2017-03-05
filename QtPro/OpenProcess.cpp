@@ -2,6 +2,9 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QDialog>
 #include <QCloseEvent>
+#include "DebuggedProcess.h"
+#include <string>
+#include <iostream>
 void OpenProcessClass::SelectProcess()
 {
 	QString strChosenProcess = this->ui.listView->currentItem()->text(2);

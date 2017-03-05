@@ -15,7 +15,12 @@ class GetPerf
 {
 	clock_t _start;
 	std::string _name;
+public:
 	GetPerf(std::string &name) : _name (name), _start(clock())
+	{
+
+	}
+	GetPerf(const char* name) : _name(name), _start(clock())
 	{
 
 	}

@@ -386,9 +386,15 @@ HANDLE  ReturnProcessHandle(QString Qstr)
 				//Stores the Process Id of the targeted process
 				DebuggedProc.targetPid = entry.th32ProcessID;
 				if (DebuggedProc.hwnd == 0)
+				{
 					fout << "Could not open process and get the rights." << endl;
+					LOUT << "Could not open process and get the rights." << endl;
+				}
 				else
+				{
 					fout << "Process open with all access." << endl;
+					LOUT << "Process open with all access." << endl;
+				}
 				PBOOL pbool = 0;
 				BOOL av;
 				pbool = &av;
@@ -397,11 +403,13 @@ HANDLE  ReturnProcessHandle(QString Qstr)
 				{
 					DebuggedProc.architecture = 0; // 0 for 32 bit : BEA engine doc.
 					fout << "32 bit process." << endl;
+					LOUT << "32 bit process." << endl;
 				}
 				else
 				{
 					DebuggedProc.architecture = 64;
 					fout << "64 bit process." << endl;
+					LOUT << "64 bit process." << endl;
 				}
 				Read();
 				HMODULE *modarray = new HMODULE[200];

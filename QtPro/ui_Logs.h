@@ -27,7 +27,7 @@ class Ui_Form
 {
 public:
 	QPlainTextEdit *plainTextEdit;
-
+	std::string str2;
 	void setupUi(QDialog *Form)
 	{
 		if (Form->objectName().isEmpty())
@@ -37,19 +37,8 @@ public:
 		plainTextEdit = new QPlainTextEdit(Form);
 		plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
 		plainTextEdit->setGeometry(QRect(0, 0, 265, 461));
-		std::ifstream fout("Cpp Engine Logs.txt");
-		std::string str;
-		std::string str2;
-		while (getline(fout, str))
-		{
-			str2 += str;
-			str2 += '\n';
-		}
-		plainTextEdit->setPlainText(str2.c_str());
 		plainTextEdit->setReadOnly(true);
-
 		retranslateUi(Form);
-
 		QMetaObject::connectSlotsByName(Form);
 	} // setupUi
 

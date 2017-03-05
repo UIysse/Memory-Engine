@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include "MemRead.h"
 #include "windows.h"
+#include "LogsOutput.h"
 #define DRIVOUT driveroutput
 void WriteTarget(int value, int address, int size);
 class DebuggedProcess
@@ -22,8 +23,15 @@ public :
 	int64_t addressOfInterest;
 	int64_t basePageAddress;
 	std::wstring wsChosenProc;
-
+	//windows of CppEngine
+	LogsOutput *pLogsOutput;
 	//functions
+	DebuggedProcess() : pLogsOutput(nullptr) {
+	}
+	~DebuggedProcess()
+	{
+
+	}
 	bool IsHandleValid() {
 		if (WAIT_TIMEOUT == WaitForSingleObject(this->hwnd, 0))
 		{
