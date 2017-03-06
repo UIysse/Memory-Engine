@@ -45,23 +45,13 @@ BOOL GetProcessList(QTreeWidget * listwidget);
 
 int insertDisas(MemoryViewer * aDialog)
 {
-	if (WAIT_TIMEOUT == WaitForSingleObject(DebuggedProc.hwnd, 0))
-		fout << "Handle of process is still active" << endl;
-	else
-		fout << "Handle is dead." << endl;
+	DebuggedProc.IsHandleValid();
 	if (!DebuggedProc.addressOfInterest)
 		fout << "error, no EIP used" << endl;
-	else
-	{
-		if (!DebuggedProc.bDriver)
-		DebuggedProc.mb = QueryMemoryAddrress(DebuggedProc.addressOfInterest);//create_scan(DebuggedProc.hwnd, 1);
-		else
-		//DebuggedProc.mb = QueryMemoryAddrressDriver(DebuggedProc.addressOfInterest);
+
 		DebuggedProc.mb = QueryMemoryAddrress(DebuggedProc.addressOfInterest);
-	}
 	if (DebuggedProc.mb)
 	{
-		//DebuggedProc.mb = create_scan(DebuggedProc.hwnd, 1);
 		ostringstream stre;
 		string str;
 		QTreeWidgetItem* itm;
@@ -93,8 +83,9 @@ int insertDisas(MemoryViewer * aDialog)
 		MyDisasm.VirtualAddr = DebuggedProc.addressOfInterest;
 		cout << "sizeof " << sizeof(MyDisasm.EIP) << endl;
 		cout << "start address : " << hex << MyDisasm.EIP << endl;
+		uint64_t nTotalBytesDisasembled = 0;
 		/* ============================= Loop for Disasm */
-		while ((i < 400)) {
+		while ((nTotalBytesDisasembled < DebuggedProc.mb->size)) {
 			itm = new QTreeWidgetItem(aDialog->ui.treeWidget);
 			itm->setFont(2, font); //font is created at the begining of the function
 			itm->setFont(0, font);
@@ -106,6 +97,7 @@ int insertDisas(MemoryViewer * aDialog)
 				len2 = len;
 			else
 				len2 = 1;
+			nTotalBytesDisasembled += len2;
 			str1[len2 * 2] = 0;//assigning null terminator to string
 			for (int u = 0; u < len2; ++u)
 			{
@@ -129,6 +121,24 @@ int insertDisas(MemoryViewer * aDialog)
 				str = stre.str();
 				itm->setText(0, str.c_str());
 				itm->setText(2, MyDisasm.CompleteInstr);
+				//06.03.17 draft color
+				string str5(MyDisasm.CompleteInstr);
+				auto ddd = str5.find("jn");
+				if (ddd != std::string::npos)
+				{
+					itm->setTextColor(2, Qt::red);
+					itm->setBackgroundColor(2, Qt::yellow);
+				}
+				else if (str5.find("call") != std::string::npos)
+				{
+					itm->setBackgroundColor(2, Qt::cyan);
+				}
+				else if (str5.find("jmp") != std::string::npos)
+				{
+					itm->setBackgroundColor(2, Qt::yellow);
+				}
+				else
+					itm->setTextColor(2, Qt::lightGray);
 				nTargetedProcessAddress += len;
 			}
 			else { //error
@@ -145,6 +155,7 @@ int insertDisas(MemoryViewer * aDialog)
 				++nTargetedProcessAddress;
 			}
 		};
+		LOUT << "total disa : "  << nTotalBytesDisasembled << " block size "  << DebuggedProc.mb->size << endl;
 		fout << "finished disasembling." << endl;
 	}
 	else
@@ -419,7 +430,14 @@ HANDLE  ReturnProcessHandle(QString Qstr)
 					fout << "64 bit process." << endl;
 					LOUT << "64 bit process." << endl;
 				}
-				Read();
+				if (Read())
+				{
+					LOUT << "Driver successfully loaded." << endl;
+				}
+				else
+				{
+					LOUT << "Error : Driver could not be loaded." << endl;
+				}
 				HMODULE *modarray = new HMODULE[200];
 				DWORD o;
 				if (0 == EnumProcessModules(DebuggedProc.hwnd, modarray, sizeof(HMODULE) * 200, &o))
@@ -432,6 +450,8 @@ HANDLE  ReturnProcessHandle(QString Qstr)
 				))
 					fout << "GetModuleInformation failed." << endl;
 				DebuggedProc.addressOfInterest = reinterpret_cast<int64_t>(lpmod.EntryPoint);
+				LOUT << "Module base address : 0x" >> reinterpret_cast<int64_t>(lpmod.lpBaseOfDll) << endl;
+				LOUT << "Module entry point : 0x" >> reinterpret_cast<int64_t>(lpmod.EntryPoint) << endl;
 				fout << "Entrypoint : " << hex << DebuggedProc.addressOfInterest << " Base address : " << lpmod.lpBaseOfDll << endl;
 				return DebuggedProc.hwnd;
 			}

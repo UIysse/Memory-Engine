@@ -65,7 +65,6 @@ inline void update_memblockEqual(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEA
 	if (mb->matches > 0)
 	{
 		T temp_val;
-		T prev_val;
 		bytes_left = mb->size;
 		total_read = 0;
 		int nMatches = 0;
@@ -77,7 +76,7 @@ inline void update_memblockEqual(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEA
 			
 			if (bytes_read != bytes_to_read) //This block is only entered if page is guarded (or gets unallocated) in which case mb->size = sizeof(T) which yields a false positive on first address of block
 			{
-				//CPPOUT << "test02 " << std::endl;
+				//gotta treat this for potential deallocation
 				//CPPOUT << "address read " <<  std::hex << reinterpret_cast<int>( mb->addr + total_read) << std::endl;
 				break; 
 			}
@@ -120,7 +119,6 @@ inline void update_memblockEqualNextScan(SearchWindow* cSearchWindint, MEMBLOCK 
 	int total_read;
 	int bytes_to_read;
 	int64_t bytes_read;
-	fout << "Start address scan this block : " << hex << (uint32_t)mb->addr << std::endl;
 	if (mb->matches > 0)
 	{
 		T temp_val;
@@ -156,17 +154,6 @@ inline void update_memblockEqualNextScan(SearchWindow* cSearchWindint, MEMBLOCK 
 
 				}
 			}
-			if (bytes_to_read == bytes_left) //this is true when the remaining memory to scan is smaller than the tempbuff array
-			{//if this is true we should remove the last few bytes of the block from search
-			 //for (int uoffset = 1; uoffset < sizeof(T); ++uoffset)
-			 //REMOVE_FROM_SEARCH(mb, (total_read + bytes_read - sizeof(T) + uoffset));
-			}
-			else
-			{//this is true if there is a larger amount of memory remaining to scan than tempbuff size, in which case we must scan the
-			 //tempbuff junctions
-			 //if (0)
-			 //bytes_read -= (sizeof(T)); //could be sizeof(T) -1
-			}
 			memmove(mb->buffer + total_read, tempbuf, bytes_read); //try memmove for optimisation // was memcpy
 			bytes_read -= (sizeof(T));//will move sizeof(T) more bytes every read than necessary, but must be here to avoid having bogus value for the last bytes of the mem block
 			bytes_left -= bytes_read;
@@ -187,16 +174,14 @@ inline void update_memblockEqualNextScan(SearchWindow* cSearchWindint, MEMBLOCK 
 	}
 }
 template <typename T>
-inline void update_memblockIncreased(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEARCH_CONDITION condition, T val)
+inline void update_memblockChanged(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEARCH_CONDITION condition, T val)
 {
-	CPPOUT << "update memblockIncreased" << std::endl;
 	uint32_t nOffsetUnit = cSearchWindint->pScanOptions->ScanOffset;
-	//CPPOUT << "val : " << val1 << " size : " << mb->data_size << std::endl;
-	unsigned char tempbuf[128 * 1024];//was static ! but then not stack allocated / not in cache ?? 128*1024
-	unsigned int bytes_left;
-	unsigned int total_read;
-	unsigned int bytes_to_read;
-	uint64_t bytes_read;
+	unsigned char tempbuf[128 * 1024 + sizeof(T)];//was static ! but then not stack allocated / not in cache ?? 128*1024
+	int bytes_left; //leave these as signed ints
+	int total_read;
+	int bytes_to_read;
+	int64_t bytes_read;
 	if (mb->matches > 0)
 	{
 		T temp_val;
@@ -204,18 +189,134 @@ inline void update_memblockIncreased(SearchWindow* cSearchWindint, MEMBLOCK *mb,
 		bytes_left = mb->size;
 		total_read = 0;
 		int nMatches = 0;
-		while (bytes_left)
+		while ((bytes_left > sizeof(T)))
 		{
 			bytes_to_read = (bytes_left > sizeof(tempbuf)) ? sizeof(tempbuf) : bytes_left;
-			ReadProcessMemory(mb->hProc, mb->addr + total_read, tempbuf, bytes_to_read, &bytes_read);
-			if (bytes_read != bytes_to_read)
+			ReadProcessMemory(mb->hProc, mb->addr + total_read, tempbuf, bytes_to_read, (uint64_t*)&bytes_read);
+
+			if (bytes_read != bytes_to_read) //This block is only entered if page is guarded (or gets unallocated) in which case mb->size = sizeof(T) which yields a false positive on first address of block
+			{
 				break;
-				unsigned int offset;
-				for (offset = 0; offset < bytes_read; offset += nOffsetUnit)
+			}
+			unsigned int offset;
+			for (offset = 0; offset + sizeof(T) - 1 < bytes_read; offset += nOffsetUnit)//; offset < (bytes_read - sizeof(T) + 1);
+			{
+				if (IS_IN_SEARCH(mb, (total_read + offset)))
 				{
+						temp_val = *((T*)&tempbuf[offset]);
+						prev_val = *((T*)&mb->buffer[total_read + offset]);
+					if (temp_val != prev_val)
+					{
+						++nMatches;
+					}
+					else
+					{
+						REMOVE_FROM_SEARCH(mb, (total_read + offset));
+					}
+
+				}
+			}
+			memmove(mb->buffer + total_read, tempbuf, bytes_read); //try memmove for optimisation // was memcpy
+			bytes_read -= (sizeof(T));//will move sizeof(T) more bytes every read than necessary, but must be here to avoid having bogus value for the last bytes of the mem block
+			bytes_left -= bytes_read;
+			total_read += bytes_read;
+		}
+		for (int uoffset = 1; uoffset < sizeof(T); ++uoffset) // bug if scan for 1 byte will leave out last byte of memory block
+			REMOVE_FROM_SEARCH(mb, (total_read + uoffset));
+		mb->size = total_read + sizeof(T);
+		mb->matches = nMatches;
+		cSearchWindint->pScanOptions->TotalBytesRead += (total_read + sizeof(T));
+	}
+}
+template <typename T>
+inline void update_memblockUnChanged(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEARCH_CONDITION condition, T val)
+{
+	uint32_t nOffsetUnit = cSearchWindint->pScanOptions->ScanOffset;
+	unsigned char tempbuf[128 * 1024 + sizeof(T)];//was static ! but then not stack allocated / not in cache ?? 128*1024
+	int bytes_left; //leave these as signed ints
+	int total_read;
+	int bytes_to_read;
+	int64_t bytes_read;
+	if (mb->matches > 0)
+	{
+		T temp_val;
+		T prev_val;
+		bytes_left = mb->size;
+		total_read = 0;
+		int nMatches = 0;
+		while ((bytes_left > sizeof(T)))
+		{
+			bytes_to_read = (bytes_left > sizeof(tempbuf)) ? sizeof(tempbuf) : bytes_left;
+			ReadProcessMemory(mb->hProc, mb->addr + total_read, tempbuf, bytes_to_read, (uint64_t*)&bytes_read);
+
+			if (bytes_read != bytes_to_read) //This block is only entered if page is guarded (or gets unallocated) in which case mb->size = sizeof(T) which yields a false positive on first address of block
+			{
+				break;
+			}
+			unsigned int offset;
+			for (offset = 0; offset + sizeof(T) - 1 < bytes_read; offset += nOffsetUnit)//; offset < (bytes_read - sizeof(T) + 1);
+			{
+				if (IS_IN_SEARCH(mb, (total_read + offset)))
+				{
+					temp_val = *((T*)&tempbuf[offset]);
+					prev_val = *((T*)&mb->buffer[total_read + offset]);
+					if (temp_val == prev_val)
+					{
+						++nMatches;
+					}
+					else
+					{
+						REMOVE_FROM_SEARCH(mb, (total_read + offset));
+					}
+
+				}
+			}
+			memmove(mb->buffer + total_read, tempbuf, bytes_read); //try memmove for optimisation // was memcpy
+			bytes_read -= (sizeof(T));//will move sizeof(T) more bytes every read than necessary, but must be here to avoid having bogus value for the last bytes of the mem block
+			bytes_left -= bytes_read;
+			total_read += bytes_read;
+		}
+		for (int uoffset = 1; uoffset < sizeof(T); ++uoffset) // bug if scan for 1 byte will leave out last byte of memory block
+			REMOVE_FROM_SEARCH(mb, (total_read + uoffset));
+		mb->size = total_read + sizeof(T);
+		mb->matches = nMatches;
+		cSearchWindint->pScanOptions->TotalBytesRead += (total_read + sizeof(T));
+	}
+}
+template <typename T>
+inline void update_memblockIncreased(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEARCH_CONDITION condition, T val)
+{
+	uint32_t nOffsetUnit = cSearchWindint->pScanOptions->ScanOffset;
+	//CPPOUT << "val : " << val1 << " size : " << mb->data_size << std::endl;
+	unsigned char tempbuf[128 * 1024 + sizeof(T)];//was static ! but then not stack allocated / not in cache ?? 128*1024
+	int bytes_left; //leave these as signed ints
+	int total_read;
+	int bytes_to_read;
+	int64_t bytes_read;
+	if (mb->matches > 0)
+	{
+		T temp_val;
+		T prev_val;
+		bytes_left = mb->size;
+		total_read = 0;
+		int nMatches = 0;
+		//CPPOUT << "Start address scan this block : "<< hex << mb->addr << std::endl;
+		while ((bytes_left > sizeof(T)))
+		{
+			bytes_to_read = (bytes_left > sizeof(tempbuf)) ? sizeof(tempbuf) : bytes_left;
+			ReadProcessMemory(mb->hProc, mb->addr + total_read, tempbuf, bytes_to_read, (uint64_t*)&bytes_read);
+
+			if (bytes_read != bytes_to_read) //This block is only entered if page is guarded (or gets unallocated) in which case mb->size = sizeof(T) which yields a false positive on first address of block
+			{
+				//gotta treat this for potential deallocation
+				//CPPOUT << "address read " <<  std::hex << reinterpret_cast<int>( mb->addr + total_read) << std::endl;
+				break;
+			}
+			unsigned int offset;
+			for (offset = 0; offset + sizeof(T) - 1 < bytes_read; offset += nOffsetUnit)//; offset < (bytes_read - sizeof(T) + 1);
+			{
 					if (IS_IN_SEARCH(mb, (total_read + offset)))
 					{
-						BOOL is_match = FALSE;
 						temp_val = *((T*)&tempbuf[offset]);
 						prev_val = *((T*)&mb->buffer[total_read + offset]);
 						if (temp_val > prev_val)
@@ -230,24 +331,27 @@ inline void update_memblockIncreased(SearchWindow* cSearchWindint, MEMBLOCK *mb,
 					}
 				}
 			memmove(mb->buffer + total_read, tempbuf, bytes_read); //try memmove for optimisation // was memcpy
+			bytes_read -= (sizeof(T));//will move sizeof(T) more bytes every read than necessary, but must be here to avoid having bogus value for the last bytes of the mem block
 			bytes_left -= bytes_read;
 			total_read += bytes_read;
 		}
 
-		mb->size = total_read;
+		for (int uoffset = 1; uoffset < sizeof(T); ++uoffset)
+			REMOVE_FROM_SEARCH(mb, (total_read + uoffset));
 		mb->matches = nMatches;
+		cSearchWindint->pScanOptions->TotalBytesRead += (total_read + sizeof(T));
 	}
 }
 template <typename T>
 inline void update_memblockDecreased(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEARCH_CONDITION condition, T val)
 {
 	uint32_t nOffsetUnit = cSearchWindint->pScanOptions->ScanOffset;
-	fout << "update memblockDecreased. val : "<< std::hex << val << " size of val : " << std::dec << sizeof(val) << std::endl;
+	//fout << "update memblockDecreased. val : "<< std::hex << val << " size of val : " << std::dec << sizeof(val) << std::endl;
 	unsigned char tempbuf[128 * 1024 + sizeof(T)];//was static ! but then not stack allocated / not in cache ?? 128*1024
-	unsigned int bytes_left;
-	unsigned int total_read;
-	unsigned int bytes_to_read;
-	uint64_t bytes_read;
+	int bytes_left; //leave these as signed ints
+	int total_read;
+	int bytes_to_read;
+	int64_t bytes_read;
 	if (mb->matches > 0)
 	{
 		T temp_val;
@@ -255,14 +359,19 @@ inline void update_memblockDecreased(SearchWindow* cSearchWindint, MEMBLOCK *mb,
 		bytes_left = mb->size;
 		total_read = 0;
 		int nMatches = 0;
-		while (bytes_left)
+		while ((bytes_left > sizeof(T)))
 		{
 			bytes_to_read = (bytes_left > sizeof(tempbuf)) ? sizeof(tempbuf) : bytes_left;
-			ReadProcessMemory(mb->hProc, mb->addr + total_read, tempbuf, bytes_to_read, &bytes_read);
-			if (bytes_read != bytes_to_read)
+			ReadProcessMemory(mb->hProc, mb->addr + total_read, tempbuf, bytes_to_read, (uint64_t*)&bytes_read);
+
+			if (bytes_read != bytes_to_read) //This block is only entered if page is guarded (or gets unallocated) in which case mb->size = sizeof(T) which yields a false positive on first address of block
+			{
+				//gotta treat this for potential deallocation
+				//CPPOUT << "address read " <<  std::hex << reinterpret_cast<int>( mb->addr + total_read) << std::endl;
 				break;
+			}
 			unsigned int offset;
-			for (offset = 0; (offset < (bytes_read - sizeof(T) +1)) ; offset += nOffsetUnit) 
+			for (offset = 0; offset + sizeof(T) - 1 < bytes_read; offset += nOffsetUnit)//; offset < (bytes_read - sizeof(T) + 1);
 			{
 				if ((IS_IN_SEARCH(mb, (total_read + offset))))//insert (offset + sizeof(T)) < bytes_read) check before reading for safety
 				{
@@ -279,23 +388,15 @@ inline void update_memblockDecreased(SearchWindow* cSearchWindint, MEMBLOCK *mb,
 
 				}
 			}
-			if (bytes_to_read == bytes_left) //this is true when the remaining memory to scan is smaller than the tempbuff array
-			{//if this is true we should remove the last few bytes of the block from search
-				for (int uoffset = 1; uoffset < sizeof(T) ; ++ uoffset)
-				REMOVE_FROM_SEARCH(mb, (total_read + bytes_read - sizeof(T) + uoffset));
-			} 
-			else 
-			{//this is true if there is a larger amount of memory remaining to scan than tempbuff size, in which case we must scan the
-				//tempbuff junctions
-				//if (0)
-					bytes_read -= (sizeof(T)); //could be sizeof(T) -1
-			}
 			memmove(mb->buffer + total_read, tempbuf, bytes_read); //try memmove for optimisation // was memcpy
+			bytes_read -= (sizeof(T));//will move sizeof(T) more bytes every read than necessary, but must be here to avoid having bogus value for the last bytes of the mem block
 			bytes_left -= bytes_read;
 			total_read += bytes_read;
 		}
-		mb->size = total_read;
+		for (int uoffset = 1; uoffset < sizeof(T); ++uoffset)
+			REMOVE_FROM_SEARCH(mb, (total_read + uoffset));
 		mb->matches = nMatches;
+		cSearchWindint->pScanOptions->TotalBytesRead += (total_read + sizeof(T));
 	}
 }
 template <typename T>
@@ -532,11 +633,7 @@ void update_scan(SearchWindow* cSearchWindint, MEMBLOCK *mb_list, SEARCH_CONDITI
 		}
 		else
 		{
-			while (mb)
-			{
-				update_memblockIncreased(cSearchWindint, mb, condition, val);
-				mb = mb->next;
-			}
+			;//leave as it is, else using unknown after first scan will reset all results (BAD)
 		}
 	case COND_DECREASED:
 		while (mb)
@@ -545,6 +642,35 @@ void update_scan(SearchWindow* cSearchWindint, MEMBLOCK *mb_list, SEARCH_CONDITI
 			mb = mb->next;
 		}
 		break;
+	case COND_INCREASED:
+		{
+			while (mb)
+			{
+				update_memblockIncreased(cSearchWindint, mb, condition, val);
+				mb = mb->next;
+			}
+		}
+		break;
+	case COND_CHANGED:
+	{
+		LOUT << "Changed scan" << endl;
+		while (mb)
+		{
+			update_memblockChanged(cSearchWindint, mb, condition, val);
+			mb = mb->next;
+		}
+	}
+	break;
+	case COND_UNCHANGED:
+	{
+		LOUT << "Unchanged scan" << endl;
+		while (mb)
+		{
+			update_memblockUnChanged(cSearchWindint, mb, condition, val);
+			mb = mb->next;
+		}
+	}
+	break;
 	}
 	CPPOUT << "end of update scan" << std::endl;
 }

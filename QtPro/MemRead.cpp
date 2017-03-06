@@ -94,7 +94,7 @@ MEMBLOCK * QueryMemoryAddrressDriver(int64_t addr)
 	mb->buffer = reinterpret_cast <unsigned char *>(malloc(0x1000));
 	mb->next = NULL;
 	fout << "Memory block was created" << endl;
-	 Read();
+	// Read();
 	return mb;
 }
 MEMBLOCK * QueryMemoryAddrress(int64_t addr)

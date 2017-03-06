@@ -21,4 +21,5 @@ public :
 	friend PRXY& operator<<(PRXY &prxyClass, const char *strArg);
 	friend PRXY& operator<<(PRXY &prxyClass, ostream_manipulator2 pf);
 	friend PRXY& operator<<(PRXY &prxyClass, uint64_t number);
+	friend PRXY& operator >> (PRXY &logsClass, uint64_t number);
 };

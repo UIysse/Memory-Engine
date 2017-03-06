@@ -79,7 +79,7 @@ enum SEARCH_CONDITION
 	COND_BIGGERTHAN,
 	COND_LOWERTHAN,
 	COND_UNCONDITIONAL,//unkowninitiavalue
-	COND_INCREASED = 3,
+	COND_INCREASED,
 	COND_DECREASED,
 	COND_CHANGED,
 	COND_UNCHANGED,
@@ -113,10 +113,10 @@ struct ScanParameterBase
 	//memory regions parameter
 	DWORD AcceptedMemoryState;
 
-	int8_t nValue8;
-	int16_t nValue16;
-	int32_t nValue32;
-	int64_t nValue64;
+	uint8_t nValue8;
+	uint16_t nValue16;
+	uint32_t nValue32;
+	uint64_t nValue64;
 
 	//Total bytes to be read
 	uint64_t TotalBytesRead;
@@ -283,7 +283,7 @@ public:
 				ui.comboBScanType->setCurrentIndex(0);
 			ui.pbNextScan->setDisabled(false);
 			ui.comboBScanType->clear();
-			ui.comboBScanType->addItems(QStringList() << "Exact Value" << "Bigger than.." << "Smaller than.." << "Increased value" << "Decreased value" << "Changed value" << "Unchanged Value");
+			ui.comboBScanType->addItems(QStringList() << "Exact Value" << "Bigger than.." << "Smaller than.." << "Unknown Value" << "Increased value" << "Decreased value" << "Changed value" << "Unchanged Value");
 		}
 		else
 		{

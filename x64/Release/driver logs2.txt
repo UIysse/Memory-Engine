@@ -22,8 +22,8 @@ C:\Windows\system32\IMM32.DLL
 C:\Windows\syswow64\MSCTF.dll
 C:\Windows\system32\uxtheme.dll
 C:\Windows\system32\msimg32.dll
-C:\Windows\system32\dwmapi.dll
 C:\Program Files (x86)\TeamViewer\tv_w32.dll
+C:\Windows\system32\dwmapi.dll
 C:\Windows\SYSTEM32\ntdll.dll
 C:\Windows\SYSTEM32\wow64.dll
 C:\Windows\SYSTEM32\wow64win.dll

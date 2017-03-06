@@ -93,6 +93,21 @@ PRXY& operator<<(PRXY &logsClass, uint64_t number) {
 	}
 	return logsClass;
 }
+PRXY& operator>>(PRXY &logsClass, uint64_t number) {
+	if (DebuggedProc.pLogsOutput)
+	{
+		fout << number;
+		stringstream ss;
+		ss << std::hex << number;
+		std::string str = ss.str();
+		DebuggedProc.pLogsOutput->pLogs->UpdateTextContent(str);
+	}
+	else
+	{
+		fout << number;
+	}
+	return logsClass;
+}
 PRXY LOUTlog() {
 	PRXY a;
 	return a;

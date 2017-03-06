@@ -1,4 +1,4 @@
 #pragma once
 #define ptr_t uint64_t
-void Read();
+bool Read();
 void TestDriver();

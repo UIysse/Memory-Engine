@@ -14,7 +14,7 @@ using namespace std;
 ofstream driveroutput("driver logs.txt");
 wofstream driveroutput2("driver logs2.txt");
 Process proc, thisProc; //Global definitions so that the handle remains valid outside Read's scope
-void Read()
+bool Read()
 {
 	
 	// proc, thisProc;
@@ -144,9 +144,13 @@ void Read()
 		else
 			DRIVOUT << "TestDriver: IOCTL_BLACKBONE_ENUM_REGIONS succeeded\r\n" << endl;
 			*/
+		return true;
 	}
 	else
+	{
 		DRIVOUT << "failed to load driver" << endl;
+		return false;
+	}
 }
 if (WAIT_TIMEOUT == WaitForSingleObject(DebuggedProc.hwnd, 0))
 DRIVOUT << "Handle of process is still active" << endl;
