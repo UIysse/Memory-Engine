@@ -171,6 +171,7 @@ public:
 		int32_t nRequiredProtectsWrite = ALL_MEM_PROTECTS;
 		int32_t nRequiredProtectsExecute = ALL_MEM_PROTECTS;
 		int32_t nRequiredProtectsCoW = ALL_MEM_PROTECTS; // implement this later
+		int32_t nBannedProtects = PAGE_GUARD;
 		switch (ui.cbWritable->checkState())
 		{
 		case Qt::PartiallyChecked:
@@ -212,6 +213,8 @@ public:
 			break;
 		}
 
+		if (nBannedProtects & meminfo.Protect) // if PAGE_GUARD flag is set, we won't map this section
+			return false;
 		if ((meminfo.State & MEM_COMMIT) && (meminfo.Protect & nAcceptedProtects))
 			if ((meminfo.Protect & nRequiredProtectsExecute) && (meminfo.Protect & nRequiredProtectsWrite) && (meminfo.Protect & nRequiredProtectsCoW))
 				return true;

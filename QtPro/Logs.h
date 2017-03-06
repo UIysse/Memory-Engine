@@ -7,7 +7,9 @@
 #include <fstream>
 #include "LogsOutput.h" //if we forward declare the class Logsoutput we will need to put constructor of Logs in a .cpp file
 #include "DebuggedProcess.h"
-#define LOUT (*(DebuggedProc.pLogsOutput))
+#define LOUT LOUTlog()
+
+PRXY LOUTlog();
 class Logs : public QDialog
 {
 	Q_OBJECT

@@ -2,6 +2,7 @@
 #include <fstream>
 #include "Logs.h"
 #include "LogsOutput.h"
+#include "DebuggedProcess.h"
 #include <iostream>
 #include <sstream>
 using namespace std;
@@ -35,12 +36,64 @@ LogsOutput& operator<<(LogsOutput &logsClass, uint64_t number) {
 	logsClass.pLogs->UpdateTextContent(str);
 	return logsClass;
 }
-/*
-LogsOutput& operator<<(LogsOutput &logsClass, size_t number) {
-	fout << number;
-	stringstream ss;
-	ss << number;
-	std::string str = ss.str();
-	logsClass.pLogs->UpdateTextContent(str);
+
+PRXY& operator<<(PRXY &logsClass, std::string &strArg) {
+	if (DebuggedProc.pLogsOutput)
+	{
+		fout << strArg;
+		DebuggedProc.pLogsOutput->pLogs->UpdateTextContent(strArg);
+	}
+	else
+	{
+		fout << strArg;
+	}
 	return logsClass;
-}*/
+}
+PRXY& operator<<(PRXY &logsClass, ostream_manipulator pf)
+{
+	if (DebuggedProc.pLogsOutput)
+	{
+		fout << endl;
+		std::string str = "\n";
+		DebuggedProc.pLogsOutput->pLogs->UpdateTextContent(str);
+	}
+	else
+	{
+		fout << endl;
+	}
+	return logsClass;
+}
+PRXY& operator<<(PRXY &logsClass, const char *strArg)
+{
+	if (DebuggedProc.pLogsOutput)
+	{
+		fout << strArg;
+		std::string str(strArg);
+		DebuggedProc.pLogsOutput->pLogs->UpdateTextContent(str);
+	}
+	else
+	{
+		fout << strArg;
+	}
+	return logsClass;
+}
+
+PRXY& operator<<(PRXY &logsClass, uint64_t number) {
+	if (DebuggedProc.pLogsOutput)
+	{
+		fout << number;
+		stringstream ss;
+		ss << std::dec << number;
+		std::string str = ss.str();
+		DebuggedProc.pLogsOutput->pLogs->UpdateTextContent(str);
+	}
+	else
+	{
+		fout << number;
+	}
+	return logsClass;
+}
+PRXY LOUTlog() {
+	PRXY a;
+	return a;
+}

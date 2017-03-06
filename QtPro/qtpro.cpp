@@ -65,6 +65,11 @@ int insertDisas(MemoryViewer * aDialog)
 		ostringstream stre;
 		string str;
 		QTreeWidgetItem* itm;
+		QFont font("Terminal");
+		font.setCapitalization(QFont::AllUppercase);
+		font.setPointSize(9);
+		font.setStretch(145);
+		font.setKerning(false);
 		/* ============================= Init datas */
 		DISASM MyDisasm;
 		int nfalse = 0, ntrue = 1;
@@ -91,6 +96,9 @@ int insertDisas(MemoryViewer * aDialog)
 		/* ============================= Loop for Disasm */
 		while ((i < 400)) {
 			itm = new QTreeWidgetItem(aDialog->ui.treeWidget);
+			itm->setFont(2, font); //font is created at the begining of the function
+			itm->setFont(0, font);
+			itm->setFont(1, font);
 			len = Disasm(&MyDisasm);
 			string str1;
 			int len2;//because len = -1 for unknown opcodes

@@ -1,17 +1,9 @@
-﻿  moc_InputComment.cpp
-  moc_InputGotoBox.cpp
-  moc_Logs.cpp
-  moc_MemoryViewer.cpp
+﻿  Moc'ing Search.h...
+  moc_InputComment.cpp
   moc_Results.cpp
   moc_Search.cpp
   moc_TypeBox.cpp
-  moc_qtpro.cpp
   InputComment.cpp
-  InputGotoBox.cpp
-  Logs.cpp
-  MemRead.cpp
-  MemoryViewer.cpp
-  OpenProcess.cpp
   Results.cpp
   Search.cpp
 Search.cpp(558): warning C4477: 'printf' : format string '%08x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'unsigned char *'
@@ -38,7 +30,6 @@ Search.cpp(123): warning C4311: 'type cast': pointer truncation from 'unsigned c
           ]
 Search.cpp(139): warning C4311: 'reinterpret_cast': pointer truncation from 'unsigned char *' to 'int'
   TypeBox.cpp
-  main.cpp
   qtpro.cpp
   Generating Code...
 c:\users\ulysse\documents\visual studio 2015\projects\qtpro\qtpro\search.cpp(856): warning C4715: 'SearchWindow::ReturnDataSize': not all control paths return a value

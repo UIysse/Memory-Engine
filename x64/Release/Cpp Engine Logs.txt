@@ -6,16 +6,16 @@ Entrypoint : 560f40 Base address : 0000000000400000
 scan type 0
 asd 0
 Handle of process is still active
-creating scan took : 3.04405
-You have : 8 cores.each thread will scan for 73be00 bytes.
+creating scan took : 3.31889
+You have : 8 cores.each thread will scan for 73c600 bytes.
 this thread will read that many bytes : dc1000
 this thread will read that many bytes : 73d000
-this thread will read that many bytes : 994000
+this thread will read that many bytes : 9a0000
 this thread will read that many bytes : 930000
-this thread will read that many bytes : ad6000
 end of update scan
-this thread will read that many bytes : 747000
+this thread will read that many bytes : ad4000
 end of update scan
+this thread will read that many bytes : 741000
 this thread will not be launched
 end of update scan
 end of update scan
@@ -23,35 +23,1877 @@ end of update scan
 end of update scan
 end of update scan
 total threads : 7
-Creating scan and updating it took : 38.3072total bytes scanned 73b6010 /8 : e76c02
-NEW_SCAN, matches found 35db start condition : 1 start val : 5 data size : 4
-Scan performed. 13787 results.
-Whole first scan process took : 39.7091
-Whole first scan process took : 0.0745387
+Creating scan and updating it took : 35.5719total bytes scanned 73c6000 /8 : e78c00
+NEW_SCAN, matches found 3e6 start condition : 1 start val : 85 data size : 4
+result vector size 0
+result vector size 998
+Scan performed. 998 results.
+Whole first scan process took : 106.869
+Whole first scan process took : 0.543543
 scan type 0
 asd 0
 Handle of process is still active
-creating scan took : 4.66418
-You have : 8 cores.each thread will scan for 73be00 bytes.
+creating scan took : 3.99153
+You have : 8 cores.each thread will scan for 73c600 bytes.
 this thread will read that many bytes : dc1000
 this thread will read that many bytes : 73d000
-this thread will read that many bytes : 994000
+this thread will read that many bytes : 9a0000
 this thread will read that many bytes : 930000
-this thread will read that many bytes : ad6000
-this thread will read that many bytes : 747000
 end of update scan
+end of update scan
+this thread will read that many bytes : ad4000
+this thread will read that many bytes : 741000
 this thread will not be launched
 end of update scan
 end of update scan
 end of update scan
 end of update scan
 end of update scan
+total threads : 7
+Creating scan and updating it took : 46.8828total bytes scanned 73c6000 /8 : e78c00
+NEW_SCAN, matches found 612 start condition : 1 start val : 89 data size : 4
+Scan performed. 1554 results.
+Whole first scan process took : 48.0723
+scan type 0
+Start address scan this block : 7ffe0000
+Start address scan this block : 7efe0000
+Start address scan this block : 7efdf000
+Start address scan this block : 7efde000
+Start address scan this block : 7efdb000
+Start address scan this block : 7efd8000
+Start address scan this block : 7efb0000
+Start address scan this block : 778b0000
+Start address scan this block : 77850000
+Start address scan this block : 77844000
+Start address scan this block : 77843000
+Start address scan this block : 77842000
+Start address scan this block : 77841000
+Start address scan this block : 77840000
+Start address scan this block : 77830000
+Start address scan this block : 77750000
+Start address scan this block : 77740000
+Start address scan this block : 7769e000
+Start address scan this block : 7769c000
+Start address scan this block : 7769b000
+Start address scan this block : 77699000
+Start address scan this block : 77698000
+Start address scan this block : 77697000
+Start address scan this block : 77695000
+Start address scan this block : 77694000
+Start address scan this block : 77693000
+Start address scan this block : 77692000
+Start address scan this block : 77663000
+Start address scan this block : 77561000
+Start address scan this block : 77560000
+Start address scan this block : 77287000
+Start address scan this block : 77284000
+Start address scan this block : 77282000
+Start address scan this block : 77281000
+Start address scan this block : 77280000
+Start address scan this block : 771e1000
+Start address scan this block : 771e0000
+Start address scan this block : 771d7000
+Start address scan this block : 771d6000
+Start address scan this block : 771d5000
+Start address scan this block : 771d4000
+Start address scan this block : 771c1000
+Start address scan this block : 771c0000
+Start address scan this block : 77176000
+Start address scan this block : 77174000
+Start address scan this block : 770f1000
+Start address scan this block : 770f0000
+Start address scan this block : 770b7000
+Start address scan this block : 770b3000
+Start address scan this block : 77041000
+Start address scan this block : 77040000
+Start address scan this block : 767c1000
+Start address scan this block : 767c0000
+Start address scan this block : 767be000
+Start address scan this block : 767ba000
+Start address scan this block : 763f1000
+Start address scan this block : 763f0000
+Start address scan this block : 763e8000
+Start address scan this block : 763e7000
+Start address scan this block : 763e1000
+Start address scan this block : 763e0000
+Start address scan this block : 76390000
+Start address scan this block : 76380000
+Start address scan this block : 76371000
+Start address scan this block : 76370000
+Start address scan this block : 762a0000
+Start address scan this block : 76290000
+Start address scan this block : 7610a000
+Start address scan this block : 76106000
+Start address scan this block : 75fc1000
+Start address scan this block : 75fc0000
+Start address scan this block : 75cf8000
+Start address scan this block : 75cf6000
+Start address scan this block : 75c71000
+Start address scan this block : 75c70000
+Start address scan this block : 75b33000
+Start address scan this block : 75b32000
+Start address scan this block : 75ae1000
+Start address scan this block : 75ae0000
+Start address scan this block : 7585e000
+Start address scan this block : 7585c000
+Start address scan this block : 75801000
+Start address scan this block : 75800000
+Start address scan this block : 757f0000
+Start address scan this block : 757e0000
+Start address scan this block : 757d0000
+Start address scan this block : 757b0000
+Start address scan this block : 757a0000
+Start address scan this block : 75790000
+Start address scan this block : 75730000
+Start address scan this block : 75720000
+Start address scan this block : 756b0000
+Start address scan this block : 756a0000
+Start address scan this block : 75583000
+Start address scan this block : 75581000
+Start address scan this block : 75541000
+Start address scan this block : 75540000
+Start address scan this block : 75520000
+Start address scan this block : 75510000
+Start address scan this block : 75500000
+Start address scan this block : 754f0000
+Start address scan this block : 75450000
+Start address scan this block : 75440000
+Start address scan this block : 75430000
+Start address scan this block : 75420000
+Start address scan this block : 75410000
+Start address scan this block : 753c0000
+Start address scan this block : 753b0000
+Start address scan this block : 75130000
+Start address scan this block : 75120000
+Start address scan this block : 75110000
+Start address scan this block : 750f0000
+Start address scan this block : 750e0000
+Start address scan this block : 750da000
+Start address scan this block : 750d9000
+Start address scan this block : 750d1000
+Start address scan this block : 750d0000
+Start address scan this block : 750bb000
+Start address scan this block : 750b9000
+Start address scan this block : 75081000
+Start address scan this block : 75080000
+Start address scan this block : 75073000
+Start address scan this block : 75072000
+Start address scan this block : 7506f000
+Start address scan this block : 7506e000
+Start address scan this block : 75021000
+Start address scan this block : 75020000
+Start address scan this block : 75015000
+Start address scan this block : 75014000
+Start address scan this block : 75011000
+Start address scan this block : 75010000
+Start address scan this block : 74f17000
+Start address scan this block : 74f16000
+Start address scan this block : 74f11000
+Start address scan this block : 74f10000
+Start address scan this block : 7429d000
+Start address scan this block : 74298000
+Start address scan this block : 7428c000
+Start address scan this block : 74261000
+Start address scan this block : 74260000
+Start address scan this block : 726af000
+Start address scan this block : 726ac000
+Start address scan this block : 72561000
+Start address scan this block : 72560000
+Start address scan this block : 72553000
+Start address scan this block : 72552000
+Start address scan this block : 72551000
+Start address scan this block : 72550000
+Start address scan this block : 71d00000
+Start address scan this block : 71cf0000
+Start address scan this block : 71ce1000
+Start address scan this block : 71ce0000
+Start address scan this block : 71ca0000
+Start address scan this block : 71c90000
+Start address scan this block : 6cc1e000
+Start address scan this block : 6cc1c000
+Start address scan this block : 6cc11000
+Start address scan this block : 6cc10000
+Start address scan this block : 55f0000
+Start address scan this block : 55e0000
+Start address scan this block : 55d0000
+Start address scan this block : 55c0000
+Start address scan this block : 55b0000
+Start address scan this block : 55a0000
+Start address scan this block : 5590000
+Start address scan this block : 5580000
+Start address scan this block : 5570000
+Start address scan this block : 5470000
+Start address scan this block : 5070000
+Start address scan this block : 4740000
+Start address scan this block : 4700000
+Start address scan this block : 46f0000
+Start address scan this block : 46e0000
+Start address scan this block : 46d0000
+Start address scan this block : 46c0000
+Start address scan this block : 46b0000
+Start address scan this block : 46a0000
+Start address scan this block : 4690000
+Start address scan this block : 4680000
+Start address scan this block : 4670000
+Start address scan this block : 45f0000
+Start address scan this block : 4320000
+Start address scan this block : 4220000
+Start address scan this block : 3ee0000
+Start address scan this block : 3edf000
+Start address scan this block : 1ae0000
+Start address scan this block : 1ad0000
+Start address scan this block : 1ac0000
+Start address scan this block : 1ab0000
+Start address scan this block : 1aa0000
+Start address scan this block : 1a90000
+Start address scan this block : 1900000
+Start address scan this block : 1800000
+Start address scan this block : 17f0000
+Start address scan this block : 17e0000
+Start address scan this block : 1660000
+Start address scan this block : 165d000
+Start address scan this block : 64b000
+Start address scan this block : 64a000
+Start address scan this block : 643000
+Start address scan this block : 641000
+Start address scan this block : 640000
+Start address scan this block : 63f000
+Start address scan this block : 63e000
+Start address scan this block : 63d000
+Start address scan this block : 63c000
+Start address scan this block : 63a000
+Start address scan this block : 638000
+Start address scan this block : 5b5000
+Start address scan this block : 5b4000
+Start address scan this block : 5a2000
+Start address scan this block : 5a0000
+Start address scan this block : 592000
+Start address scan this block : 590000
+Start address scan this block : 58e000
+Start address scan this block : 58d000
+Start address scan this block : 58b000
+Start address scan this block : 58a000
+Start address scan this block : 588000
+Start address scan this block : 585000
+Start address scan this block : 583000
+Start address scan this block : 580000
+Start address scan this block : 57e000
+Start address scan this block : 57b000
+Start address scan this block : 579000
+Start address scan this block : 578000
+Start address scan this block : 577000
+Start address scan this block : 565000
+Start address scan this block : 563000
+Start address scan this block : 562000
+Start address scan this block : 561000
+Start address scan this block : 401000
+Start address scan this block : 400000
+Start address scan this block : 3f0000
+Start address scan this block : 3e0000
+Start address scan this block : 2e0000
+Start address scan this block : 260000
+Start address scan this block : 250000
+Start address scan this block : 240000
+Start address scan this block : 200000
+Start address scan this block : 1f0000
+Start address scan this block : 1e0000
+Start address scan this block : 1b0000
+Start address scan this block : 1ac000
+Start address scan this block : 160000
+Start address scan this block : 150000
+Start address scan this block : 140000
+Start address scan this block : 130000
+Start address scan this block : c0000
+Start address scan this block : b0000
+Start address scan this block : a0000
+Start address scan this block : 90000
+Start address scan this block : 82000
+Start address scan this block : 40000
+Start address scan this block : 30000
+Start address scan this block : 20000
+Start address scan this block : 10000
+end of update scan
+result vector size 0
+result vector size 1
+Whole first scan process took : 0.0868337
+scan type 3
+Handle of process is still active
+creating scan took : 4.09143
+You have : 8 cores.each thread will scan for 73ea00 bytes.
+this thread will read that many bytes : dc1000
+this thread will read that many bytes : 798000
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+this thread will read that many bytes : 945000update memblockUnknown
+
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+this thread will read that many bytes : 930000
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+this thread will read that many bytes : ae6000
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+end of update scan
+end of update scan
+this thread will read that many bytes : 741000
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+end of update scan
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+this thread will not be launched
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+end of update scan
+update memblockUnknown
+update memblockUnknown
+end of update scan
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+end of update scan
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
+update memblockUnknown
 end of update scan
 total threads : 7
-Creating scan and updating it took : 42.4202total bytes scanned 73b6010 /8 : e76c02
-NEW_SCAN, matches found 3e6 start condition : 1 start val : 85 data size : 4
+Creating scan and updating it took : 23.2095total bytes scanned 39f5000 /8 : 73ea00
+NEW_SCAN, matches found 39f5000 start condition : 1 start val : 86 data size : 4
+Scan performed. 60772352 results.
+Whole first scan process took : 24.7094
+scan type 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+end of update scan
+scan type 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+end of update scan
+scan type 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+end of update scan
 result vector size 0
-result vector size 33754
-Scan performed. 998 results.
-Whole first scan process took : 374.193
-Whole first scan process took : 17.9
+result vector size 59
+scan type 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+end of update scan
+result vector size 0
+result vector size 25
+scan type 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+update memblockDecreased. val : 56 size of val : 4
+end of update scan
+result vector size 0
+result vector size 16
