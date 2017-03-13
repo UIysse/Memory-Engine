@@ -108,6 +108,65 @@ inline void update_memblockEqual(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEA
 		cSearchWindint->pScanOptions->TotalBytesRead += (total_read + sizeof(T));
 	}
 }
+template <>
+inline void update_memblockEqual(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEARCH_CONDITION condition, float val)
+{
+	typedef double T;
+	//CPPOUT << "update memblockEqual" << std::endl;
+	uint32_t nOffsetUnit = cSearchWindint->pScanOptions->ScanOffset;
+	LOUT << "scan float" << endl;
+	//CPPOUT << "val : " << val1 << " size : " << mb->data_size << std::endl;
+	unsigned char tempbuf[128 * 1024 + sizeof(T)];//was static ! but then not stack allocated / not in cache ?? 128*1024
+	int bytes_left; //leave these as signed ints
+	int total_read;
+	int bytes_to_read;
+	int64_t bytes_read;
+	if (mb->matches > 0)
+	{
+		T temp_val;
+		bytes_left = mb->size;
+		total_read = 0;
+		int nMatches = 0;
+		//CPPOUT << "Start address scan this block : "<< hex << mb->addr << std::endl;
+		while ((bytes_left > sizeof(T)))
+		{
+			bytes_to_read = (bytes_left > sizeof(tempbuf)) ? sizeof(tempbuf) : bytes_left;
+			ReadProcessMemory(mb->hProc, mb->addr + total_read, tempbuf, bytes_to_read, (uint64_t*)&bytes_read);
+
+			if (bytes_read != bytes_to_read) //This block is only entered if page is guarded (or gets unallocated) in which case mb->size = sizeof(T) which yields a false positive on first address of block
+			{
+				//gotta treat this for potential deallocation
+				//CPPOUT << "address read " <<  std::hex << reinterpret_cast<int>( mb->addr + total_read) << std::endl;
+				break;
+			}
+			unsigned int offset;
+			for (offset = 0; offset + sizeof(T) - 1 < bytes_read; offset += nOffsetUnit)//; offset < (bytes_read - sizeof(T) + 1);
+			{
+				//if (IS_IN_SEARCH(mb, (total_read + offset)))
+				{
+					temp_val = *((T*)&tempbuf[offset]);//significant performance hit if comparing the pointed value to val (instead of assigning it before compare)
+					if (temp_val == val)
+					{
+						++nMatches;
+					}
+					else
+					{
+						REMOVE_FROM_SEARCH(mb, (total_read + offset));
+					}
+
+				}
+			}
+			memmove(mb->buffer + total_read, tempbuf, bytes_read); //try memmove for optimisation // was memcpy
+			bytes_read -= (sizeof(T));//will move sizeof(T) more bytes every read than necessary, but must be here to avoid having bogus value for the last bytes of the mem block
+			bytes_left -= bytes_read;
+			total_read += bytes_read;
+		}
+		for (int uoffset = 1; uoffset < sizeof(T); ++uoffset)
+			REMOVE_FROM_SEARCH(mb, (total_read + uoffset));
+		mb->matches = nMatches;
+		cSearchWindint->pScanOptions->TotalBytesRead += (total_read + sizeof(T));
+	}
+}
 template <typename T>
 inline void update_memblockEqualNextScan(SearchWindow* cSearchWindint, MEMBLOCK *mb, SEARCH_CONDITION condition, T val)
 {
@@ -1046,14 +1105,17 @@ void ScanParameterBase::GetValue(SearchWindow * pSearchWindow, SCAN_CONDITION Ne
 		pSearchWindow->nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, this->nValue64, this->GlobalScanType, NewOrNext);
 		break;
 	case 5://float case, no hex float
+		LOUT << "test" << endl;
 			nFloat = TextValue.toFloat();
+			LOUT << "value as hex 0x" >> nFloat << endl;
 			nValue32 = *(reinterpret_cast<int*>(&nFloat));
-			pSearchWindow->nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, this->nValue32, this->GlobalScanType, NewOrNext);
+			pSearchWindow->nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, nFloat, this->GlobalScanType, NewOrNext);
 		break;
 	case 6:
 		dDouble = TextValue.toDouble();
+		LOUT << "value as hex 0x" >> dDouble << endl;
 		nValue64 = *(reinterpret_cast<int64_t*>(&dDouble));
-		pSearchWindow->nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, this->nValue64, this->GlobalScanType, NewOrNext);
+		pSearchWindow->nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, dDouble, this->GlobalScanType, NewOrNext);
 		break;
 	default:
 		QMessageBox::warning(pSearchWindow, "Error", "This value type is not supported yet", QMessageBox::Ok);

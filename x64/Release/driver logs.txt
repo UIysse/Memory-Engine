@@ -7,9 +7,9 @@ Entrypoint : 560f40
 non wow64 peb ft call
 ntQueryInformationProcess succeded.
 WinAPI readProcMEM succeded to retrieve PEB info
- pbi.PebBaseAddress : 0x000007FFFFFD5000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x13fe90000
+ pbi.PebBaseAddress : 0x000007FFFFFD7000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x13f9c0000
  pbi.PebBaseAddress : 0x5a4d
-Entrypoint : 13fed1480
+Entrypoint : 13fa05060
 						#######################   DRIVER LOADED   ##############
 non wow64 peb ft call
 ntQueryInformationProcess succeded.
