@@ -182,8 +182,8 @@ void QtPro::ShowPickProcess()
 	//ui.toolButton->setEnabled(false);
 	ui.toolButton->setDisabled(true);
 	OpenProcessClass* w = new OpenProcessClass(this, this);
-	w->show();
 	w->setAttribute(Qt::WA_DeleteOnClose);//takes care of releasing memory when the object is closed
+	w->show();
 	GetProcessList(w->ui.listView);
 }
 void QtPro::OpenHandle()
@@ -201,9 +201,17 @@ void foo(MemoryViewer * aDialog)
 
 void QtPro::ShowLogs()
 {
-	Logs * w = new Logs(this);
-	w->setAttribute(Qt::WA_DeleteOnClose);
-	w->show();
+	if (pLogsWindow == nullptr)
+	{
+		pLogsWindow = new Logs(this);
+		pLogsWindow->setAttribute(Qt::WA_DeleteOnClose);
+		pLogsWindow->show();
+	}
+	else
+	{
+		pLogsWindow->show();
+		pLogsWindow->activateWindow();
+	}
 }
 void QtPro::ShowSearch()
 {

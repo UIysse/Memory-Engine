@@ -33,7 +33,7 @@ public:
 		ui.plainTextEdit->setFont(font);
 		ui.plainTextEdit->setPlainText(ui.str2.c_str());
 		ui.plainTextEdit->show();
-		QTextCursor c = ui.plainTextEdit->textCursor(); // Copy assignement operator of QTextCurso gets called.
+		QTextCursor c = ui.plainTextEdit->textCursor(); // Copy assignement operator of QTextCursor gets called.
 		c.movePosition(QTextCursor::End);
 		ui.plainTextEdit->setTextCursor(c);
 		return true;

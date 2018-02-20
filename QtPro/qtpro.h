@@ -22,6 +22,7 @@ class QtPro : public QMainWindow
 
 public:
 	//About* w;
+	Logs *pLogsWindow;
 	QtPro(QWidget *parent = 0);
 	void closeDialog();
 	~QtPro();

@@ -1,21 +1,13 @@
 non wow64 peb ft call
 ntQueryInformationProcess succeded.
 WinAPI readProcMEM succeded to retrieve PEB info
- pbi.PebBaseAddress : 0x000000007EFDF000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x400000
+ pbi.PebBaseAddress : 0x000000B520819000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x7ff62b070000
  pbi.PebBaseAddress : 0x5a4d
-Entrypoint : 560f40
+Entrypoint : 7ff62b0b5e70
 non wow64 peb ft call
 ntQueryInformationProcess succeded.
 WinAPI readProcMEM succeded to retrieve PEB info
- pbi.PebBaseAddress : 0x000007FFFFFD7000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x13f9c0000
+ pbi.PebBaseAddress : 0x000000B520819000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x7ff62b070000
  pbi.PebBaseAddress : 0x5a4d
-Entrypoint : 13fa05060
-						#######################   DRIVER LOADED   ##############
-non wow64 peb ft call
-ntQueryInformationProcess succeded.
-WinAPI readProcMEM succeded to retrieve PEB info
- pbi.PebBaseAddress : 0x000000007EFDF000 Mutant : 0x ffffffffffffffff ImageBaseAddress  : 0x400000
- pbi.PebBaseAddress : 0x5a4d
-Entrypoint : 560f40
-peb.ImageBaseAddress : 0x400000
-cbneeded : f0
+Entrypoint : 7ff62b0b5e70
+failed to load driver

@@ -1,29 +1,8 @@
 Process open with all access.
 Process open with all access.
-32 bit process.
-32 bit process.
-Driver successfully loaded.
-Module base address : 0x4194304
-Module entry point : 0x5640000
-Entrypoint : 560f40 Base address : 0000000000400000
-scan type 0
-asd 0
-Handle of process is still active
-test
-value as hex 0x55
-creating scan took : 1.31045
-You have : 8 cores.each thread will scan for 4e400 bytes.
-this thread will read that many bytes : 66000
-this thread will read that many bytes : 51000
-scan floatthis thread will read that many bytes : 60000
-scan floatthis thread will read that many bytes : 12e000
-scan floatthis thread will not be launched
-scan floatscan float
-scan float
-scan float
-scan float
-scan float
-scan float
-scan float
-scan float
-end of update scan
+64 bit process.
+64 bit process.
+Error : Driver could not be loaded.
+Module base address : 0x140695260561408
+Module entry point : 0x140695260847728
+Entrypoint : 7ff62b0b5e70 Base address : 00007FF62B070000
