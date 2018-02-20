@@ -6,6 +6,7 @@
 #include "AboutCpp.h"
 #include "ui_qtpro.h"
 #include "Logs.h"
+#include "PointerHolder.h"
 //#include "ui_openProcess.h"
 //#include "ui_MemoryView.h"
 #include "ThreadList.h"
@@ -19,10 +20,9 @@ HANDLE  ReturnProcessHandle(QString Qstr);
 class QtPro : public QMainWindow
 {
 	Q_OBJECT
-
 public:
-	//About* w;
 	Logs *pLogsWindow;
+	HoldPtr _HoldPtr;
 	QtPro(QWidget *parent = 0);
 	void closeDialog();
 	~QtPro();

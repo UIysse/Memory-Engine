@@ -4,19 +4,30 @@
 #include <QFontDatabase>
 #include "ui_Logs.h"
 #include "MemRead.h"
+#include "PointerHolder.h"
+#include "qtpro.h"
 #include <fstream>
 #include "LogsOutput.h" //if we forward declare the class Logsoutput we will need to put constructor of Logs in a .cpp file
 #include "DebuggedProcess.h"
 #define LOUT LOUTlog()
-
+class HoldPtr;
 PRXY LOUTlog();
 class Logs : public QDialog
 {
 	Q_OBJECT
 public:
 	LogsOutput * pLogsOutput;
+	HoldPtr *_pHoldPtr;
 	Logs(QMainWindow * parent = 0) : pLogsOutput(new LogsOutput)//: QDialog(parent)
 	{
+		pLogsOutput->pLogs = this;
+		DebuggedProc.pLogsOutput = pLogsOutput;
+		this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+		ui.setupUi(this);
+	}
+	Logs(HoldPtr * pHoldPtr, QMainWindow * parent = 0) : pLogsOutput(new LogsOutput)//: QDialog(parent)
+	{
+		_pHoldPtr = pHoldPtr;
 		pLogsOutput->pLogs = this;
 		DebuggedProc.pLogsOutput = pLogsOutput;
 		this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
@@ -39,6 +50,7 @@ public:
 		return true;
 	}
 	~Logs(){
+		_pHoldPtr->pLogsWindow = false;
 		delete pLogsOutput;
 		DebuggedProc.pLogsOutput = nullptr;
 		pLogsOutput = nullptr;

@@ -276,6 +276,9 @@
     <ClInclude Include="LogsOutput.h">
       <Filter>Logs</Filter>
     </ClInclude>
+    <ClInclude Include="PointerHolder.h">
+      <Filter>QtPro</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="QtPro.rc" />

@@ -201,15 +201,15 @@ void foo(MemoryViewer * aDialog)
 
 void QtPro::ShowLogs()
 {
-	if (pLogsWindow == nullptr)
+	if (_HoldPtr.pLogsWindow == false)
 	{
-		pLogsWindow = new Logs(this);
+		_HoldPtr.pLogsWindow = true;
+		pLogsWindow = new Logs(&(this->_HoldPtr), this);
 		pLogsWindow->setAttribute(Qt::WA_DeleteOnClose);
 		pLogsWindow->show();
 	}
 	else
 	{
-		pLogsWindow->show();
 		pLogsWindow->activateWindow();
 	}
 }

@@ -1,8 +1,0 @@
-Process open with all access.
-Process open with all access.
-64 bit process.
-64 bit process.
-Error : Driver could not be loaded.
-Module base address : 0x140695260561408
-Module entry point : 0x140695260847728
-Entrypoint : 7ff62b0b5e70 Base address : 00007FF62B070000
