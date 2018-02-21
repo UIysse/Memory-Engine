@@ -1,0 +1,36 @@
+Process open with all access.
+Process open with all access.
+32 bit process.
+32 bit process.
+Error : Driver could not be loaded.
+Module base address : 0x140700456583168
+Module entry point : 0x140700456870736
+Entrypoint : 7ff760c06350 Base address : 00007FF760BC0000
+scan type 0
+asd 0
+Handle of process is still active
+creating scan took : 59.4263
+You have : 8 cores.each thread will scan for 61d0000 bytes.
+this thread will read that many bytes : 69ef000
+this thread will read that many bytes : 6fc8000
+this thread will read that many bytes : 6219000
+this thread will read that many bytes : 639f000
+this thread will read that many bytes : 629f000
+this thread will read that many bytes : 659c000
+this thread will read that many bytes : 61d7000
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+total threads : 8
+Creating scan and updating it took : 493.352total bytes scanned 61d00000 /8 : c3a0000
+NEW_SCAN, matches found 251 start condition : 1 start val : 93 data size : 4
+result vector size 0
+poke failed 
+val is : 0
+poke failed 
+val is : 0

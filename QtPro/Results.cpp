@@ -6,6 +6,7 @@
 #include "DebuggedProcess.h"
 #include "Results.h"
 #include "Modules.h"
+#include "PointerHolder.h"
 #include "MemRead.h"
 #include "Search.h"
 #include "InputComment.h"
@@ -22,6 +23,7 @@ void foo()
 }
 ResultsWindow::~ResultsWindow()
 {
+	_pHoldPtr->_bSearchWindow = 0;
 	_ThreadStayAlive = 0;
 	_th->join();
 	_th2->join();
@@ -89,7 +91,24 @@ ResultsWindow::ResultsWindow(QMainWindow* parent /*= 0*/) //: QDialog(parent)
 	this ->_th = new std::thread(&ResultsWindow::UpdateResultsValue, this);
 	this->_th2 = new std::thread(&ResultsWindow::UpdateSavedValue, this);
 }
-
+ResultsWindow::ResultsWindow(HoldPtr *pHoldPtr, QMainWindow* parent /*= 0*/) //: QDialog(parent)
+{
+	_pHoldPtr = pHoldPtr;
+	this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+	this->setWindowFlags(this->windowFlags() | Qt::CustomizeWindowHint | Qt::WindowMinimizeButtonHint | Qt::WindowMaximizeButtonHint);
+	this->move(0, 0);
+	ui.setupUi(this);
+	//must be placed after setupUi (probably the prepocessor needs treewidget pointer to actually know where it will point
+	QObject::connect(ui.treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddVariable(QTreeWidgetItem *, int)));
+	QObject::connect(ui.treeWidget_2, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddComment(QTreeWidgetItem *, int)));
+	//QObject::connect(this, SIGNAL(UpdateResultsContent(QTreeWidgetItem *, uint64_t)), this, SLOT(SetValues(QTreeWidgetItem *, uint64_t)));
+	QObject::connect(this, &ResultsWindow::UpdateResultsContent, this, &ResultsWindow::SetValues);
+	ui._vecResultsAddr.reserve(150);
+	ui._vecSavedAddr.reserve(150); // this means user cannot saved more than 150 addr or function will not remain thread safe
+	_ThreadStayAlive = 1;
+	this->_th = new std::thread(&ResultsWindow::UpdateResultsValue, this);
+	this->_th2 = new std::thread(&ResultsWindow::UpdateSavedValue, this);
+}
 void ResultsWindow::AddComment(QTreeWidgetItem * itm, int column)
 {
 	InputComment * pInputComment;

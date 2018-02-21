@@ -5,6 +5,7 @@
 #include "ui_Search.h"
 #include "Search.h"
 #include "ui_MemoryView.h"
+#include "PointerHolder.h"
 #include "MyMutexes.h"
 #include <Windows.h>
 #include <winnt.h>
@@ -19,9 +20,11 @@ class ResultsWindow : public QDialog
 {
 	Q_OBJECT
 public:
+	HoldPtr *_pHoldPtr;
 	void UpdateResultsValue();
 	void UpdateSavedValue();
 	ResultsWindow(QMainWindow* parent = 0);
+	ResultsWindow(HoldPtr *pHoldPtr, QMainWindow* parent = 0);
 	~ResultsWindow();
 	public slots:
 	void AddVariable(QTreeWidgetItem * itm, int column)

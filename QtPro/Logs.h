@@ -50,7 +50,7 @@ public:
 		return true;
 	}
 	~Logs(){
-		_pHoldPtr->pLogsWindow = false;
+		_pHoldPtr->_bLogsWindow = false;
 		delete pLogsOutput;
 		DebuggedProc.pLogsOutput = nullptr;
 		pLogsOutput = nullptr;

@@ -766,7 +766,7 @@ unsigned int peek(HANDLE hProc, int data_size, unsigned int addr)
 
 	if (ReadProcessMemory(hProc, (void*)addr, &val, data_size, NULL) == 0)
 	{
-		printf("poke failed\r\n");
+		LOUT << "poke failed " << endl;
 	}
 
 	return val;
@@ -786,19 +786,32 @@ void print_matches(MEMBLOCK *mb_list, Ui_DialogResults* pResultWindow, SearchWin
 			if (IS_IN_SEARCH(mb, offset))
 			{
 				uint64_t val = peek(mb->hProc, mb->data_size, (unsigned int)mb->addr + offset);
+				LOUT << "val is : " << val << endl;
 				str = pSearchWindow->ModMap->FetchModuleName(reinterpret_cast<int64_t>(mb->addr + offset));
 				if (str != "unknown")
 				{
 					QTreeWidgetItem * itm = new QTreeWidgetItem(pResultWindow->treeWidget);
 					itm->setText(0, ReturnStrFromHexaInt((int64_t)mb->addr + offset).c_str());
 					itm->setTextColor(0, Qt::darkGreen);
-					itm->setText(1, ReturnStrFromHexaInt(val).c_str());
+					//if (pSearchWindow->ui.cbHex->isChecked()) //doesnt work
+					//	itm->setText(1, ReturnStrFromHexaInt(val).c_str());
+					//else
+						itm->setText(1, ReturnStrFromDecInt(val).c_str());
 				}
 				else
 				{
 					QTreeWidgetItem * itm = new QTreeWidgetItem(pResultWindow->treeWidget);
 					itm->setText(0, ReturnStrFromHexaInt((int64_t)mb->addr + offset).c_str());
-					itm->setText(1, ReturnStrFromHexaInt(val).c_str());
+					if (pSearchWindow->ui.cbHex->isChecked())
+					{
+						itm->setText(1, ReturnStrFromHexaInt(val).c_str());
+						LOUT << "hex " << ReturnStrFromDecInt(val) << endl;
+					}
+					else
+					{
+						itm->setText(1, ReturnStrFromDecInt(val).c_str());
+						LOUT << "dec " << ReturnStrFromDecInt(val) << endl;
+					}
 				}
 				pResultWindow->_vecResultsAddr.push_back((int64_t)mb->addr + offset);
 			}

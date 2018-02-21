@@ -201,9 +201,9 @@ void foo(MemoryViewer * aDialog)
 
 void QtPro::ShowLogs()
 {
-	if (_HoldPtr.pLogsWindow == false)
+	if (_HoldPtr._bLogsWindow == false)
 	{
-		_HoldPtr.pLogsWindow = true;
+		_HoldPtr._bLogsWindow = true;
 		pLogsWindow = new Logs(&(this->_HoldPtr), this);
 		pLogsWindow->setAttribute(Qt::WA_DeleteOnClose);
 		pLogsWindow->show();
@@ -215,14 +215,23 @@ void QtPro::ShowLogs()
 }
 void QtPro::ShowSearch()
 {
-	ResultsWindow * t = new ResultsWindow(this);
-	t->setAttribute(Qt::WA_DeleteOnClose);
-	t->show();
-	SearchWindow * w = new SearchWindow(this);
-	w->setAttribute(Qt::WA_DeleteOnClose);
-	w->show();
-	w->_hResult = &t->ui;
-	t->pSearchWindow = &w->ui;
+	if (_HoldPtr._bSearchWindow == false)
+	{
+		_HoldPtr._bSearchWindow = true;
+		_pResultsWindow = new ResultsWindow(&this->_HoldPtr, this);
+		_pResultsWindow->setAttribute(Qt::WA_DeleteOnClose);
+		_pResultsWindow->show();
+		_pSearchWindow = new SearchWindow(&this->_HoldPtr, this);
+		_pSearchWindow->setAttribute(Qt::WA_DeleteOnClose);
+		_pSearchWindow->show();
+		_pSearchWindow->_hResult = &_pResultsWindow->ui;
+		_pResultsWindow->pSearchWindow = &_pSearchWindow->ui;
+	}
+	else //set pointers inside class
+	{
+		_pResultsWindow->activateWindow();
+		_pSearchWindow->activateWindow();
+	}
 }
 void QtPro::ShowModules()
 {

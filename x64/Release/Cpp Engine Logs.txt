@@ -1,0 +1,2266 @@
+Process open with all access.
+Process open with all access.
+32 bit process.
+32 bit process.
+Error : Driver could not be loaded.
+Module base address : 0x140700456583168
+Module entry point : 0x140700456870736
+Entrypoint : 7ff760c06350 Base address : 00007FF760BC0000
+scan type 0
+asd 0
+Handle of process is still active
+creating scan took : 110.329
+You have : 8 cores.each thread will scan for c8f3600 bytes.
+this thread will read that many bytes : e09e000
+this thread will read that many bytes : c9e6000
+this thread will read that many bytes : ca3a000
+this thread will read that many bytes : d7f4000
+this thread will read that many bytes : cb6c000
+this thread will read that many bytes : c945000
+this thread will read that many bytes : d148000
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+end of update scan
+total threads : 8
+Creating scan and updating it took : 952.732total bytes scanned c8f36000 /8 : 191e6c00
+NEW_SCAN, matches found 2e8 start condition : 1 start val : 93 data size : 4
+result vector size 0
+poke failed 
+val is : 0
+poke failed 
+val is : 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+poke failed 
+val is : 0
+dec 0
+result vector size 744
+Scan performed. 744 results.
+Whole first scan process took : 38173.3
+Whole first scan process took : 38173
