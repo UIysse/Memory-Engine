@@ -29,7 +29,11 @@ public:
 	void closeEvent(QCloseEvent *event)
 	{
 		//saves scan settings here
-		pSearchWindow->_Dialog->close();
+		if (pSearchWindow != nullptr)
+		{
+			pSearchWindow->_Dialog->close();
+			pSearchWindow = nullptr;
+		}
 	}
 	public slots:
 	void AddVariable(QTreeWidgetItem * itm, int column)

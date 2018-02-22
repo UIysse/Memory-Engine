@@ -1,18 +1,16 @@
-test ###. 18374686483949813760 results.
-test ###.  results.
-test ###.  results.
-test ###. 18374686483949813760 results.
-test ###. 18374686479671623680 results.
-test ###.  results.
-test ###.  results.
-test ###. 18438266710208405985 results.
-test ###. 18438266705915412480 results.
-test ###.  results.
-test ###.  results.
-test ###. 18438266705915412480 results.
-test ###.  results.
-test ###. 18374819344484925440 results.
-test ###. 18374819348763146455 results.
-test ###.  results.
-test ###.  results.
-test ###. 18438266705915412480 results.
+Process open with all access.
+Process open with all access.
+32 bit process.
+32 bit process.
+Error : Driver could not be loaded.
+Module base address : 0x140702480662528
+Module entry point : 0x140702480950224
+Entrypoint : 7ff7d96563d0 Base address : 00007FF7D9610000
+Process open with all access.
+Process open with all access.
+32 bit process.
+32 bit process.
+Error : Driver could not be loaded.
+Module base address : 0x7ff7d9610000
+Module entry point : 0x7ff7d96563d0
+Entrypoint : 7ff7d96563d0 Base address : 00007FF7D9610000

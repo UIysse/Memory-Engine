@@ -1014,20 +1014,20 @@ int SearchWindow::ui_run_scan(MEMBLOCK *scan1, uint32_t data_size, T start_val, 
 {
 	double PCFreq = 0.0;
 	__int64 CounterStart = 0;
-	scan = DebuggedProc.mb;
+	_mbScan = DebuggedProc.mb;
 	switch (scan_condition)
 	{
 	case NEW_SCAN:
 		PCFreq = 0.0;
 		CounterStart = 0;
 		StartCounter(CounterStart, PCFreq);
-		free_scan(scan);
+		free_scan(_mbScan);
 		DebuggedProc.mb = ui_new_scan(this, data_size, start_val, start_cond);
 		CPPOUT << "Creating scan and updating it took : " << GetCounter(CounterStart, PCFreq) << "total bytes scanned " << pScanOptions->TotalBytesRead << " /8 : " << ((pScanOptions->TotalBytesRead) + 1) / 8 << std::endl;
 		fout << "NEW_SCAN, matches found " << get_match_count(DebuggedProc.mb) << " start condition : " << scan_condition << " start val : " << std::dec << start_val << " data size : " << data_size << std::endl;
 		break;
 	case NEXT_SCAN:
-		update_scan(this, scan, start_cond, start_val);
+		update_scan(this, _mbScan, start_cond, start_val);
 		break;
 	}
 	return get_match_count(DebuggedProc.mb);

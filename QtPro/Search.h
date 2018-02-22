@@ -266,6 +266,7 @@ public:
 					if (!ui.cbHex->isChecked())//asserts we have no hex number when scanning with hex unchecked
 					{//better convert base 16 first and if the function fails then call the input incorrect
 						QMessageBox::warning(this, "Invalid number", "This isn't a decimal number.", QMessageBox::Ok);
+						return;
 					}
 			}
 			this->ModMap = new Mods;
@@ -367,14 +368,18 @@ public:
 	void closeEvent(QCloseEvent *event)
 	{
 		//saves scan settings here
-		_hResult->_Dialog->close();
+		if (_hResult != nullptr)
+		{
+			_hResult->_Dialog->close();
+			_hResult = nullptr;
+		}
 	}
 public:
 	Ui::Ui_Search ui;
 	//ResultsWindow *_hResult;
 	Ui_DialogResults *_hResult;
 	ScanParameterBase * pScanOptions;
-	MEMBLOCK *scan;
+	MEMBLOCK *_mbScan;
 	Mods *ModMap;
 	bool bInScan = 0;
 	uint64_t _nResults;
