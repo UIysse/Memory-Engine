@@ -36,7 +36,7 @@ QT_BEGIN_NAMESPACE
 class Ui_DialogSearch
 {
 public:
-
+	QDialog *_Dialog;
 	QDialogButtonBox *OkCancelBox;
 	QWidget *widget;
 	QHBoxLayout *horizontalLayout;
@@ -93,6 +93,7 @@ public:
 	}
 	void setupUi(QDialog *Dialog)
 	{
+		_Dialog = Dialog;
 		if (Dialog->objectName().isEmpty())
 			Dialog->setObjectName(QStringLiteral("Dialog"));
 		Dialog->setWindowIcon(QIcon("icons/CppEngine.ico"));
@@ -277,13 +278,14 @@ public:
 		pbFirstNewScan->setText(QApplication::translate("Dialog", "First Scan", 0));
 		pbNextScan->setText(QApplication::translate("Dialog", "Next Scan", 0));
 	} // retranslateUi
-
+	/*Exists in both Ui::Search and Dialog and is called by another one's destructor so that closing one of them closes the other.*/
 };
 
 
 class Ui_DialogResults
 {
 public:
+	QDialog *_Dialog;
 	QWidget *widget;
 	QVBoxLayout *verticalLayout;
 	QHBoxLayout *horizontalLayout;
@@ -298,6 +300,7 @@ public:
 	std::vector <uint64_t> _vecSavedAddr;
 	void setupUi(QDialog *Dialog)
 	{
+		_Dialog = Dialog;
 		if (Dialog->objectName().isEmpty())
 			Dialog->setObjectName(QStringLiteral("Dialog"));
 		Dialog->resize(800, 450);
@@ -361,7 +364,6 @@ public:
 		label->setText(QApplication::translate("Dialog", "Search Results : ", 0));
 		label_2->setText(QApplication::translate("Dialog", "0", 0));
 	} // retranslateUi
-
 };
 
 namespace Ui {

@@ -1094,41 +1094,41 @@ void ScanParameterBase::GetValue(SearchWindow * pSearchWindow, SCAN_CONDITION Ne
 			nValue8 = TextValue.toInt(0, 16);
 		else
 			nValue8 = TextValue.toInt(0, 10);
-		pSearchWindow->nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, this->nValue8, this->GlobalScanType, NewOrNext);
+		pSearchWindow->_nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, this->nValue8, this->GlobalScanType, NewOrNext);
 		break;
 	case 2:
 		if (this->CurrentScanHexValues)
 			nValue16 = TextValue.toInt(0, 16);
 		else
 			nValue16 = TextValue.toInt(0, 10);
-		pSearchWindow->nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, this->nValue16, this->GlobalScanType, NewOrNext);
+		pSearchWindow->_nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, this->nValue16, this->GlobalScanType, NewOrNext);
 		break;
 	case 3:
 		if (this->CurrentScanHexValues)
 			nValue32 = TextValue.toInt(0, 16);
 		else
 			nValue32 = TextValue.toInt(0, 10);
-		pSearchWindow->nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, this->nValue32, this->GlobalScanType, NewOrNext);
+		pSearchWindow->_nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, this->nValue32, this->GlobalScanType, NewOrNext);
 		break;
 	case 4:
 		if (this->CurrentScanHexValues)
 			nValue64 = TextValue.toLongLong(0, 16);
 		else
 			nValue64 = TextValue.toLongLong(0, 10);
-		pSearchWindow->nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, this->nValue64, this->GlobalScanType, NewOrNext);
+		pSearchWindow->_nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, this->nValue64, this->GlobalScanType, NewOrNext);
 		break;
 	case 5://float case, no hex float
 		LOUT << "test" << endl;
 			nFloat = TextValue.toFloat();
 			LOUT << "value as hex 0x" >> nFloat << endl;
 			nValue32 = *(reinterpret_cast<int*>(&nFloat));
-			pSearchWindow->nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, nFloat, this->GlobalScanType, NewOrNext);
+			pSearchWindow->_nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, nFloat, this->GlobalScanType, NewOrNext);
 		break;
 	case 6:
 		dDouble = TextValue.toDouble();
 		LOUT << "value as hex 0x" >> dDouble << endl;
 		nValue64 = *(reinterpret_cast<int64_t*>(&dDouble));
-		pSearchWindow->nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, dDouble, this->GlobalScanType, NewOrNext);
+		pSearchWindow->_nResults = pSearchWindow->ui_run_scan(DebuggedProc.mb, this->ValueSize, dDouble, this->GlobalScanType, NewOrNext);
 		break;
 	default:
 		QMessageBox::warning(pSearchWindow, "Error", "This value type is not supported yet", QMessageBox::Ok);

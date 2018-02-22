@@ -173,6 +173,12 @@
     <ClCompile Include="CheckPerformance.cpp">
       <Filter>CheckPerformance</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_TypeBox.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_AboutCpp.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qtpro.h">

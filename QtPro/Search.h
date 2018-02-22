@@ -25,6 +25,7 @@
 #define EXECUTE_WRITABLE (PAGE_EXECUTE_READ | PAGE_EXECUTE | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY)
 #define COPY_WRITE (PAGE_EXECUTE_WRITECOPY | PAGE_WRITECOPY)
 #define READONLY (PAGE_READONLY)
+#define NUMBER_DISPLAYED_RESULTS 1500
 class MemoryScanner;
 class SearchWindow;
 void OutputResultHardDisk(MEMBLOCK *mb_list, Ui_DialogResults* pResultWindow, SearchWindow* pSearchWindow, std::vector <uint64_t> &_vecResultsAddr2);
@@ -272,15 +273,15 @@ public:
 			pScanOptions->GetValue(this, NEW_SCAN);
 			//different calls according to value size
 			mResultsVec.lock();
-			if (nResults < 1500)
+			if (_nResults < NUMBER_DISPLAYED_RESULTS)
 				print_matches(DebuggedProc.mb, _hResult, this);
-			LOUT << "Scan performed. " << nResults << " results." << std::endl;
+			LOUT << "Scan performed. " << _nResults << " results." << std::endl;
 #ifdef DEBUG
 			std::vector <uint64_t> _vec;
 			OutputResultHardDisk (DebuggedProc.mb, _hResult, this, _vec);
 #endif
 			mResultsVec.unlock();
-			ShowResults(nResults);
+			ShowResults(_nResults);
 			if (ui.comboBScanType->currentIndex() == 3)
 				ui.comboBScanType->setCurrentIndex(0);
 			ui.pbNextScan->setDisabled(false);
@@ -290,7 +291,7 @@ public:
 		else
 		{
 			bInScan = 0;
-			nResults = 0;
+			_nResults = 0;
 			ui.comboBValueType->setDisabled(false);
 			ui.cbExecutable->setDisabled(false);
 			ui.cbWritable->setDisabled(false);
@@ -303,7 +304,7 @@ public:
 			_hResult->treeWidget->clear();
 			_hResult->_vecResultsAddr.clear(); // so that the other thread will notice and continue;
 			mResultsVec.unlock();
-			ShowResults(nResults);
+			ShowResults(_nResults);
 			delete ModMap;
 			this->ModMap = nullptr;
 			pScanOptions->TotalBytesRead = 0;
@@ -334,10 +335,10 @@ public:
 		pScanOptions->GetValue(this, NEXT_SCAN);
 		mResultsVec.lock();
 		_hResult->treeWidget->clear();
-		if (nResults < 150)
+		if (_nResults < NUMBER_DISPLAYED_RESULTS)
 			print_matches(DebuggedProc.mb, _hResult, this);
 		mResultsVec.unlock();
-		ShowResults(nResults);
+		ShowResults(_nResults);
 	}
 	SearchWindow(QMainWindow* parent = 0) //: QDialog(parent)
 	{
@@ -366,6 +367,7 @@ public:
 	void closeEvent(QCloseEvent *event)
 	{
 		//saves scan settings here
+		_hResult->_Dialog->close();
 	}
 public:
 	Ui::Ui_Search ui;
@@ -375,5 +377,5 @@ public:
 	MEMBLOCK *scan;
 	Mods *ModMap;
 	bool bInScan = 0;
-	uint64_t nResults;
+	uint64_t _nResults;
 };

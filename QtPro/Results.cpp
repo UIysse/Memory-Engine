@@ -83,10 +83,9 @@ ResultsWindow::ResultsWindow(QMainWindow* parent /*= 0*/) //: QDialog(parent)
 	//must be placed after setupUi (probably the prepocessor needs treewidget pointer to actually know where it will point
 	QObject::connect(ui.treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddVariable(QTreeWidgetItem *, int)));
 	QObject::connect(ui.treeWidget_2, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddComment(QTreeWidgetItem *, int)));
-	//QObject::connect(this, SIGNAL(UpdateResultsContent(QTreeWidgetItem *, uint64_t)), this, SLOT(SetValues(QTreeWidgetItem *, uint64_t)));
 	QObject::connect(this, &ResultsWindow::UpdateResultsContent, this, &ResultsWindow::SetValues);
-	ui._vecResultsAddr.reserve(150);
-	ui._vecSavedAddr.reserve(150); // this means user cannot saved more than 150 addr or function will not remain thread safe
+	ui._vecResultsAddr.reserve(NUMBER_DISPLAYED_RESULTS);
+	ui._vecSavedAddr.reserve(NUMBER_DISPLAYED_RESULTS); // this means user cannot saved more than 1500 addr or function will not remain thread safe
 	_ThreadStayAlive = 1;
 	this ->_th = new std::thread(&ResultsWindow::UpdateResultsValue, this);
 	this->_th2 = new std::thread(&ResultsWindow::UpdateSavedValue, this);

@@ -26,6 +26,11 @@ public:
 	ResultsWindow(QMainWindow* parent = 0);
 	ResultsWindow(HoldPtr *pHoldPtr, QMainWindow* parent = 0);
 	~ResultsWindow();
+	void closeEvent(QCloseEvent *event)
+	{
+		//saves scan settings here
+		pSearchWindow->_Dialog->close();
+	}
 	public slots:
 	void AddVariable(QTreeWidgetItem * itm, int column)
 	{
@@ -46,7 +51,7 @@ public:
 		}
 		QString text = itm->text(column);
 		if (text.toULongLong(0, 16) == nValue)
-			return; //changed values will now appear as red, nothing is changed otherwise
+			return; //changed values will now appear as red, nothing is changed otherwise //doesn't work because nValue is always 0
 		itm->setText(column, ReturnStrFromHexaInt(nValue).c_str());
 		if (column == 1)
 		itm->setTextColor(column, Qt::red);
