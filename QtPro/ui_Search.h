@@ -281,10 +281,12 @@ public:
 	/*Exists in both Ui::Search and Dialog and is called by another one's destructor so that closing one of them closes the other.*/
 };
 
+struct ScanParameterBase; //forward declare for the pointer, compile error if including Search.h
 
 class Ui_DialogResults
 {
 public:
+	ScanParameterBase *_pScanParameterBase;
 	QDialog *_Dialog;
 	QWidget *widget;
 	QVBoxLayout *verticalLayout;

@@ -179,6 +179,9 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_AboutCpp.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
+    <ClCompile Include="GlobalSearchHeader.cpp">
+      <Filter>Search</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qtpro.h">
@@ -284,6 +287,9 @@
     </ClInclude>
     <ClInclude Include="PointerHolder.h">
       <Filter>QtPro</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalSearchHeader.h">
+      <Filter>Search</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

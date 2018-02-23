@@ -149,7 +149,6 @@ class SearchWindow : public QDialog
 {
 	Q_OBJECT
 public:
-	HoldPtr *_pHoldPtr;
 	void someSlot() {
 		QMessageBox::StandardButton reply;
 		reply = QMessageBox::question(this, "Test", "Quit?",
@@ -341,19 +340,8 @@ public:
 		mResultsVec.unlock();
 		ShowResults(_nResults);
 	}
-	SearchWindow(QMainWindow* parent = 0) //: QDialog(parent)
+	SearchWindow(QMainWindow* parent) //: QDialog(parent)
 	{
-		this->setWindowFlags(this->windowFlags() ^ Qt::WindowContextHelpButtonHint);
-		this->setWindowFlags(this->windowFlags() | Qt::CustomizeWindowHint | Qt::WindowMinimizeButtonHint);
-		ui.setupUi(this);
-		QObject::connect(ui.cbAlwaysOnTop, &QCheckBox::clicked, this, &SearchWindow::IsSetOnTop);
-		QObject::connect(ui.pbFirstNewScan, &QPushButton::clicked, this, &SearchWindow::FirstScan);
-		QObject::connect(ui.pbNextScan, &QPushButton::clicked, this, &SearchWindow::NextScan);
-		pScanOptions = new ScanParameterBase();
-	}
-	SearchWindow(HoldPtr *pHoldPointer, QMainWindow* parent = 0) //: QDialog(parent)
-	{
-		_pHoldPtr = pHoldPointer;
 		this->setWindowFlags(this->windowFlags() ^ Qt::WindowContextHelpButtonHint);
 		this->setWindowFlags(this->windowFlags() | Qt::CustomizeWindowHint | Qt::WindowMinimizeButtonHint);
 		ui.setupUi(this);
@@ -363,7 +351,6 @@ public:
 		pScanOptions = new ScanParameterBase();
 	}
 	~SearchWindow() {
-		_pHoldPtr->_bSearchWindow = false;
 	}
 	void closeEvent(QCloseEvent *event)
 	{

@@ -11,6 +11,7 @@
 #include "Modules.h"
 #include "Search.h"
 #include "DebuggedProcess.h"
+#include "GlobalSearchHeader.h"
 #include "Logs.h"
 #include "MemRead.h"
 #include "Header.h"
@@ -215,22 +216,16 @@ void QtPro::ShowLogs()
 }
 void QtPro::ShowSearch()
 {
-	if (_HoldPtr._bSearchWindow == false)
+	if (_HoldPtr._bGlobalSearchInstance == false)
 	{
-		_HoldPtr._bSearchWindow = true;
-		_pResultsWindow = new ResultsWindow(&this->_HoldPtr, this);
-		_pResultsWindow->setAttribute(Qt::WA_DeleteOnClose);
-		_pResultsWindow->show();
-		_pSearchWindow = new SearchWindow(&this->_HoldPtr, this);
-		_pSearchWindow->setAttribute(Qt::WA_DeleteOnClose);
-		_pSearchWindow->show();
-		_pSearchWindow->_hResult = &_pResultsWindow->ui;
-		_pResultsWindow->pSearchWindow = &_pSearchWindow->ui;
+		if (_pGlobalSearchInstance != nullptr) //insures it has at least been created once before it gets deleted
+		delete _pGlobalSearchInstance;
+		_pGlobalSearchInstance = new GlobalSearchInstance(this, &_HoldPtr);
+		_HoldPtr._bGlobalSearchInstance = true; //Has to be last because the GlobalSearchInstance destructor will set _bGlobalSearchInstance to false
 	}
-	else //set pointers inside class
+	else
 	{
-		_pResultsWindow->activateWindow();
-		_pSearchWindow->activateWindow();
+		_pGlobalSearchInstance->ActivateWindows();
 	}
 }
 void QtPro::ShowModules()
@@ -252,7 +247,7 @@ void QtPro::ShowMemoryMap()
 	w->show();
 }
 QtPro::QtPro(QWidget *parent)
-	: QMainWindow(parent)
+	: QMainWindow(parent), _pGlobalSearchInstance(nullptr)
 {
 	ui.setupUi(this);
 	//setCentralWidget(ui.plainTextEdit);
@@ -447,14 +442,15 @@ HANDLE  ReturnProcessHandle(QString Qstr)
 					fout << "64 bit process." << endl;
 					LOUT << "64 bit process." << endl;
 				}
-				if (Read())
-				{
-					LOUT << "Driver successfully loaded." << endl;
-				}
-				else
-				{
-					LOUT << "Error : Driver could not be loaded." << endl;
-				}
+				//Not using driver for some times 23.03.2018
+				//if (Read())
+				//{
+				//	LOUT << "Driver successfully loaded." << endl;
+				//}
+				//else
+				//{
+				//	LOUT << "Error : Driver could not be loaded." << endl;
+				//}
 				HMODULE *modarray = new HMODULE[200];
 				DWORD o;
 				if (0 == EnumProcessModules(DebuggedProc.hwnd, modarray, sizeof(HMODULE) * 200, &o))

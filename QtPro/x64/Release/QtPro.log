@@ -1,38 +1,6 @@
-﻿  Moc'ing Search.h...
-  moc_InputComment.cpp
-  moc_Results.cpp
-  moc_Search.cpp
-  moc_TypeBox.cpp
-  InputComment.cpp
-  Results.cpp
-  Search.cpp
-Search.cpp(743): warning C4477: 'printf' : format string '%08x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'unsigned char *'
-Search.cpp(743): warning C4313: 'printf': '%x' in format string conflicts with argument 1 of type 'unsigned char *'
-Search.cpp(757): warning C4312: 'type cast': conversion from 'unsigned int' to 'void *' of greater size
-Search.cpp(767): warning C4312: 'type cast': conversion from 'unsigned int' to 'void *' of greater size
-Search.cpp(788): warning C4311: 'type cast': pointer truncation from 'unsigned char *' to 'unsigned int'
-Search.cpp(837): warning C4311: 'type cast': pointer truncation from 'unsigned char *' to 'unsigned int'
-Search.cpp(196): warning C4311: 'reinterpret_cast': pointer truncation from 'unsigned char *' to 'int'
-  Search.cpp(664): note: see reference to function template instantiation 'void update_memblockEqualNextScan<T>(SearchWindow *,MEMBLOCK *,SEARCH_CONDITION,T)' being compiled
-          with
-          [
-              T=uint8_t
-          ]
-  Search.cpp(1030): note: see reference to function template instantiation 'void update_scan<T>(SearchWindow *,MEMBLOCK *,SEARCH_CONDITION,T)' being compiled
-          with
-          [
-              T=uint8_t
-          ]
-  Search.cpp(1097): note: see reference to function template instantiation 'int SearchWindow::ui_run_scan<uint8_t>(MEMBLOCK *,uint32_t,T,SEARCH_CONDITION,SCAN_CONDITION)' being compiled
-          with
-          [
-              T=uint8_t
-          ]
-  TypeBox.cpp
+﻿  GlobalSearchHeader.cpp
   qtpro.cpp
   Generating Code...
-d:\github projects\memory-engine\qtpro\search.cpp(1054): warning C4715: 'SearchWindow::ReturnDataSize': not all control paths return a value
-d:\github projects\memory-engine\qtpro\results.cpp(132): warning C4700: uninitialized local variable 'pInputComment' used
   BlackBone.lib(ProcessCore.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
      Creating library D:\GitHub Projects\Memory-Engine\x64\Release\QtPro.lib and object D:\GitHub Projects\Memory-Engine\x64\Release\QtPro.exp
   Generating code

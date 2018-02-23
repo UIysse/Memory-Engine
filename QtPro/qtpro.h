@@ -16,6 +16,7 @@
 //#include "ui_ShowDLLs.h
 class ResultsWindow; //forward declaring those classes for sole pointer use works whereas including their headers results in compiler error
 class SearchWindow;
+class GlobalSearchInstance;
 class MemoryViewer; // allows declaration prototype for inserDisas
 int insertDisas(MemoryViewer * aDialog);
 HANDLE  ReturnProcessHandle(QString Qstr);
@@ -23,6 +24,7 @@ class QtPro : public QMainWindow
 {
 	Q_OBJECT
 public:
+	GlobalSearchInstance *_pGlobalSearchInstance;
 	Logs *pLogsWindow;
 	SearchWindow *_pSearchWindow;
 	ResultsWindow *_pResultsWindow;

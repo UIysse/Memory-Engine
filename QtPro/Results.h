@@ -20,11 +20,9 @@ class ResultsWindow : public QDialog
 {
 	Q_OBJECT
 public:
-	HoldPtr *_pHoldPtr;
 	void UpdateResultsValue();
 	void UpdateSavedValue();
-	ResultsWindow(QMainWindow* parent = 0);
-	ResultsWindow(HoldPtr *pHoldPtr, QMainWindow* parent = 0);
+	ResultsWindow(QMainWindow* parent, HoldPtr *pHoldPtr);
 	~ResultsWindow();
 	void closeEvent(QCloseEvent *event)
 	{
@@ -64,6 +62,7 @@ public:
 signals:
 	void UpdateResultsContent(QTreeWidgetItem *, unsigned long long, int, bool);
 public:
+	HoldPtr *_pHoldPtr;
 	std::thread* _th;
 	std::thread* _th2;
 	std::atomic<bool> _ThreadStayAlive;
