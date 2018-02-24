@@ -22,17 +22,10 @@ class ResultsWindow : public QDialog
 public:
 	void UpdateResultsValue();
 	void UpdateSavedValue();
+	void closeEvent(QCloseEvent *event); //Maintain this name (no upper C letter) because it is overloading Qt's function
+	ResultsWindow() = delete;
 	ResultsWindow(QMainWindow* parent, HoldPtr *pHoldPtr);
 	~ResultsWindow();
-	void closeEvent(QCloseEvent *event)
-	{
-		//saves scan settings here
-		if (pSearchWindow != nullptr)
-		{
-			pSearchWindow->_Dialog->close();
-			pSearchWindow = nullptr;
-		}
-	}
 	public slots:
 	void AddVariable(QTreeWidgetItem * itm, int column)
 	{
@@ -63,8 +56,6 @@ signals:
 	void UpdateResultsContent(QTreeWidgetItem *, unsigned long long, int, bool);
 public:
 	HoldPtr *_pHoldPtr;
-	std::thread* _th;
-	std::thread* _th2;
 	std::atomic<bool> _ThreadStayAlive;
 	Ui_DialogResults ui;
 	Ui_DialogSearch *pSearchWindow;

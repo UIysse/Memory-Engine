@@ -23,12 +23,12 @@ void foo()
 }
 ResultsWindow::~ResultsWindow()
 {
+	mResultsVec.lock();
+	mSavedVec.lock();
 	_pHoldPtr->_bGlobalSearchInstance = false;
 	_ThreadStayAlive = 0;
-	_th->join();
-	_th2->join();
-	delete _th;
-	delete _th2;
+	mSavedVec.unlock();
+	mResultsVec.unlock(); //in case global search is performing
 }
 //should be templated
 void ResultsWindow::UpdateResultsValue()
@@ -83,14 +83,14 @@ ResultsWindow::ResultsWindow(QMainWindow* parent, HoldPtr *pHoldPtr /*= 0*/) //:
 	this->move(0, 0);
 	ui.setupUi(this);
 	//must be placed after setupUi (probably the prepocessor needs treewidget pointer to actually know where it will point
-	QObject::connect(ui.treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddVariable(QTreeWidgetItem *, int)));
+	//QObject::connect(ui.treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddVariable(QTreeWidgetItem *, int)));
 	QObject::connect(ui.treeWidget_2, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddComment(QTreeWidgetItem *, int)));
 	QObject::connect(this, &ResultsWindow::UpdateResultsContent, this, &ResultsWindow::SetValues);
 	ui._vecResultsAddr.reserve(NUMBER_DISPLAYED_RESULTS);
 	ui._vecSavedAddr.reserve(NUMBER_DISPLAYED_RESULTS); // this means user cannot saved more than 1500 addr or function will not remain thread safe
 	_ThreadStayAlive = 1;
-	this ->_th = new std::thread(&ResultsWindow::UpdateResultsValue, this);
-	this->_th2 = new std::thread(&ResultsWindow::UpdateSavedValue, this);
+	//this ->_th = new std::thread(&ResultsWindow::UpdateResultsValue, this);
+	//this->_th2 = new std::thread(&ResultsWindow::UpdateSavedValue, this);
 }
 void ResultsWindow::AddComment(QTreeWidgetItem * itm, int column)
 {
@@ -117,5 +117,14 @@ void ResultsWindow::AddComment(QTreeWidgetItem * itm, int column)
 		pTypeBox->setAttribute(Qt::WA_DeleteOnClose);
 		pTypeBox->show();
 		break;
+	}
+}
+void ResultsWindow::closeEvent(QCloseEvent *event)
+{
+	//saves scan settings here
+	if (pSearchWindow != nullptr)
+	{
+		pSearchWindow->_Dialog->close();
+		pSearchWindow = nullptr;
 	}
 }

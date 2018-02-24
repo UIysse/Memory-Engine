@@ -149,80 +149,12 @@ class SearchWindow : public QDialog
 {
 	Q_OBJECT
 public:
-	void someSlot() {
-		QMessageBox::StandardButton reply;
-		reply = QMessageBox::question(this, "Test", "Quit?",
-			QMessageBox::Yes | QMessageBox::No);
-		if (reply == QMessageBox::Yes) {
-			//QApplication::quit();
-		}
-		else {
-
-		}
-	}
+	void someSlot();
 	template <typename T>
 	int ui_run_scan(MEMBLOCK *scan1, uint32_t data_size, T start_val, SEARCH_CONDITION start_cond, SCAN_CONDITION scan_condition);
 	uint32_t ReturnDataSize();
-	void ShowResults(uint64_t nResults)
-	{
-		_hResult->label_2->setText(ReturnStrFromDecInt(nResults).c_str());
-	}
-	bool FilterRegions(MEMORY_BASIC_INFORMATION &meminfo)
-	{
-		int32_t nAcceptedProtects= ALL_MEM_PROTECTS;
-		int32_t nRequiredProtectsWrite = ALL_MEM_PROTECTS;
-		int32_t nRequiredProtectsExecute = ALL_MEM_PROTECTS;
-		int32_t nRequiredProtectsCoW = ALL_MEM_PROTECTS; // implement this later
-		int32_t nBannedProtects = PAGE_GUARD;
-		switch (ui.cbWritable->checkState())
-		{
-		case Qt::PartiallyChecked:
-			break;
-		case Qt::Checked:
-			nRequiredProtectsWrite = 0;
-			nRequiredProtectsWrite = (WRITABLE_EXECUTE); // we add required flags accordingly and non matching zones will then be excluded
-			break;
-		case Qt::Unchecked:
-			nAcceptedProtects |= (WRITABLE_EXECUTE); //useless but better be safe than sorry
-			nAcceptedProtects ^= (WRITABLE_EXECUTE); // all mem protect flags are up at the start, we remove them accordingly with unchecked boxes
-			break;
-		}
-
-		if (ui.cbExecutable->checkState() == Qt::PartiallyChecked)
-			;
-		else if (ui.cbExecutable->checkState() == Qt::Checked)
-		{
-			nRequiredProtectsExecute = 0;
-			nRequiredProtectsExecute = (EXECUTE_WRITABLE);
-		}
-		else if (ui.cbExecutable->checkState() == Qt::Unchecked)
-		{
-			nAcceptedProtects |= EXECUTE_WRITABLE; // we don't know what we kicked off so we make sure they are all present before xoring
-			nAcceptedProtects ^= EXECUTE_WRITABLE;
-		}
-
-		switch (ui.cbCopyOnWrite->checkState())
-		{
-		case Qt::PartiallyChecked:
-			break;
-		case Qt::Checked:
-			nRequiredProtectsCoW = 0;
-			nRequiredProtectsCoW = (COPY_WRITE); // we add required flags accordingly and non matching zones will then be excluded
-			break;
-		case Qt::Unchecked:
-			nAcceptedProtects |= (COPY_WRITE); //useless but better be safe than sorry
-			nAcceptedProtects ^= (COPY_WRITE); // all mem protect flags are up at the start, we remove them accordingly with unchecked boxes
-			break;
-		}
-
-		if (nBannedProtects & meminfo.Protect) // if PAGE_GUARD flag is set, we won't map this section
-			return false;
-		if ((meminfo.State & MEM_COMMIT) && (meminfo.Protect & nAcceptedProtects))
-			if ((meminfo.Protect & nRequiredProtectsExecute) && (meminfo.Protect & nRequiredProtectsWrite) && (meminfo.Protect & nRequiredProtectsCoW))
-				return true;
-
-			return false;
-	}
+	void ShowResults(uint64_t nResults);
+	bool FilterRegions(MEMORY_BASIC_INFORMATION &meminfo);
 	void IsSetOnTop() {
 		if (ui.cbAlwaysOnTop->checkState())
 		{
@@ -340,7 +272,7 @@ public:
 		mResultsVec.unlock();
 		ShowResults(_nResults);
 	}
-	SearchWindow(QMainWindow* parent) //: QDialog(parent)
+	SearchWindow(QMainWindow* parent) 
 	{
 		this->setWindowFlags(this->windowFlags() ^ Qt::WindowContextHelpButtonHint);
 		this->setWindowFlags(this->windowFlags() | Qt::CustomizeWindowHint | Qt::WindowMinimizeButtonHint);
@@ -352,18 +284,9 @@ public:
 	}
 	~SearchWindow() {
 	}
-	void closeEvent(QCloseEvent *event)
-	{
-		//saves scan settings here
-		if (_hResult != nullptr)
-		{
-			_hResult->_Dialog->close();
-			_hResult = nullptr;
-		}
-	}
+	void closeEvent(QCloseEvent *event);
 public:
 	Ui::Ui_Search ui;
-	//ResultsWindow *_hResult;
 	Ui_DialogResults *_hResult;
 	ScanParameterBase * pScanOptions;
 	MEMBLOCK *_mbScan;

@@ -1,9 +1,13 @@
 #pragma once
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QDialog>
 #include <thread>
 #include "Search.h"
 #include "Results.h"
-class GlobalSearchInstance
+#include <qobject.h>
+class GlobalSearchInstance : public QObject
 {
+	Q_OBJECT
 public:
 	//objects
 	HoldPtr *_HoldPtr;
@@ -11,10 +15,16 @@ public:
 	SearchWindow *_pSearchWindow;
 	std::thread* _th;
 	std::thread* _th2;
-	std::atomic<bool> _ThreadStayAlive; // put it in ResultsWindow and let threads here
 	//functions
 	GlobalSearchInstance() = delete;
 	GlobalSearchInstance(QMainWindow *parent, HoldPtr *pHoldPtr);
 	void ActivateWindows(); //Will bring Result and Search dialogs to front.
+	void GlobalSearchInstance::UpdateResultsValue();
+	void GlobalSearchInstance::SetValues(QTreeWidgetItem * itm, unsigned long long nValue, int column, bool bValidMemory);
+	void GlobalSearchInstance::UpdateSavedValue();
+	void GlobalSearchInstance::ConnectSlots(); //call this ft after ui are setup.
 	~GlobalSearchInstance();
+	//slots
+	public slots:
+	void AddVariable(QTreeWidgetItem * itm, int column);
 };
