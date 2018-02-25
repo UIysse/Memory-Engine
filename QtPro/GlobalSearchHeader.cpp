@@ -1,7 +1,10 @@
 #include"GlobalSearchHeader.h"
+#include "InputComment.h"
+#include "TypeBox.h"
 
 GlobalSearchInstance::GlobalSearchInstance(QMainWindow *parent, HoldPtr *pHoldPtr)
 {
+	_pQMainWindow = parent;
 	_HoldPtr = pHoldPtr;
 	_pResultsWindow = new ResultsWindow(parent, pHoldPtr);
 	_pResultsWindow->setAttribute(Qt::WA_DeleteOnClose);
@@ -88,6 +91,33 @@ void GlobalSearchInstance::AddVariable(QTreeWidgetItem * itm, int column)
 	_pResultsWindow->ui.itm->setText(3, _pSearchWindow->ui.comboBValueType->currentText());
 	_pResultsWindow->ui._vecSavedAddr.push_back(itm->text(0).toULongLong(0, 16));
 	mSavedVec.unlock();
+}
+void GlobalSearchInstance::AddComment(QTreeWidgetItem * itm, int column)
+{
+	InputComment * pInputComment;
+	switch (column)
+	{
+	case 0:
+		pInputComment = new InputComment(_pResultsWindow, _pResultsWindow, itm, column); //change first arg to _pQMainWindow ?
+		pInputComment->setWindowFlags(pInputComment->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+		pInputComment->setAttribute(Qt::WA_DeleteOnClose);
+		pInputComment->show();
+		pInputComment->ui.textEdit->setFocus();
+		break;
+	case 2:
+		pInputComment = new InputComment(_pResultsWindow, _pResultsWindow, itm, column);
+		pInputComment->setWindowFlags(pInputComment->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+		pInputComment->setAttribute(Qt::WA_DeleteOnClose);
+		pInputComment->show();
+		pInputComment->ui.textEdit->setFocus();
+		break;
+	case 3:
+		InputTypeBox *pTypeBox = new InputTypeBox(_pResultsWindow, _pResultsWindow, itm, column);
+		pTypeBox->setWindowFlags(pInputComment->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+		pTypeBox->setAttribute(Qt::WA_DeleteOnClose);
+		pTypeBox->show();
+		break;
+	}
 }
 void GlobalSearchInstance::ConnectSlots() 
 {

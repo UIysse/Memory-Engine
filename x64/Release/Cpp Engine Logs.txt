@@ -8,12 +8,12 @@ Entrypoint : 54e930 Base address : 0000000000400000
 scan type 0
 asd 0
 Handle of process is still active
-creating scan took : 3.46621
-You have : 8 cores.each thread will scan for 3c200 bytes.
-this thread will read that many bytes : 3d000
-this thread will read that many bytes : 3e000
-this thread will read that many bytes : 11d000
-this thread will read that many bytes : 48000
+creating scan took : 3.53258
+You have : 8 cores.each thread will scan for 41400 bytes.
+this thread will read that many bytes : 42000
+this thread will read that many bytes : 46000
+this thread will read that many bytes : 45000
+this thread will read that many bytes : 123000
 this thread will not be launched
 end of update scan
 end of update scan
@@ -21,50 +21,196 @@ end of update scan
 end of update scan
 end of update scan
 total threads : 5
-Creating scan and updating it took : 6.39854total bytes scanned 3c1000 /8 : 78200
-NEW_SCAN, matches found 10 start condition : 1 start val : 86 data size : 4
+Creating scan and updating it took : 8.01441total bytes scanned 414000 /8 : 82800
+NEW_SCAN, matches found 5d start condition : 1 start val : 96 data size : 4
 result vector size 0
-val is : 86
-val is : 86
-val is : 86
-val is : 86
-val is : 86
-dec 86
-val is : 86
-dec 86
-val is : 86
-dec 86
-val is : 86
-dec 86
-val is : 86
-dec 86
-val is : 86
-dec 86
-val is : 86
-dec 86
-val is : 86
-dec 86
-val is : 86
-dec 86
-val is : 86
-dec 86
-val is : 86
-dec 86
-val is : 86
-dec 86
-result vector size 16
-Scan performed. 16 results.
-Whole first scan process took : 11.9474
-Whole first scan process took : 11
+val is : 96
+val is : 96
+val is : 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+val is : 96
+val is : 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+val is : 96
+dec 96
+result vector size 93
+Scan performed. 93 results.
+Whole first scan process took : 15.1062
+Whole first scan process took : 15
 scan type 0
 end of update scan
 result vector size 0
-val is : 84
-dec 84
-result vector size 1
-scan type 0
-end of update scan
-result vector size 0
-val is : 79
-dec 79
+val is : 95
+dec 95
 result vector size 1

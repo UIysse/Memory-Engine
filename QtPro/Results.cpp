@@ -55,25 +55,25 @@ void ResultsWindow::UpdateResultsValue()
 }
 void ResultsWindow::UpdateSavedValue()
 {
-	bool bValidMemory(0);
-	while (_ThreadStayAlive)
-	{
-		Sleep(200);
-		mSavedVec.lock();
-		if (ui._vecSavedAddr.empty())
-		{
-			mSavedVec.unlock();
-			continue;
-		}
-		uint64_t sizevalue = 0;
-		for (int i = 0; i != ui._vecSavedAddr.size(); ++i)
-		{
-			QTreeWidgetItem *itm = ui.treeWidget_2->topLevelItem(i);
-			bValidMemory = ReadProcessMemory(DebuggedProc.hwnd, (LPCVOID)ui._vecSavedAddr[i], &sizevalue, 4, NULL);
-			emit UpdateResultsContent(itm, sizevalue, 2, bValidMemory);
-		}
-		mSavedVec.unlock();
-	}
+	//bool bValidMemory(0);
+	//while (_ThreadStayAlive)
+	//{
+	//	Sleep(200);
+	//	mSavedVec.lock();
+	//	if (ui._vecSavedAddr.empty())
+	//	{
+	//		mSavedVec.unlock();
+	//		continue;
+	//	}
+	//	uint64_t sizevalue = 0;
+	//	for (int i = 0; i != ui._vecSavedAddr.size(); ++i)
+	//	{
+	//		QTreeWidgetItem *itm = ui.treeWidget_2->topLevelItem(i);
+	//		bValidMemory = ReadProcessMemory(DebuggedProc.hwnd, (LPCVOID)ui._vecSavedAddr[i], &sizevalue, 4, NULL);
+	//		emit UpdateResultsContent(itm, sizevalue, 2, bValidMemory);
+	//	}
+	//	mSavedVec.unlock();
+	//}
 }
 ResultsWindow::ResultsWindow(QMainWindow* parent, HoldPtr *pHoldPtr /*= 0*/) //: QDialog(parent)
 {
@@ -85,12 +85,10 @@ ResultsWindow::ResultsWindow(QMainWindow* parent, HoldPtr *pHoldPtr /*= 0*/) //:
 	//must be placed after setupUi (probably the prepocessor needs treewidget pointer to actually know where it will point
 	//QObject::connect(ui.treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddVariable(QTreeWidgetItem *, int)));
 	QObject::connect(ui.treeWidget_2, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddComment(QTreeWidgetItem *, int)));
-	QObject::connect(this, &ResultsWindow::UpdateResultsContent, this, &ResultsWindow::SetValues);
+	//QObject::connect(this, &ResultsWindow::UpdateResultsContent, this, &ResultsWindow::SetValues);
 	ui._vecResultsAddr.reserve(NUMBER_DISPLAYED_RESULTS);
 	ui._vecSavedAddr.reserve(NUMBER_DISPLAYED_RESULTS); // this means user cannot saved more than 1500 addr or function will not remain thread safe
 	_ThreadStayAlive = 1;
-	//this ->_th = new std::thread(&ResultsWindow::UpdateResultsValue, this);
-	//this->_th2 = new std::thread(&ResultsWindow::UpdateSavedValue, this);
 }
 void ResultsWindow::AddComment(QTreeWidgetItem * itm, int column)
 {

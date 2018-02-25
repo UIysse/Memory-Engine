@@ -10,6 +10,7 @@ class GlobalSearchInstance : public QObject
 	Q_OBJECT
 public:
 	//objects
+	QMainWindow *_pQMainWindow;
 	HoldPtr *_HoldPtr;
 	ResultsWindow *_pResultsWindow;
 	SearchWindow *_pSearchWindow;
@@ -22,6 +23,7 @@ public:
 	void GlobalSearchInstance::UpdateResultsValue();
 	void GlobalSearchInstance::SetValues(QTreeWidgetItem * itm, unsigned long long nValue, int column, bool bValidMemory);
 	void GlobalSearchInstance::UpdateSavedValue();
+	void GlobalSearchInstance::AddComment(QTreeWidgetItem * itm, int column);
 	void GlobalSearchInstance::ConnectSlots(); //call this ft after ui are setup.
 	~GlobalSearchInstance();
 	//slots
