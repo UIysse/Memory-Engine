@@ -8,12 +8,12 @@ Entrypoint : 54e930 Base address : 0000000000400000
 scan type 0
 asd 0
 Handle of process is still active
-creating scan took : 3.75139
-You have : 8 cores.each thread will scan for 39e00 bytes.
-this thread will read that many bytes : 3a000
-this thread will read that many bytes : 3c000
-this thread will read that many bytes : 10f000
-this thread will read that many bytes : 49000
+creating scan took : 3.4498
+You have : 8 cores.each thread will scan for 3b800 bytes.
+this thread will read that many bytes : 3d000
+this thread will read that many bytes : 40000
+this thread will read that many bytes : 121000
+this thread will read that many bytes : 3d000
 this thread will not be launched
 end of update scan
 end of update scan
@@ -21,22 +21,136 @@ end of update scan
 end of update scan
 end of update scan
 total threads : 5
-Creating scan and updating it took : 7.18441total bytes scanned 39e000 /8 : 73c00
-NEW_SCAN, matches found 1 start condition : 1 start val : 972 data size : 4
+Creating scan and updating it took : 6.21147total bytes scanned 3b7000 /8 : 76e00
+NEW_SCAN, matches found 3c start condition : 1 start val : 40 data size : 4
 result vector size 0
-val is : 972
-dec 972
-result vector size 1
-Scan performed. 1 results.
-Whole first scan process took : 13.064
-Whole first scan process took : 13
+poke failed 
+val is : 0
+val is : 40
+val is : 40
+val is : 40
+val is : 40
+val is : 40
+val is : 40
+val is : 40
+val is : 40
+val is : 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+val is : 40
+val is : 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+val is : 40
+dec 40
+result vector size 60
+Scan performed. 60 results.
+Whole first scan process took : 12.5035
+Whole first scan process took : 12
 scan type 0
 end of update scan
 result vector size 0
-val is : 962
-dec 962
+val is : 37
+dec 37
 result vector size 1
 scan type 0
 end of update scan
 result vector size 0
+val is : 24
+dec 24
+result vector size 1
+scan type 0
+end of update scan
 result vector size 0
+val is : 23
+dec 23
+result vector size 1

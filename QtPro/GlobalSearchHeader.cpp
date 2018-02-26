@@ -1,6 +1,7 @@
 #include"GlobalSearchHeader.h"
 #include "InputComment.h"
 #include "TypeBox.h"
+#include <QtWidgets/QTreeWidget>
 
 GlobalSearchInstance::GlobalSearchInstance(QMainWindow *parent, HoldPtr *pHoldPtr)
 {
@@ -37,7 +38,7 @@ void GlobalSearchInstance::UpdateResultsValue()
 		{
 			QTreeWidgetItem *itm = _pResultsWindow->ui.treeWidget->topLevelItem(i);
 			bValidMemory = ReadProcessMemory(DebuggedProc.hwnd, (LPCVOID)_pResultsWindow->ui._vecResultsAddr[i], &nReadValue, 4, NULL);
-			this->SetValues(itm, nReadValue, 1, bValidMemory);
+			emit signalItemChange(itm, nReadValue, 1, bValidMemory);
 		}
 		mResultsVec.unlock();
 		Sleep(200);
@@ -79,7 +80,7 @@ void GlobalSearchInstance::UpdateSavedValue()
 		{
 			QTreeWidgetItem *itm = _pResultsWindow->ui.treeWidget_2->topLevelItem(i);
 			bValidMemory = ReadProcessMemory(DebuggedProc.hwnd, (LPCVOID)_pResultsWindow->ui._vecSavedAddr[i], &nReadValue, 4, NULL);
-			this->SetValues(itm, nReadValue, 2, bValidMemory);
+			emit signalItemChange(itm, nReadValue, 2, bValidMemory);
 		}
 		mSavedVec.unlock();
 	}
@@ -125,6 +126,8 @@ void GlobalSearchInstance::ConnectSlots()
 {
 	QObject::connect(_pResultsWindow->ui.treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddVariable(QTreeWidgetItem *, int)));
 	QObject::connect(_pResultsWindow->ui.treeWidget_2, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddComment(QTreeWidgetItem *, int)));
+	/*This must be a signal/slot operation so that the GUI thread changes interface*/
+	QObject::connect(this, &GlobalSearchInstance::signalItemChange, this, &GlobalSearchInstance::SetValues);
 }
 void GlobalSearchInstance::ActivateWindows()
 {

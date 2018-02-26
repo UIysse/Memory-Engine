@@ -1,2 +1,8 @@
-﻿  QtPro.vcxproj -> D:\GitHub Projects\Memory-Engine\x64\Release\QtPro.exe
+﻿  GlobalSearchHeader.cpp
+d:\github projects\memory-engine\qtpro\globalsearchheader.cpp(119): warning C4700: uninitialized local variable 'pInputComment' used
+  BlackBone.lib(ProcessCore.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+     Creating library D:\GitHub Projects\Memory-Engine\x64\Release\QtPro.lib and object D:\GitHub Projects\Memory-Engine\x64\Release\QtPro.exp
+  Generating code
+  Finished generating code
+  QtPro.vcxproj -> D:\GitHub Projects\Memory-Engine\x64\Release\QtPro.exe
   QtPro.vcxproj -> D:\GitHub Projects\Memory-Engine\x64\Release\QtPro.pdb (Full PDB)
