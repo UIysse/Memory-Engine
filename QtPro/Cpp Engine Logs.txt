@@ -1,0 +1,129 @@
+Process open with all access.
+Process open with all access.
+32 bit process.
+32 bit process.
+Module base address : 0x4194304
+Module entry point : 0x5564720
+Entrypoint : 54e930 Base address : 0000000000400000
+scan type 0
+asd 0
+Handle of process is still active
+creating scan took : 4.7185
+You have : 8 cores.each thread will scan for 39e00 bytes.
+this thread will read that many bytes : 3a000
+this thread will read that many bytes : 3c000
+this thread will read that many bytes : 10f000
+this thread will read that many bytes : 49000
+end of update scanend of update scan
+
+this thread will not be launched
+end of update scan
+end of update scan
+end of update scan
+total threads : 5
+Creating scan and updating it took : 18.676total bytes scanned 39e000 /8 : 73c00
+NEW_SCAN, matches found 3a start condition : 1 start val : 80 data size : 4
+result vector size 0
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+dec 80
+val is : 80
+val is : 80
+dec 80
+result vector size 58
+Scan performed. 58 results.
+Whole first scan process took : 27.3216
+Whole first scan process took : 27

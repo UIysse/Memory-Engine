@@ -1,0 +1,1 @@
+When next san ruled out all addresses wheras we still have saved value, closing search windows ended in a crash.

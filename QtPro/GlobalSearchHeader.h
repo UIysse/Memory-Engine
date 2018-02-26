@@ -23,10 +23,10 @@ public:
 	void GlobalSearchInstance::UpdateResultsValue();
 	void GlobalSearchInstance::SetValues(QTreeWidgetItem * itm, unsigned long long nValue, int column, bool bValidMemory);
 	void GlobalSearchInstance::UpdateSavedValue();
-	void GlobalSearchInstance::AddComment(QTreeWidgetItem * itm, int column);
 	void GlobalSearchInstance::ConnectSlots(); //call this ft after ui are setup.
 	~GlobalSearchInstance();
 	//slots
 	public slots:
 	void AddVariable(QTreeWidgetItem * itm, int column);
+	void AddComment(QTreeWidgetItem * itm, int column);
 };

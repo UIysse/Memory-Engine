@@ -32,12 +32,12 @@ void GlobalSearchInstance::UpdateResultsValue()
 			mResultsVec.unlock();
 			continue;
 		}
-		uint64_t sizevalue = 0;
+		uint64_t nReadValue = 0;
 		for (int i = 0; i != _pResultsWindow->ui._vecResultsAddr.size(); ++i)
 		{
 			QTreeWidgetItem *itm = _pResultsWindow->ui.treeWidget->topLevelItem(i);
-			bValidMemory = ReadProcessMemory(DebuggedProc.hwnd, (LPCVOID)_pResultsWindow->ui._vecResultsAddr[i], &sizevalue, 4, NULL);
-			this->SetValues(itm, sizevalue, 1, bValidMemory);
+			bValidMemory = ReadProcessMemory(DebuggedProc.hwnd, (LPCVOID)_pResultsWindow->ui._vecResultsAddr[i], &nReadValue, 4, NULL);
+			this->SetValues(itm, nReadValue, 1, bValidMemory);
 		}
 		mResultsVec.unlock();
 		Sleep(200);
@@ -52,12 +52,14 @@ void GlobalSearchInstance::SetValues(QTreeWidgetItem * itm, unsigned long long n
 	}
 	unsigned long long localnValue = _pSearchWindow->pScanOptions->nValue32; // make it a template variable
 	if (localnValue == nValue)
+	{
+			itm->setTextColor(column, Qt::black);
 		return; //changed values will now appear as red, nothing is changed otherwise //doesn't work because nValue is always 0
+	}
 	if (_pSearchWindow->pScanOptions->CurrentScanHexValues)
 		itm->setText(column, ReturnStrFromHexaInt(nValue).c_str());
 	else
 		itm->setText(column, ReturnStrFromDecInt(nValue).c_str());
-	if (column == 1)
 		itm->setTextColor(column, Qt::red);
 }
 void GlobalSearchInstance::UpdateSavedValue()
@@ -72,12 +74,12 @@ void GlobalSearchInstance::UpdateSavedValue()
 			mSavedVec.unlock();
 			continue;
 		}
-		uint64_t sizevalue = 0;
+		uint64_t nReadValue = 0;
 		for (int i = 0; i != _pResultsWindow->ui._vecSavedAddr.size(); ++i)
 		{
 			QTreeWidgetItem *itm = _pResultsWindow->ui.treeWidget_2->topLevelItem(i);
-			bValidMemory = ReadProcessMemory(DebuggedProc.hwnd, (LPCVOID)_pResultsWindow->ui._vecSavedAddr[i], &sizevalue, 4, NULL);
-			emit _pResultsWindow->UpdateResultsContent(itm, sizevalue, 2, bValidMemory);
+			bValidMemory = ReadProcessMemory(DebuggedProc.hwnd, (LPCVOID)_pResultsWindow->ui._vecSavedAddr[i], &nReadValue, 4, NULL);
+			this->SetValues(itm, nReadValue, 2, bValidMemory);
 		}
 		mSavedVec.unlock();
 	}
@@ -122,6 +124,7 @@ void GlobalSearchInstance::AddComment(QTreeWidgetItem * itm, int column)
 void GlobalSearchInstance::ConnectSlots() 
 {
 	QObject::connect(_pResultsWindow->ui.treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddVariable(QTreeWidgetItem *, int)));
+	QObject::connect(_pResultsWindow->ui.treeWidget_2, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddComment(QTreeWidgetItem *, int)));
 }
 void GlobalSearchInstance::ActivateWindows()
 {

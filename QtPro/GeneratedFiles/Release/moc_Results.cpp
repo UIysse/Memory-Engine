@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ResultsWindow_t {
-    QByteArrayData data[11];
-    char stringdata0[117];
+    QByteArrayData data[9];
+    char stringdata0[94];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,19 +35,16 @@ QT_MOC_LITERAL(0, 0, 13), // "ResultsWindow"
 QT_MOC_LITERAL(1, 14, 20), // "UpdateResultsContent"
 QT_MOC_LITERAL(2, 35, 0), // ""
 QT_MOC_LITERAL(3, 36, 16), // "QTreeWidgetItem*"
-QT_MOC_LITERAL(4, 53, 11), // "AddVariable"
-QT_MOC_LITERAL(5, 65, 3), // "itm"
-QT_MOC_LITERAL(6, 69, 6), // "column"
-QT_MOC_LITERAL(7, 76, 9), // "SetValues"
-QT_MOC_LITERAL(8, 86, 6), // "nValue"
-QT_MOC_LITERAL(9, 93, 12), // "bValidMemory"
-QT_MOC_LITERAL(10, 106, 10) // "AddComment"
+QT_MOC_LITERAL(4, 53, 9), // "SetValues"
+QT_MOC_LITERAL(5, 63, 3), // "itm"
+QT_MOC_LITERAL(6, 67, 6), // "nValue"
+QT_MOC_LITERAL(7, 74, 6), // "column"
+QT_MOC_LITERAL(8, 81, 12) // "bValidMemory"
 
     },
     "ResultsWindow\0UpdateResultsContent\0\0"
-    "QTreeWidgetItem*\0AddVariable\0itm\0"
-    "column\0SetValues\0nValue\0bValidMemory\0"
-    "AddComment"
+    "QTreeWidgetItem*\0SetValues\0itm\0nValue\0"
+    "column\0bValidMemory"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,7 +54,7 @@ static const uint qt_meta_data_ResultsWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -65,20 +62,16 @@ static const uint qt_meta_data_ResultsWindow[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    4,   34,    2, 0x06 /* Public */,
+       1,    4,   24,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    2,   43,    2, 0x0a /* Public */,
-       7,    4,   48,    2, 0x0a /* Public */,
-      10,    2,   57,    2, 0x0a /* Public */,
+       4,    4,   33,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3, QMetaType::ULongLong, QMetaType::Int, QMetaType::Bool,    2,    2,    2,    2,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 3, QMetaType::Int,    5,    6,
-    QMetaType::Void, 0x80000000 | 3, QMetaType::ULongLong, QMetaType::Int, QMetaType::Bool,    5,    8,    6,    9,
-    QMetaType::Void, 0x80000000 | 3, QMetaType::Int,    5,    6,
+    QMetaType::Void, 0x80000000 | 3, QMetaType::ULongLong, QMetaType::Int, QMetaType::Bool,    5,    6,    7,    8,
 
        0        // eod
 };
@@ -90,9 +83,7 @@ void ResultsWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->UpdateResultsContent((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< unsigned long long(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< bool(*)>(_a[4]))); break;
-        case 1: _t->AddVariable((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 2: _t->SetValues((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< unsigned long long(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< bool(*)>(_a[4]))); break;
-        case 3: _t->AddComment((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 1: _t->SetValues((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< unsigned long long(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< bool(*)>(_a[4]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -133,13 +124,13 @@ int ResultsWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 2)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 2;
     }
     return _id;
 }

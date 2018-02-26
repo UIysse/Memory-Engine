@@ -82,40 +82,9 @@ ResultsWindow::ResultsWindow(QMainWindow* parent, HoldPtr *pHoldPtr /*= 0*/) //:
 	this->setWindowFlags(this->windowFlags() | Qt::CustomizeWindowHint | Qt::WindowMinimizeButtonHint | Qt::WindowMaximizeButtonHint);
 	this->move(0, 0);
 	ui.setupUi(this);
-	//must be placed after setupUi (probably the prepocessor needs treewidget pointer to actually know where it will point
-	//QObject::connect(ui.treeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddVariable(QTreeWidgetItem *, int)));
-	QObject::connect(ui.treeWidget_2, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(AddComment(QTreeWidgetItem *, int)));
-	//QObject::connect(this, &ResultsWindow::UpdateResultsContent, this, &ResultsWindow::SetValues);
 	ui._vecResultsAddr.reserve(NUMBER_DISPLAYED_RESULTS);
 	ui._vecSavedAddr.reserve(NUMBER_DISPLAYED_RESULTS); // this means user cannot saved more than 1500 addr or function will not remain thread safe
 	_ThreadStayAlive = 1;
-}
-void ResultsWindow::AddComment(QTreeWidgetItem * itm, int column)
-{
-	InputComment * pInputComment;
-	switch (column)
-	{
-	case 0:
-		pInputComment = new InputComment(this, this, itm, column);
-		pInputComment->setWindowFlags(pInputComment->windowFlags() & ~Qt::WindowContextHelpButtonHint);
-		pInputComment->setAttribute(Qt::WA_DeleteOnClose);
-		pInputComment->show();
-		pInputComment->ui.textEdit->setFocus();
-		break;
-	case 2:
-		pInputComment = new InputComment(this, this, itm, column);
-		pInputComment->setWindowFlags(pInputComment->windowFlags() & ~Qt::WindowContextHelpButtonHint);
-		pInputComment->setAttribute(Qt::WA_DeleteOnClose);
-		pInputComment->show();
-		pInputComment->ui.textEdit->setFocus();
-		break;
-	case 3:
-		InputTypeBox *pTypeBox = new InputTypeBox(this, this, itm, column);
-		pTypeBox->setWindowFlags(pInputComment->windowFlags() & ~Qt::WindowContextHelpButtonHint);
-		pTypeBox->setAttribute(Qt::WA_DeleteOnClose);
-		pTypeBox->show();
-		break;
-	}
 }
 void ResultsWindow::closeEvent(QCloseEvent *event)
 {
