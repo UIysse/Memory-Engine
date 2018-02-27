@@ -5,152 +5,18 @@ Process open with all access.
 Module base address : 0x4194304
 Module entry point : 0x5564720
 Entrypoint : 54e930 Base address : 0000000000400000
-scan type 0
-asd 0
 Handle of process is still active
-creating scan took : 3.4498
-You have : 8 cores.each thread will scan for 3b800 bytes.
-this thread will read that many bytes : 3d000
-this thread will read that many bytes : 40000
-this thread will read that many bytes : 121000
-this thread will read that many bytes : 3d000
-this thread will not be launched
-end of update scan
-end of update scan
-end of update scan
-end of update scan
-end of update scan
-total threads : 5
-Creating scan and updating it took : 6.21147total bytes scanned 3b7000 /8 : 76e00
-NEW_SCAN, matches found 3c start condition : 1 start val : 40 data size : 4
-result vector size 0
-poke failed 
-val is : 0
-val is : 40
-val is : 40
-val is : 40
-val is : 40
-val is : 40
-val is : 40
-val is : 40
-val is : 40
-val is : 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-val is : 40
-val is : 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-val is : 40
-dec 40
-result vector size 60
-Scan performed. 60 results.
-Whole first scan process took : 12.5035
-Whole first scan process took : 12
-scan type 0
-end of update scan
-result vector size 0
-val is : 37
-dec 37
-result vector size 1
-scan type 0
-end of update scan
-result vector size 0
-val is : 24
-dec 24
-result vector size 1
-scan type 0
-end of update scan
-result vector size 0
-val is : 23
-dec 23
-result vector size 1
+Memory pages are writable and commited
+Memory block was created
+base add : 000000000054E000
+wanted add : 54e930
+regionsize : 1000
+mb.size : 1000
+could read memory
+Bytes left : 0
+Total bytes read : 1000
+Address of Interest : 54e930
+Start of memory page : 54e000
+size : 1000
+total disa : 1000 block size 1000
+finished disasembling.

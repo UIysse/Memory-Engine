@@ -6,6 +6,7 @@ typedef struct _MEMBLOCK
 {
 	HANDLE hProc;
 	unsigned char *addr;
+	unsigned char *allocationBase;
 	int size;
 	unsigned char *buffer;
 

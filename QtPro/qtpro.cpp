@@ -37,134 +37,9 @@
 #include <cstdio>
 #include "../BlackBone/src/BlackBone/DriverControl/DriverControl.h"
 #include "test\Header.h"
-//#include "../BlackBone/Process/Process.h"
 using namespace std;
-//#include "../Blackbone/src/BlackBone/Process/Process.h" 
-
 //prototypes
 BOOL GetProcessList(QTreeWidget * listwidget);
-
-int insertDisas(MemoryViewer * aDialog)
-{
-	DebuggedProc.IsHandleValid();
-	if (!DebuggedProc.addressOfInterest)
-		fout << "error, no EIP used" << endl;
-
-		DebuggedProc.mb = QueryMemoryAddrress(DebuggedProc.addressOfInterest);
-	if (DebuggedProc.mb)
-	{
-		ostringstream stre;
-		string str;
-		QTreeWidgetItem* itm;
-		QFont font("Terminal");
-		font.setCapitalization(QFont::AllUppercase);
-		font.setPointSize(9);
-		font.setStretch(145);
-		font.setKerning(false);
-		/* ============================= Init datas */
-		DISASM MyDisasm;
-		int nfalse = 0, ntrue = 1;
-		int len, i = 0;
-		bool Error = nfalse;
-
-		/* ============================= Init the Disasm structure (important !)*/
-		(void)memset(&MyDisasm, 0, sizeof(DISASM));
-
-		/* ============================= Init EIP */
-		int64_t n;
-		n = reinterpret_cast<int64_t>(DebuggedProc.mb->buffer);
-		fout << "Address of Interest : " << hex << DebuggedProc.addressOfInterest << endl;
-		fout << "Start of memory page : " << hex << DebuggedProc.basePageAddress << endl;
-		fout << "size : " << hex << DebuggedProc.mb->size << endl;
-		n = n + DebuggedProc.addressOfInterest - DebuggedProc.basePageAddress;
-		int64_t nTargetedProcessAddress = DebuggedProc.addressOfInterest;
-		cout << "n : " << hex << n << endl;
-		MyDisasm.Archi = DebuggedProc.architecture;
-		MyDisasm.EIP = n;// 0x401000;
-		MyDisasm.VirtualAddr = DebuggedProc.addressOfInterest;
-		cout << "sizeof " << sizeof(MyDisasm.EIP) << endl;
-		cout << "start address : " << hex << MyDisasm.EIP << endl;
-		uint64_t nTotalBytesDisasembled = 0;
-		/* ============================= Loop for Disasm */
-		while ((nTotalBytesDisasembled < DebuggedProc.mb->size)) {
-			itm = new QTreeWidgetItem(aDialog->ui.treeWidget);
-			itm->setFont(2, font); //font is created at the begining of the function
-			itm->setFont(0, font);
-			itm->setFont(1, font);
-			len = Disasm(&MyDisasm);
-			string str1;
-			int len2;//because len = -1 for unknown opcodes
-			if (len > 0)
-				len2 = len;
-			else
-				len2 = 1;
-			nTotalBytesDisasembled += len2;
-			str1[len2 * 2] = 0;//assigning null terminator to string
-			for (int u = 0; u < len2; ++u)
-			{
-				if (((((*(unsigned char*)(MyDisasm.EIP + u)) >> 4) & 0xF) < 0xA) && ((((*(unsigned char*)(MyDisasm.EIP + u)) >> 4) & 0xF) >= 0))
-					str1[u * 2] = (((*(unsigned char*)(MyDisasm.EIP  + u)) >> 4) & 0xF) + '30';
-				else
-					str1[u * 2] = (((*(unsigned char*)(MyDisasm.EIP  + u)) >> 4) & 0xF) + '37';
-				if ((((*(unsigned char*)(MyDisasm.EIP + u)) & 0xF) < 0xA) && (((*(unsigned char*)(MyDisasm.EIP + u)) & 0xF) >= 0))
-					str1[u * 2 + 1] = ((*(unsigned char*)(MyDisasm.EIP  + u)) & 0xF) + '30';
-				else
-					str1[u * 2 + 1] = ((*(unsigned char*)(MyDisasm.EIP  + u)) & 0xF) + '37';
-			}
-			itm->setText(1, str1.c_str());
-			if (len != UNKNOWN_OPCODE) {
-				str.clear();
-				stre.str("");
-				MyDisasm.EIP = MyDisasm.EIP + len;
-				MyDisasm.VirtualAddr = MyDisasm.VirtualAddr + len;
-				i++;
-				stre << std::hex << nTargetedProcessAddress;
-				str = stre.str();
-				itm->setText(0, str.c_str());
-				itm->setText(2, MyDisasm.CompleteInstr);
-				//06.03.17 draft color
-				string str5(MyDisasm.CompleteInstr);
-				auto ddd = str5.find("jn");
-				if (ddd != std::string::npos)
-				{
-					itm->setTextColor(2, Qt::red);
-					itm->setBackgroundColor(2, Qt::yellow);
-				}
-				else if (str5.find("call") != std::string::npos)
-				{
-					itm->setBackgroundColor(2, Qt::cyan);
-				}
-				else if (str5.find("jmp") != std::string::npos)
-				{
-					itm->setBackgroundColor(2, Qt::yellow);
-				}
-				else
-					itm->setTextColor(2, Qt::lightGray);
-				nTargetedProcessAddress += len;
-			}
-			else { //error
-				i++;
-				Error = false;
-				++MyDisasm.EIP;
-				++MyDisasm.VirtualAddr;
-				str.clear();
-				stre.str("");
-				stre << std::hex << nTargetedProcessAddress;
-				str = stre.str();
-				itm->setText(0, str.c_str());
-				itm->setText(2, "???");
-				++nTargetedProcessAddress;
-			}
-		};
-		LOUT << "total disa : "  << nTotalBytesDisasembled << " block size "  << DebuggedProc.mb->size << endl;
-		fout << "finished disasembling." << endl;
-	}
-	else
-		fout << "Disassembling didn't take place because there is no memory block." << endl;
-	return 0;
-}
-
-
 void printError(TCHAR* msg);
 void QtPro::ShowAboutDialog()
 {
@@ -199,7 +74,6 @@ void foo(MemoryViewer * aDialog)
 	itm->setText(2, "troisieme text");
 	//ui.treeWidget->addScrollBarWidget(ui.treeWidget, Qt::AlignmentFlag::AlignAbsolute);
 }
-
 void QtPro::ShowLogs()
 {
 	if (_HoldPtr._bLogsWindow == false)
@@ -250,7 +124,6 @@ QtPro::QtPro(QWidget *parent)
 	: QMainWindow(parent), _pGlobalSearchInstance(nullptr)
 {
 	ui.setupUi(this);
-	//setCentralWidget(ui.plainTextEdit);
 	QObject::connect(ui.actionAbout, &QAction::triggered, this, &QtPro::ShowAboutDialog);
 	QObject::connect(ui.toolButton, &QToolButton::clicked, this, &QtPro::ShowPickProcess);// &QtPro::ShowPickProcess);
 	QObject::connect(ui.toolButLogs, &QPushButton::clicked, this, &QtPro::ShowLogs);
@@ -378,18 +251,6 @@ BOOL GetProcessList(QTreeWidget * listwidget)
 				printError(TEXT("GetPriorityClass"));
 			CloseHandle(hProcess);
 		}
-		/*
-		_tprintf(TEXT("\n  Process ID        = 0x%08X"), pe32.th32ProcessID);
-		_tprintf(TEXT("\n  Thread count      = %d"), pe32.cntThreads);
-		_tprintf(TEXT("\n  Parent process ID = 0x%08X"), pe32.th32ParentProcessID);
-		_tprintf(TEXT("\n  Priority base     = %d"), pe32.pcPriClassBase);
-		if (dwPriorityClass)
-			_tprintf(TEXT("\n  Priority class    = %d"), dwPriorityClass);*/
-
-		// List the modules and threads associated with this process
-		//ListProcessModules(pe32.th32ProcessID);
-		//ListProcessThreads(pe32.th32ProcessID);
-
 		} while (Process32Next(hProcessSnap, &pe32));
 
 	CloseHandle(hProcessSnap);

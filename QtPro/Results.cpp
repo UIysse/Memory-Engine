@@ -17,10 +17,6 @@
 #include <mutex>
 #include <thread>
 #include <cstdlib>
-void foo()
-{
-
-}
 ResultsWindow::~ResultsWindow()
 {
 	mResultsVec.lock();
@@ -29,51 +25,6 @@ ResultsWindow::~ResultsWindow()
 	_ThreadStayAlive = 0;
 	mSavedVec.unlock();
 	mResultsVec.unlock(); //in case global search is performing
-}
-//should be templated
-void ResultsWindow::UpdateResultsValue()
-{
-	bool bValidMemory(0);
-	while(_ThreadStayAlive)
-	{
-		Sleep(200);
-		mResultsVec.lock();
-		if (ui._vecResultsAddr.empty()) 
-		{
-			mResultsVec.unlock();
-			continue;
-		}
-		uint64_t sizevalue = 0;
-		for (int i = 0; i != ui._vecResultsAddr.size(); ++i)
-		{
-			QTreeWidgetItem *itm = ui.treeWidget->topLevelItem(i);
-			bValidMemory = ReadProcessMemory(DebuggedProc.hwnd, (LPCVOID)ui._vecResultsAddr[i], &sizevalue, 4, NULL);
-			emit UpdateResultsContent(itm, sizevalue, 1, bValidMemory);
-		}
-		mResultsVec.unlock();
-	}
-}
-void ResultsWindow::UpdateSavedValue()
-{
-	//bool bValidMemory(0);
-	//while (_ThreadStayAlive)
-	//{
-	//	Sleep(200);
-	//	mSavedVec.lock();
-	//	if (ui._vecSavedAddr.empty())
-	//	{
-	//		mSavedVec.unlock();
-	//		continue;
-	//	}
-	//	uint64_t sizevalue = 0;
-	//	for (int i = 0; i != ui._vecSavedAddr.size(); ++i)
-	//	{
-	//		QTreeWidgetItem *itm = ui.treeWidget_2->topLevelItem(i);
-	//		bValidMemory = ReadProcessMemory(DebuggedProc.hwnd, (LPCVOID)ui._vecSavedAddr[i], &sizevalue, 4, NULL);
-	//		emit UpdateResultsContent(itm, sizevalue, 2, bValidMemory);
-	//	}
-	//	mSavedVec.unlock();
-	//}
 }
 ResultsWindow::ResultsWindow(QMainWindow* parent, HoldPtr *pHoldPtr /*= 0*/) //: QDialog(parent)
 {

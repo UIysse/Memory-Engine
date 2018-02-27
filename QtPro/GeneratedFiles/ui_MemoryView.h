@@ -50,7 +50,7 @@ public:
 		QMenu * viewMenu = Dialog->menuBar()->addMenu("&View");
 		viewDlls = viewMenu->addAction("&View DLLs");
 		retranslateUi(Dialog);
-		shortcut = new QShortcut(QKeySequence("g"), Dialog);
+		shortcut = new QShortcut(QKeySequence("Ctrl+g"), Dialog);
 		QMetaObject::connectSlotsByName(Dialog);
 	} // setupUi
 
@@ -86,10 +86,7 @@ public:
 		label = new QLabel(Dialog);
 		label->setObjectName(QStringLiteral("label"));
 		label->setGeometry(QRect(30, 0, 221, 31));
-
 		retranslateUi(Dialog);
-		//QObject::connect(buttonBox, &buttonBox->clicked, this, &this->foo);
-		//QObject::connect(buttonBox, &QDialogButtonBox::clicked, this, &Ui_DialogGotoBox::foo);
 		QObject::connect(buttonBox, SIGNAL(rejected()), Dialog, SLOT(reject()));
 		QMetaObject::connectSlotsByName(Dialog);
 	} // setupUi

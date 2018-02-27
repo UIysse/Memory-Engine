@@ -65,28 +65,6 @@ BOOL SetPrivilege(
 	return TRUE;
 }
 
-MEMBLOCK* create_memblockInsertDisas(HANDLE hProc, MEMORY_BASIC_INFORMATION *meminfo, int data_size)
-{
-	MEMBLOCK *mb = new MEMBLOCK; //reinterpret_cast <MEMBLOCK *>(malloc(sizeof(MEMBLOCK)));
-	if (mb)
-	{
-		mb->hProc = hProc;
-		mb->addr = reinterpret_cast <unsigned char *>(meminfo->BaseAddress);
-		mb->size = meminfo->RegionSize;
-		mb->buffer = reinterpret_cast <unsigned char *>(malloc(meminfo->RegionSize));
-		mb->searchmask = reinterpret_cast <unsigned char *>(malloc(meminfo->RegionSize / 8));
-		memset(mb->searchmask, 0xff, meminfo->RegionSize / 8);
-		mb->matches = meminfo->RegionSize;
-		mb->data_size = data_size;
-		mb->next = NULL;
-		fout << "Memory block was created" << endl;
-	}
-	else
-		fout << "Memory block couldn't be created" << endl;
-
-	return mb;
-}
-
 MEMBLOCK * QueryMemoryAddrressDriver(int64_t addr)
 {
 	MEMBLOCK *mb = new MEMBLOCK;
@@ -95,38 +73,6 @@ MEMBLOCK * QueryMemoryAddrressDriver(int64_t addr)
 	mb->next = NULL;
 	fout << "Memory block was created" << endl;
 	// Read();
-	return mb;
-}
-MEMBLOCK * QueryMemoryAddrress(int64_t addr)
-{
-	MEMORY_BASIC_INFORMATION meminfo;
-	MEMBLOCK *mb = nullptr;
-	DWORD error = GetLastError();
-	if (DebuggedProc.hwnd)
-	{
-			if (VirtualQueryEx(DebuggedProc.hwnd, (LPCVOID)addr, &meminfo, sizeof(meminfo)) == 0)
-			{
-				fout << "Virtual Query failed" << endl;
-			}
-#define WRITABLE (PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY | PAGE_EXECUTE | PAGE_EXECUTE_READ)
-			if ((meminfo.State & MEM_COMMIT))// && (meminfo.Protect & WRITABLE))
-			{
-				fout << "Memory pages are writable and commited" << endl;
-				mb = create_memblockInsertDisas(DebuggedProc.hwnd, &meminfo, 1);
-				fout << "base add : " << hex << meminfo.BaseAddress << endl;
-				fout << "wanted add : " << hex << addr << endl;
-				fout << "regionsize : " << meminfo.RegionSize << endl;
-				addr += meminfo.RegionSize;
-			}
-			else
-			{
-				fout << "Memory pages are not writable and/or not MEM comit" << endl;
-			}
-	}
-	else
-		fout << "no process handle" << endl;
-	DebuggedProc.basePageAddress =(int64_t) meminfo.BaseAddress;
-	fillEachMemblock(mb);
 	return mb;
 }
 
