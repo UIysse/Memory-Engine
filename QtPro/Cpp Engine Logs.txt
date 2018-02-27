@@ -16,5 +16,22 @@ could read memory
 Bytes left : 0
 Total bytes read : 1000
 Address of Interest : 54e930
-Start of memory page : 54e000
+Start of memory page : 400000
 size : 1000
+total disa : 1002 block size 1000
+finished disasembling.
+Handle of process is still active
+Memory pages are writable and commited
+Memory block was created
+base add : 000000000054E000
+wanted add : 54e930
+regionsize : 1000
+mb.size : 1000
+could read memory
+Bytes left : 0
+Total bytes read : 1000
+Address of Interest : 54e930
+Start of memory page : 400000
+size : 1000
+total disa : 1002 block size 1000
+finished disasembling.

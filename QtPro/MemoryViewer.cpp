@@ -21,6 +21,11 @@
 #include "InputGotoBox.h"
 #include "ui_ShowDLLs.h"
 #include "BeaEngine/BeaEngine.h"
+#include "MemRead.h"
+/*
+Informations sur la structure DISASM de BeaEngine :
+http://beatrix2004.free.fr/BeaEngine/structure.php
+*/
 using namespace std;
 MemoryViewer::MemoryViewer(QWidget *parent) //: QMainWindow(parent)
 {
@@ -109,12 +114,12 @@ int MemoryViewer::insertDisas(MemoryViewer * aDialog)
 		cout << "n : " << hex << n << endl;
 		MyDisasm.Archi = DebuggedProc.architecture;
 		MyDisasm.EIP = reinterpret_cast<int64_t>(DebuggedProc.mb->buffer);//n;// 0x401000;
-		MyDisasm.VirtualAddr = reinterpret_cast<int64_t>(DebuggedProc.mb->buffer); //DebuggedProc.addressOfInterest;
+		MyDisasm.VirtualAddr = DebuggedProc.basePageAddress; //DebuggedProc.addressOfInterest;
 		cout << "sizeof " << sizeof(MyDisasm.EIP) << endl;
 		cout << "start address : " << hex << MyDisasm.EIP << endl;
 		uint64_t nTotalBytesDisasembled = 0;
 		/* ============================= Loop for Disasm */
-		while ((nTotalBytesDisasembled < DebuggedProc.mb->size)) {
+		while ((nTotalBytesDisasembled <= DebuggedProc.mb->size)) { // has to be inferior or equal otherwise last x bytes wont be disasembled
 			itm = new QTreeWidgetItem(aDialog->ui.treeWidget);
 			itm->setFont(2, font); //font is created at the begining of the function
 			itm->setFont(0, font);
@@ -194,6 +199,12 @@ int MemoryViewer::insertDisas(MemoryViewer * aDialog)
 		fout << "Disassembling didn't take place because there is no memory block." << endl;
 	return 0;
 }
+/*
+Function used to determine which memory, where it starts, where it ends, to disasemble at once.
+It will disasemble a chunck that was not only allcoated at the same time, the chunk will have the same current properties that s current state (commit)
+but more importantly current protect.
+This is the same way odbg and x64dbg are determining which block to disasemble.
+*/
 MEMBLOCK * MemoryViewer::QueryMemoryAddrress(int64_t addr)
 {
 	MEMORY_BASIC_INFORMATION meminfo;
@@ -221,7 +232,7 @@ MEMBLOCK * MemoryViewer::QueryMemoryAddrress(int64_t addr)
 	}
 	else
 		fout << "no process handle" << endl;
-	DebuggedProc.basePageAddress = (int64_t)meminfo.BaseAddress;
+	DebuggedProc.basePageAddress = (int64_t)meminfo.AllocationBase;
 	fillEachMemblock(mb);
 	return mb;
 }
