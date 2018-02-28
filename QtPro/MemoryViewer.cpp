@@ -118,9 +118,10 @@ int MemoryViewer::insertDisas(MemoryViewer * aDialog)
 		cout << "sizeof " << sizeof(MyDisasm.EIP) << endl;
 		cout << "start address : " << hex << MyDisasm.EIP << endl;
 		uint64_t nTotalBytesDisasembled = 0;
+		QList<QTreeWidgetItem*> items; //Create a list of items that will be assigned to QTreeWidget all at once.
 		/* ============================= Loop for Disasm */
 		while ((nTotalBytesDisasembled <= DebuggedProc.mb->size)) { // has to be inferior or equal otherwise last x bytes wont be disasembled
-			itm = new QTreeWidgetItem(aDialog->ui.treeWidget);
+			itm = new QTreeWidgetItem;
 			itm->setFont(2, font); //font is created at the begining of the function
 			itm->setFont(0, font);
 			itm->setFont(1, font);
@@ -150,7 +151,7 @@ int MemoryViewer::insertDisas(MemoryViewer * aDialog)
 				stre.str("");
 				i++;
 				stre << std::hex << MyDisasm.VirtualAddr;
-				if (MyDisasm.VirtualAddr == DebuggedProc.addressOfInterest)
+				if (MyDisasm.VirtualAddr == (uint64_t)DebuggedProc.addressOfInterest)
 					itmToSetCurrent = itm;
 				str = stre.str();
 				itm->setText(0, str.c_str());
@@ -189,7 +190,9 @@ int MemoryViewer::insertDisas(MemoryViewer * aDialog)
 				itm->setText(2, "???");
 				++nTargetedProcessAddress;
 			}
-		};
+			items << itm;
+		}
+		ui.treeWidget->addTopLevelItems(items); //Assigning the list of items to the TreeWidget, huge performance gains.
 		LOUT << "total disa : " << nTotalBytesDisasembled << " block size " << DebuggedProc.mb->size << endl;
 		fout << "finished disasembling." << endl;
 		//if(itmToSetCurrent)
@@ -205,34 +208,39 @@ It will disasemble a chunck that was not only allcoated at the same time, the ch
 but more importantly current protect.
 This is the same way odbg and x64dbg are determining which block to disasemble.
 */
-MEMBLOCK * MemoryViewer::QueryMemoryAddrress(int64_t addr)
+MEMBLOCK * MemoryViewer::QueryMemoryAddrress(int64_t adressQueried)
 {
-	MEMORY_BASIC_INFORMATION meminfo;
 	MEMBLOCK *mb = nullptr;
+	uint64_t nStartAdressZero = 0;
+	MEMORY_BASIC_INFORMATION meminfo;
+	meminfo.BaseAddress = 0;
+	meminfo.RegionSize = 0;
 	if (DebuggedProc.hwnd)
 	{
-		if (VirtualQueryEx(DebuggedProc.hwnd, (LPCVOID)addr, &meminfo, sizeof(meminfo)) == 0)
-		{
-			fout << "Virtual Query failed" << endl;
-		}
+	while (((uint64_t)meminfo.BaseAddress + meminfo.RegionSize) <= adressQueried)
+	{
+		if (VirtualQueryEx(DebuggedProc.hwnd, (LPVOID)nStartAdressZero, &meminfo, sizeof(meminfo)) == 0)
+			break;
+		nStartAdressZero = meminfo.RegionSize + (uint64_t)meminfo.BaseAddress;
+	}
 #define WRITABLE (PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY | PAGE_EXECUTE | PAGE_EXECUTE_READ)
-		if ((meminfo.State & MEM_COMMIT))// && (meminfo.Protect & WRITABLE))
-		{
-			fout << "Memory pages are writable and commited" << endl;
-			mb = create_memblockInsertDisas(DebuggedProc.hwnd, &meminfo, 1);
-			fout << "base add : " << hex << meminfo.BaseAddress << endl;
-			fout << "wanted add : " << hex << addr << endl;
-			fout << "regionsize : " << meminfo.RegionSize << endl;
-			addr += meminfo.RegionSize;
-		}
-		else
-		{
-			fout << "Memory pages are not writable and/or not MEM comit" << endl;
-		}
+	if ((meminfo.State & MEM_COMMIT))// && (meminfo.Protect & WRITABLE))
+	{
+		fout << "Memory pages are writable and commited" << endl;
+		mb = create_memblockInsertDisas(DebuggedProc.hwnd, &meminfo, 1);
+		fout << "base add : " << hex << meminfo.BaseAddress << endl;
+		fout << "wanted add : " << hex << adressQueried << endl;
+		fout << "regionsize : " << meminfo.RegionSize << endl;
+		adressQueried += meminfo.RegionSize;
+	}
+	else
+	{
+		fout << "Memory pages are not writable and/or not MEM comit" << endl;
+	}
 	}
 	else
 		fout << "no process handle" << endl;
-	DebuggedProc.basePageAddress = (int64_t)meminfo.AllocationBase;
+	DebuggedProc.basePageAddress = (int64_t)meminfo.BaseAddress;
 	fillEachMemblock(mb);
 	return mb;
 }
@@ -242,7 +250,7 @@ MEMBLOCK* MemoryViewer::create_memblockInsertDisas(HANDLE hProc, MEMORY_BASIC_IN
 	if (mb)
 	{
 		mb->hProc = hProc;
-		mb->addr = reinterpret_cast <unsigned char *>(meminfo->AllocationBase); //For disasembling we disasemble the whole allocated block
+		mb->addr = reinterpret_cast <unsigned char *>(meminfo->BaseAddress); //For disasembling we disasemble the whole allocated block
 		mb->allocationBase = reinterpret_cast <unsigned char *>(meminfo->AllocationBase);
 		mb->size = meminfo->RegionSize;
 		mb->buffer = reinterpret_cast <unsigned char *>(malloc(meminfo->RegionSize));
