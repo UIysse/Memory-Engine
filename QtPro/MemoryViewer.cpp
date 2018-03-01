@@ -158,22 +158,22 @@ int MemoryViewer::insertDisas(MemoryViewer * aDialog)
 				itm->setText(2, MyDisasm.CompleteInstr);
 				//06.03.17 draft color
 				string str5(MyDisasm.CompleteInstr);
-				auto ddd = str5.find("jn");
-				if (ddd != std::string::npos)
+				if (str5.size() >= 2) // we dereference [1] thus size must be >=2
 				{
-					itm->setTextColor(2, Qt::red);
+				    if (str5[1] == 'm')		//(str5.find("jmp") != std::string::npos)   performance gains
+				    {
 					itm->setBackgroundColor(2, Qt::yellow);
+				    }
+					else if (str5[0] == 'j') //will be jne jge etc as jmp instructions have been ruled out with first if condition
+					{
+						itm->setTextColor(2, Qt::red);
+						itm->setBackgroundColor(2, Qt::yellow);
+					}
+					else if (str5[0] == 'c') //will be call instructions
+					{
+						itm->setBackgroundColor(2, Qt::cyan);
+					}
 				}
-				else if (str5.find("call") != std::string::npos)
-				{
-					itm->setBackgroundColor(2, Qt::cyan);
-				}
-				else if (str5.find("jmp") != std::string::npos)
-				{
-					itm->setBackgroundColor(2, Qt::yellow);
-				}
-				else
-					itm->setTextColor(2, Qt::lightGray);
 				MyDisasm.EIP += len;
 				MyDisasm.VirtualAddr += len;
 			}
