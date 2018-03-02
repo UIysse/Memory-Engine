@@ -1,4 +1,4 @@
-﻿  MemoryViewer.cpp
+﻿  Logs.cpp
   BlackBone.lib(ProcessCore.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
      Creating library D:\GitHub Projects\Memory-Engine\x64\Release\QtPro.lib and object D:\GitHub Projects\Memory-Engine\x64\Release\QtPro.exp
   Generating code

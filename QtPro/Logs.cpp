@@ -41,7 +41,7 @@ PRXY& operator<<(PRXY &logsClass, std::string &strArg) {
 	if (DebuggedProc.pLogsOutput)
 	{
 		fout << strArg;
-		DebuggedProc.pLogsOutput->pLogs->UpdateTextContent(strArg);
+		DebuggedProc.pLogsOutput->pLogs->UpdateTextContent(strArg, logsClass._eLogType);
 	}
 	else
 	{
@@ -69,7 +69,7 @@ PRXY& operator<<(PRXY &logsClass, const char *strArg)
 	{
 		fout << strArg;
 		std::string str(strArg);
-		DebuggedProc.pLogsOutput->pLogs->UpdateTextContent(str);
+		DebuggedProc.pLogsOutput->pLogs->UpdateTextContent(str, logsClass._eLogType);
 	}
 	else
 	{
@@ -108,7 +108,7 @@ PRXY& operator>>(PRXY &logsClass, uint64_t number) {
 	}
 	return logsClass;
 }
-PRXY LOUTlog() {
-	PRXY a;
+PRXY LOUTlog(LogTypes log /*= LogTypes::NormalLog*/) {
+	PRXY a(log);
 	return a;
 }
