@@ -34,24 +34,7 @@ public:
 		this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 		ui.setupUi(this);
 	}
-	bool UpdateTextContent(std::string &strArg, LogTypes logType = LogTypes::NormalLog) {
-		ui.str2 += strArg;
-		//
-		QTextDocument *doc = ui.plainTextEdit->document(); //Returns a pointer to the underlying document.
-		QFont font("Terminal");//Should move these code lines to setup function
-		font.setPointSize(9);
-		font.setStretch(145);
-		font.setKerning(false);
-		ui.plainTextEdit->setFont(font);
-		//ui.plainTextEdit->setPlainText(ui.str2.c_str());
-		ui.plainTextEdit->moveCursor(QTextCursor::End); //equivalent to next code lines with QTextCursor c
-		ui.plainTextEdit->insertPlainText(strArg.c_str());
-		ui.plainTextEdit->show();
-		QTextCursor c = ui.plainTextEdit->textCursor(); // Copy assignement operator of QTextCursor gets called.
-		c.movePosition(QTextCursor::End); 
-		ui.plainTextEdit->setTextCursor(c);
-		return true;
-	}
+	bool UpdateTextContent(std::string &strArg, LogTypes logType = LogTypes::NormalLog);
 	~Logs(){
 		_pHoldPtr->_bLogsWindow = false;
 		delete pLogsOutput;

@@ -36,6 +36,37 @@ LogsOutput& operator<<(LogsOutput &logsClass, uint64_t number) {
 	logsClass.pLogs->UpdateTextContent(str);
 	return logsClass;
 }
+bool Logs::UpdateTextContent(std::string &strArg, LogTypes logType /*= LogTypes::NormalLog*/) {
+	ui.str2 += strArg;
+	std::string addedLine = "";
+	std::string errorHtml = "<font color=\"Red\">";
+	std::string endHtml = "</font><br>";
+	//
+	QTextDocument *doc = ui.plainTextEdit->document(); //Returns a pointer to the underlying document.
+	QFont font("Terminal");//Should move these code lines to setup function
+	font.setPointSize(9);
+	font.setStretch(145);
+	font.setKerning(false);
+	ui.plainTextEdit->setFont(font);
+	//ui.plainTextEdit->setPlainText(ui.str2.c_str());
+	ui.plainTextEdit->moveCursor(QTextCursor::End); //equivalent to next code lines with QTextCursor c
+	switch (logType)
+	{
+	case LogTypes::ErrorLog:
+		//Format html string
+		addedLine += errorHtml += strArg += endHtml;
+		strArg = addedLine;
+		ui.plainTextEdit->appendHtml(strArg.c_str());
+		break;
+	default:
+		ui.plainTextEdit->insertPlainText(strArg.c_str());
+	}
+	ui.plainTextEdit->show();
+	QTextCursor c = ui.plainTextEdit->textCursor(); // Copy assignement operator of QTextCursor gets called.
+	c.movePosition(QTextCursor::End);
+	ui.plainTextEdit->setTextCursor(c);
+	return true;
+}
 
 PRXY& operator<<(PRXY &logsClass, std::string &strArg) {
 	if (DebuggedProc.pLogsOutput)

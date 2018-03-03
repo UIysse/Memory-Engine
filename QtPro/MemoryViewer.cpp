@@ -85,6 +85,7 @@ int MemoryViewer::insertDisas(MemoryViewer * aDialog)
 	DebuggedProc.mb = QueryMemoryAddrress(DebuggedProc.addressOfInterest);
 	if (DebuggedProc.mb)
 	{
+		LOUT_ERROR << "disasembling";
 		ostringstream stre;
 		string str;
 		QTreeWidgetItem* itm;
@@ -195,8 +196,8 @@ int MemoryViewer::insertDisas(MemoryViewer * aDialog)
 		ui.treeWidget->addTopLevelItems(items); //Assigning the list of items to the TreeWidget, huge performance gains.
 		LOUT << "total disa : " << nTotalBytesDisasembled << " block size " << DebuggedProc.mb->size << endl;
 		fout << "finished disasembling." << endl;
-		//if(itmToSetCurrent)
-		//aDialog->ui.treeWidget->setCurrentItem(itmToSetCurrent);
+		if(itmToSetCurrent)
+		aDialog->ui.treeWidget->scrollToItem(itmToSetCurrent, QAbstractItemView::PositionAtTop);
 	}
 	else
 		fout << "Disassembling didn't take place because there is no memory block." << endl;
