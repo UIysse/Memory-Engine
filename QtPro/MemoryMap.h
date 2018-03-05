@@ -7,7 +7,7 @@ std::string ReturnStrFromDecInt(int64_t arg);
 class MemoryMapWindow : public QDialog
 {
 public:
-	MemoryMapWindow(QMainWindow* parent = 0) // : QDialog(parent)
+	MemoryMapWindow(QMainWindow* parent = 0)  : QDialog(parent)
 	{
 		ui.setupUi(this);
 		UpdateMemoryMap();

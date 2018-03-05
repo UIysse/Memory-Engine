@@ -17,7 +17,7 @@ void InputGotoBox::foo()
 {
 	QString text = ui.textEdit->text();
 	DebuggedProc.addressOfInterest = text.toULongLong(0, 16);
-	pMemoryViewer->UpdateDisassembledContent();
+	pMemoryViewer->DisassembleNewContent();
 	this->close();
 }
 InputGotoBox::~InputGotoBox()

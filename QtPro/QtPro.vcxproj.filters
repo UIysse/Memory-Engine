@@ -185,6 +185,9 @@
     <ClCompile Include="GeneratedFiles\Release\moc_GlobalSearchHeader.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_style.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qtpro.h">
@@ -219,6 +222,9 @@
     </CustomBuild>
     <CustomBuild Include="GlobalSearchHeader.h">
       <Filter>Search</Filter>
+    </CustomBuild>
+    <CustomBuild Include="style.qrc">
+      <Filter>xSource Files\Resource Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -300,5 +306,127 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\x64\Debug\QtPro.ico" />
+    <Image Include="rc\up_arrow_disabled.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\Hmovetoolbar.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\stylesheet-branch-end.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\branch_closed-on.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\stylesheet-vline.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\branch_closed.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\branch_open-on.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\transparent.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\right_arrow_disabled.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\sizegrip.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\close.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\close-hover.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\close-pressed.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\down_arrow.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\Vmovetoolbar.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\left_arrow.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\stylesheet-branch-more.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\up_arrow.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\right_arrow.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\left_arrow_disabled.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\Hsepartoolbar.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\branch_open.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\Vsepartoolbar.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\down_arrow_disabled.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\undock.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\checkbox_checked_disabled.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\checkbox_checked_focus.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\checkbox_checked.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\checkbox_indeterminate.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\checkbox_indeterminate_focus.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\checkbox_unchecked_disabled.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\checkbox_unchecked_focus.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\checkbox_unchecked.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\radio_checked_disabled.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\radio_checked_focus.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\radio_checked.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\radio_unchecked_disabled.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\radio_unchecked_focus.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+    <Image Include="rc\radio_unchecked.png">
+      <Filter>xSource Files\Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="style.qss">
+      <Filter>xSource Files\Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

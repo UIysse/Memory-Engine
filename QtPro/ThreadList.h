@@ -6,7 +6,7 @@ class ThreadListWindow : public QDialog
 {
 	//Q_OBJECT
 public:
-	ThreadListWindow(QMainWindow* parent = 0) //: QDialog(parent)
+	ThreadListWindow(QMainWindow* parent = 0) : QDialog(parent)
 	{
 		this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
 		ui.setupUi(this);

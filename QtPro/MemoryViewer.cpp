@@ -27,7 +27,7 @@ Informations sur la structure DISASM de BeaEngine :
 http://beatrix2004.free.fr/BeaEngine/structure.php
 */
 using namespace std;
-MemoryViewer::MemoryViewer(QWidget *parent) //: QMainWindow(parent)
+MemoryViewer::MemoryViewer(QWidget *parent) : QMainWindow(parent)
 {
 	ui.setupUi(this);
 
@@ -52,7 +52,7 @@ void MemoryViewer::ShowGotoDialogBox()
 	inputgotobox->show();
 	inputgotobox->ui.textEdit->setFocus();
 }
-void MemoryViewer::UpdateDisassembledContent()
+void MemoryViewer::DisassembleNewContent()
 {
 	delete ui.treeWidget;
 	//reconstruct disasembling with new address of interest
@@ -76,12 +76,38 @@ void MemoryViewer::UpdateDisassembledContent()
 	if (DebuggedProc.hwnd)
 		insertDisas(this);
 }
+void MemoryViewer::FreeMemoryBlocks(MEMBLOCK *mb_list)
+{
+	while (mb_list)
+	{
+		MEMBLOCK *mb = mb_list;
+		mb_list = mb_list->next;
+		FreeOneMemoryBlock(mb);
+	}
+}
+void MemoryViewer::FreeOneMemoryBlock(MEMBLOCK *mb)
+{
+	if (mb)
+	{
+		if (mb->buffer)
+		{
+			free(mb->buffer);
+		}
+
+		if (mb->searchmask)
+		{
+			free(mb->searchmask);
+		}
+
+		free(mb);
+	}
+}
 int MemoryViewer::insertDisas(MemoryViewer * aDialog)
 {
 	DebuggedProc.IsHandleValid();
 	if (!DebuggedProc.addressOfInterest)
-		fout << "error, no EIP used" << endl;
-
+		LOUT_ERROR << "error, no EIP used" << endl;
+	FreeMemoryBlocks(DebuggedProc.mb);
 	DebuggedProc.mb = QueryMemoryAddrress(DebuggedProc.addressOfInterest);
 	if (DebuggedProc.mb)
 	{
