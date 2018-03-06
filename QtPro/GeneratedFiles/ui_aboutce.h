@@ -17,7 +17,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
-
+#include <QtWidgets/QFrame>
 QT_BEGIN_NAMESPACE
 
 class Ui_aboutCEClass
@@ -46,7 +46,6 @@ public:
 		label_2->setGeometry(QRect(30, 150, 161, 21));
 		QObject::connect(pushButton, SIGNAL(clicked()), aboutCEClass, SLOT(close()));
 		retranslateUi(aboutCEClass);
-
 		QMetaObject::connectSlotsByName(aboutCEClass);
 	} // setupUi
 

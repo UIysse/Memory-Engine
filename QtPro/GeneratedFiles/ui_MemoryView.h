@@ -46,6 +46,10 @@ public:
 		treeWidget->setGeometry(QRect(0, 20, 1051, 671));
 		treeWidget->setRootIsDecorated(false);
 		treeWidget->setUniformRowHeights(true);
+		treeWidget->setHeaderLabels(QStringList() << "Address" << "Bytes" << "Opcode" << "Comment");
+		treeWidget->setColumnWidth(0, 110);
+		treeWidget->setColumnWidth(1, 150);
+		treeWidget->setColumnWidth(2, 250);
 		QMenu * fileMenu = Dialog->menuBar()->addMenu(("&File"));
 		QMenu * searchMenu = Dialog->menuBar()->addMenu("&Search");
 		QMenu * viewMenu = Dialog->menuBar()->addMenu("&View");

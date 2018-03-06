@@ -30,15 +30,10 @@ using namespace std;
 MemoryViewer::MemoryViewer(QWidget *parent) : QMainWindow(parent)
 {
 	ui.setupUi(this);
-
-	ui.treeWidget->setHeaderLabels(QStringList() << "Address" << "Bytes" << "Opcode" << "Comment");
-	ui.treeWidget->setColumnWidth(0, 110);
-	ui.treeWidget->setColumnWidth(1, 150);
-	ui.treeWidget->setColumnWidth(2, 250);
-	if (DebuggedProc.hwnd)
-		insertDisas(this);
 	QObject::connect(ui.viewDlls, &QAction::triggered, this, &MemoryViewer::showDlls);
 	QObject::connect(ui.shortcut, &QShortcut::activated, this, &MemoryViewer::ShowGotoDialogBox);
+	if (DebuggedProc.hwnd)
+		insertDisas(this);
 }
 void MemoryViewer::showDlls()
 {
@@ -54,25 +49,9 @@ void MemoryViewer::ShowGotoDialogBox()
 }
 void MemoryViewer::DisassembleNewContent()
 {
-	delete ui.treeWidget;
 	//reconstruct disasembling with new address of interest
-	ui.treeWidget = new QTreeWidget(this);
-	QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
-	__qtreewidgetitem->setText(0, QStringLiteral("1"));
-	ui.treeWidget->setHeaderItem(__qtreewidgetitem);
-	ui.treeWidget->setObjectName(QStringLiteral("treeWidget"));
-	ui.treeWidget->setGeometry(QRect(0, 20, 1051, 671));
-	ui.treeWidget->setHeaderLabels(QStringList() << "Address" << "Bytes" << "Opcode" << "Comment");
-	ui.treeWidget->setColumnWidth(0, 110);
-	ui.treeWidget->setColumnWidth(1, 150);
-	ui.treeWidget->setColumnWidth(2, 250);
-	/*
-	QPalette p(ui.treeWidget->palette());
-	p.setColor(QPalette::Base, Qt::darkGray);
-	ui.treeWidget->setPalette(p);
-	*/
+	ui.treeWidget->clear();
 	ui.treeWidget->show();
-	//this->show();
 	if (DebuggedProc.hwnd)
 		insertDisas(this);
 }
@@ -235,6 +214,7 @@ It will disasemble a chunck that was not only allcoated at the same time, the ch
 but more importantly current protect.
 This is the same way odbg and x64dbg are determining which block to disasemble.
 */
+
 MEMBLOCK * MemoryViewer::QueryMemoryAddrress(int64_t adressQueried)
 {
 	MEMBLOCK *mb = nullptr;

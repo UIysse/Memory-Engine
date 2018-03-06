@@ -1,29 +1,19 @@
-﻿  DebuggedProcess.cpp
-DebuggedProcess.cpp(6): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
+﻿  AboutCpp.cpp
+  moc_AboutCpp.cpp
   moc_GlobalSearchHeader.cpp
   moc_InputComment.cpp
   moc_InputGotoBox.cpp
   moc_Logs.cpp
-  moc_MemoryViewer.cpp
-  moc_qtpro.cpp
   moc_Results.cpp
   moc_Search.cpp
   moc_TypeBox.cpp
+  moc_qtpro.cpp
   GlobalSearchHeader.cpp
-  InputComment.cpp
   InputGotoBox.cpp
   Logs.cpp
-  main.cpp
-  MemoryMap.cpp
-  MemoryViewer.cpp
   MemRead.cpp
-  Modules.cpp
+  MemoryViewer.cpp
   OpenProcess.cpp
-  Generating Code...
-d:\github projects\memory-engine\qtpro\globalsearchheader.cpp(119): warning C4700: uninitialized local variable 'pInputComment' used
-  Compiling...
-  qtpro.cpp
-  DriverImplementation.cpp
   Results.cpp
   Search.cpp
 Search.cpp(743): warning C4477: 'printf' : format string '%08x' requires an argument of type 'unsigned int', but variadic argument 1 has type 'unsigned char *'
@@ -48,10 +38,14 @@ Search.cpp(196): warning C4311: 'reinterpret_cast': pointer truncation from 'uns
           [
               T=uint8_t
           ]
-  ThreadList.cpp
   TypeBox.cpp
+  main.cpp
   Generating Code...
 d:\github projects\memory-engine\qtpro\search.cpp(1054): warning C4715: 'SearchWindow::ReturnDataSize': not all control paths return a value
+d:\github projects\memory-engine\qtpro\globalsearchheader.cpp(119): warning C4700: uninitialized local variable 'pInputComment' used
+  Compiling...
+  qtpro.cpp
+  Generating Code...
   BlackBone.lib(ProcessCore.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
      Creating library D:\GitHub Projects\Memory-Engine\x64\Release\QtPro.lib and object D:\GitHub Projects\Memory-Engine\x64\Release\QtPro.exp
   Generating code

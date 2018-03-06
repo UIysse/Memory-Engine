@@ -5,1139 +5,193 @@ Process open with all access.
 Module base address : 0x4194304
 Module entry point : 0x5564720
 Entrypoint : 54e930 Base address : 0000000000400000
-scan type 0
-asd 0
 Handle of process is still active
-creating scan took : 4.34689
-You have : 8 cores.each thread will scan for 38800 bytes.
-this thread will read that many bytes : 3d000
-this thread will read that many bytes : 130000
-this thread will read that many bytes : 3d000
-this thread will not be launched
-end of update scan
-end of update scan
-end of update scan
-end of update scan
-total threads : 4
-Creating scan and updating it took : 10.7002total bytes scanned 388000 /8 : 71000
-NEW_SCAN, matches found 2a6 start condition : 1 start val : 4 data size : 4
-result vector size 0
-poke failed 
-val is : 0
-poke failed 
-val is : 0
-poke failed 
-val is : 0
-poke failed 
-val is : 0
-poke failed 
-val is : 0
-poke failed 
-val is : 0
-poke failed 
-val is : 0
-poke failed 
-val is : 0
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-val is : 4
-dec 4
-result vector size 678
-Scan performed. 678 results.
-Whole first scan process took : 24.72
-Whole first scan process took : 24
-Whole first scan process took : 0.35665
-Whole first scan process took : 0
+Memory pages are writable and commited
+Memory block was created
+base add : 0000000000401000
+wanted add : 54e930
+regionsize : 14e000
+mb.size : 14e000
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+Bytes left : 0
+Total bytes read : 14e000
+disasemblingAddress of Interest : 54e930
+Start of memory page : 401000
+size : 14e000
+total disa : 14e001 block size 14e000
+finished disasembling.
+Handle of process is still active
+Memory pages are writable and commited
+Memory block was created
+base add : 0000000000401000
+wanted add : 540000
+regionsize : 14e000
+mb.size : 14e000
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+Bytes left : 0
+Total bytes read : 14e000
+disasemblingAddress of Interest : 540000
+Start of memory page : 401000
+size : 14e000
+total disa : 14e001 block size 14e000
+finished disasembling.
+Handle of process is still active
+Memory pages are writable and commited
+Memory block was created
+base add : 0000000000401000
+wanted add : 54e900
+regionsize : 14e000
+mb.size : 14e000
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+Bytes left : 0
+Total bytes read : 14e000
+disasemblingAddress of Interest : 54e900
+Start of memory page : 401000
+size : 14e000
+total disa : 14e001 block size 14e000
+finished disasembling.
+Handle of process is still active
+Memory pages are writable and commited
+Memory block was created
+base add : 0000000000401000
+wanted add : 54e980
+regionsize : 14e000
+mb.size : 14e000
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+Bytes left : 0
+Total bytes read : 14e000
+disasemblingAddress of Interest : 54e980
+Start of memory page : 401000
+size : 14e000
+total disa : 14e001 block size 14e000
+finished disasembling.
+Handle of process is still active
+Memory pages are writable and commited
+Memory block was created
+base add : 0000000000401000
+wanted add : 54e980
+regionsize : 14e000
+mb.size : 14e000
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+Bytes left : 0
+Total bytes read : 14e000
+disasemblingAddress of Interest : 54e980
+Start of memory page : 401000
+size : 14e000
+total disa : 14e001 block size 14e000
+finished disasembling.
+Handle of process is still active
+Memory pages are writable and commited
+Memory block was created
+base add : 0000000000400000
+wanted add : 400000
+regionsize : 1000
+mb.size : 1000
+could read memory
+Bytes left : 0
+Total bytes read : 1000
+disasemblingAddress of Interest : 400000
+Start of memory page : 400000
+size : 1000
+total disa : 1006 block size 1000
+finished disasembling.
+Handle of process is still active
+Memory pages are writable and commited
+Memory block was created
+base add : 0000000000401000
+wanted add : 54e930
+regionsize : 14e000
+mb.size : 14e000
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+Bytes left : 0
+Total bytes read : 14e000
+disasemblingAddress of Interest : 54e930
+Start of memory page : 401000
+size : 14e000
+total disa : 14e001 block size 14e000
+finished disasembling.
+Handle of process is still active
+Memory pages are writable and commited
+Memory block was created
+base add : 0000000000401000
+wanted add : 54e000
+regionsize : 14e000
+mb.size : 14e000
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+could read memory
+Bytes left : 0
+Total bytes read : 14e000
+disasemblingAddress of Interest : 54e000
+Start of memory page : 401000
+size : 14e000
+total disa : 14e001 block size 14e000
+finished disasembling.
